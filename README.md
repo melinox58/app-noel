@@ -7,3 +7,8 @@
 - Installation de Vue.js ```npm install -g @vue/cli```
 - Création de l'app ```create vue front```
 - Ajout de Vue.router et Axios ```npm install axios vue-router```
+
+## Démarrage
+
+- back : ```npm start```
+- front : ```cd front```, ```npm run serve```
