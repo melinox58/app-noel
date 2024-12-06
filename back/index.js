@@ -4,6 +4,19 @@ const app = express(); //fonction native qui démarre le server
 
 //test
 app.get('/', (req, res)=>{
-    res.render("Test fonctionne")
+    res.json("Test fonctionne")
 })
+
+//route user
+const users = require('./routes/users')
+app.use('/users', users);
+
+//route registration
+
+//route login
+const login = require('./routes/users')
+app.use('/users/login', login);
+
+//route dashbord user
+
 app.listen(port, () => {console.log(`Server started `);})
