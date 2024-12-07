@@ -12,3 +12,13 @@
 
 - back : ```npm start```
 - front : ```cd front```, ```npm run serve```
+
+## Cloner le projet :
+- Cloner : git clone [git@github.com:melinox58/app-noel.git](https://github.com/melinox58/app-noel.git)
+## Installation de la partie front :
+- Se placer sur le dossier front ```cd front```
+- #### Installation de Vue.js :
+    - Uniquement dans le projet ```npm install @vue/cli```
+    #### ou
+    - En global (_sur votre machine_) ```npm install -g @vue/cli```
+- Puis lancer le serveur : ```npm run serve```
