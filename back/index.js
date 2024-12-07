@@ -1,5 +1,6 @@
 const express = require('express'); //déclare une variable qui importe express
 const port = process.env.PORT || 5000; //déclare une variable pour le port
+const dotenv = require('dotenv');
 const app = express(); //fonction native qui démarre le server
 
 //test

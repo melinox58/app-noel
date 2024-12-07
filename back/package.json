@@ -18,6 +18,7 @@
   "homepage": "https://github.com/melinox58/app-noel#readme",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.4.7",
     "express": "^4.21.1",
     "nodemon": "^3.1.7"
   }
