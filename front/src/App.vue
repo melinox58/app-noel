@@ -1,23 +1,15 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-
-  <div id="app">
-
-    <Calendar />
-    <User />
-  </div>
+  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import Calendar from "@/components/CalendarComponent.vue";
-import User from "@/components/UserComponent.vue";
-
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    Calendar,
-    User
+    HelloWorld
   }
 }
 </script>
@@ -32,6 +24,3 @@ export default {
   margin-top: 60px;
 }
 </style>
-
-
-
