@@ -17,12 +17,19 @@
           <li><a href="/">Accueil</a></li>
           <li><a href="/about">Calendriers</a></li>
           <li><a href="/about">Connexion/Inscription</a></li>
+            <ul>
+                <li><a href="#" @click.prevent="loadComponent('CalendarComponent')">Calendar</a></li>
+                <li><a href="#" @click.prevent="loadComponent('UserComponent')">Users</a></li>
+            </ul>
         </ul>
       </nav>
     </header>
 
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <div id="app">
+      <main>
+        <router-view></router-view>
+      </main>
+    </div>
 
     <footer>
       <nav>
@@ -35,6 +42,7 @@
       <p>&copy; 2024 Mon Site</p>
     </footer>
 
+    <script src="../src/main.js"></script>/
   </body>
 
 </html>
