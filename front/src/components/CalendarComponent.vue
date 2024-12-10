@@ -15,8 +15,6 @@ const newCalendar = ref({
       } catch (error) {
         alert('Echec: ' + error.message);
       }
-
-
 };
 
 </script>
