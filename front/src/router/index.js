@@ -1,11 +1,15 @@
 //config du router
 import { createRouter, createWebHistory } from 'vue-router';
+import AccueilComponent from '../components/AccueilComponent.vue';
 import CalendarComponent from '../components/CalendarComponent.vue';
 import UserComponent from '../components/UserComponent.vue';
 
+
+
 const routes = [
-    { path: '/', component: CalendarComponent },
-    { path: '/users', component: UserComponent }
+    { path: '/', component: AccueilComponent },
+    { path: '/calendar', component: CalendarComponent },
+    { path: '/user', component: UserComponent }
 ];
 
 

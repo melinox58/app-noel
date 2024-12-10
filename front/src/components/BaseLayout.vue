@@ -11,16 +11,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  <router-link class="nav-link" to="/">Accueil</router-link>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Accueil</a>
+                  <router-link class="nav-link" to="/calendar">Calendriers</router-link>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/">Calendriers</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Connexion/Inscription</a>
+                  <router-link class="nav-link" to="/user">Connexion/Inscription</router-link>
                 </li>
               </ul>
             </div>
@@ -30,6 +27,7 @@
 
       <main>
         <!-- <slot /> -->
+        <router-view></router-view><!-- <slot /> -->
       </main>
 
       <footer>
