@@ -38,8 +38,9 @@
               <li><a href="/about">Conditions d’utilisation</a></li>
             </ul>
           </nav>
-          <p>&copy; 2024 Martinon Mélanie && Viennot Nicolas</p>
         </footer>
+        <p>&copy; 2024 Martinon Mélanie && Viennot Nicolas</p>
+
       </div>
     </div>
 </template>
@@ -77,6 +78,7 @@ body {
 .imgFond {
   background-image: url('@/assets/img/nice-christmas-background-white-background-with-copy-space.jpg');
   background-size: cover;
+  opacity: 80%;
   width: 100%;
   height: 100%;
   position: fixed; /* L'image de fond reste fixe */
@@ -84,11 +86,9 @@ body {
 }
 
 .content-container {
-  position: relative;
-  z-index: 1;
-  flex: 1; /* Permet au contenu principal de prendre l'espace disponible */
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 img {
@@ -97,7 +97,6 @@ img {
 
 header {
   display: flex;
-  /* opacity: 80%; */
   padding: 1rem;
   position: relative;
   z-index: 1;
@@ -115,55 +114,76 @@ nav {
   color: green;
 }
 
+.collapse {
+  position: absolute;
+  top: 100%; /* Place le menu en dessous de la navigation */
+  right: 0; /* Aligne le menu à droite */
+  width: auto; /* Ajuste la largeur selon le contenu */
+  background-color: white; /* Fond du menu */
+  border-top: 1px solid #ddd; /* Ligne de séparation (optionnelle) */
+  padding: 2%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Effet visuel optionnel */
+}
+
 a{
   text-decoration: none;
   color: green;
 }
 
 main {
-  flex: 1; /* Permet à main de prendre l'espace disponible entre header et footer */
+  height: 70vh; /* Permet à main de prendre l'espace disponible entre header et footer */
 }
 
 footer {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  position: relative;
-  z-index: 1;
   align-items: center;
-  margin-top: 130%;
   background-color: white;
-  height: 10vh;
+  padding-top: 2%;
 }
 
-footer p {
+footer nav{
+  display: flex;
+}
+
+p {
   font-size: 0.4rem;
+  margin-top: 2%;
 }
 
 @media only screen and (min-width: 768px) {
   img {
-  width: 15%;
+  width: 18%;
   margin-top: 4%;
-  margin-left: 8%;
+  margin-left: 16%;
 }
 
 .bg-body-tertiary {
-  background-color: transparent;
+  background-color: transparent!important;
 }
+
 
 nav {
   font-size: 1.8rem;
-  align-content: center;
   margin-left: 3%;
-  width: 90vw;
 }
 
 .nav-link{
-  font-size: 1.5rem;
+  font-size: 1.9rem;
+  width: 20vw;
+  margin-left: 110%;
 }
 
 .navbar-nav{
   padding-left: 3%;
+}
+
+.collapse{
+  top: 0; /* Place le menu en dessous de la navigation */
+  right: 0;
+  background-color: transparent;
+  border-top: transparent;
+  box-shadow: none;
 }
 
 a{
@@ -171,30 +191,39 @@ a{
   color: green;
   flex: 1;
   width: 15vw;
+  margin-left: 30%;
 }
 
 .bg-body-tertiary {
   background-color:transparent;
 }
 
-footer ul {
-  display: flex;
-  gap: 2%;
-  font-size: 1rem;
-  width: 100vw;
-  justify-content: center;
+main {
+  height: 8vh; /* Permet à main de prendre l'espace disponible entre header et footer */
+}
+
+footer li {
+  font-size: 1.2rem;
+  width: 20vw;
   text-align: center;
 }
 
 footer {
-  margin-top: 40%;
+  margin-top: 33%;
   background-color: transparent;
-
+  display: flex;
+  flex-direction: column;
 }
 
-footer p {
+footer ul{
+  display: flex;
+}
+
+p {
   font-size: 0.8rem;
+  margin-top: -2%;
 }
+
 }
   
 
