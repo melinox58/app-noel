@@ -1,6 +1,7 @@
 <script setup>
-import { ref } from 'vue'; //ref est une fonction de la Composition API
+import { ref, onMounted } from 'vue'; //ref est une fonction de la Composition API
 import axios from 'axios';
+
 
 const newCalendar = ref({
   title: '',
@@ -17,10 +18,24 @@ const newCalendar = ref({
       }
 };
 
+  //On recup les info de l'utilisateur stockées dans le localstorage
+//pour pouvoir lui afficher un message de bienvenu si on a un user connecté (v-if )
+  const user = ref(null);
+
+onMounted(() => {
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    user.value = JSON.parse(storedUser);
+  }
+});
+
 </script>
 
 <template>
   <div>
+    <div>
+      <h3 v-if="user">Vous êtes connecté en tant que {{ user.firstname }} {{ user.name }}</h3>
+    </div>
     <h2>Crée ton Calendrier de Noel personnalisé</h2>
     <form @submit.prevent="createCalendar">
       <input v-model="newCalendar.title" placeholder="Titre" required />

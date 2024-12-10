@@ -1,11 +1,15 @@
+const db = require('../../config/db-config.js');
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('melinox_noel', 'melinox_noel', 'salutnoel', {
-    host: 'mysql-melinox.alwaysdata.net',
+require('dotenv').config({ path: '../../.env' });
+
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
     dialect: 'mysql',
     define: {
         timestamps: false // Désactive les colonnes createdAt et updatedAt
     }
 });
+
 
 const Calendar = sequelize.define('Calendar', {
     id: {

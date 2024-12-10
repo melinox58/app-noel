@@ -1,6 +1,9 @@
 const express = require('express'); //déclare une variable qui importe express
 const port = process.env.PORT || 5000; //déclare une variable pour le port
 const dotenv = require('dotenv');
+// Charger les variables d'environnement depuis .env.local si disponible, sinon depuis .env
+dotenv.config({ path: '.env.local' });
+dotenv.config({ path: '.env' });
 const app = express(); //fonction native qui démarre le server
 //middleware qui analyse (parse) le body des requetes et renvoi un objet req.body
 const bodyParser = require('body-parser'); //middleware qui analyse
@@ -34,9 +37,7 @@ const userRoutes = require('./Routes/userRoutes');
 app.use('/api/users', userRoutes); // Ajouter les routes pour les utilisateurs
 
 
-// Charger les variables d'environnement depuis .env.local si disponible, sinon depuis .env
-dotenv.config({ path: '.env.local' });
-dotenv.config({ path: '.env' });
+
 
 
 

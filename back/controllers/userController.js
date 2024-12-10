@@ -61,3 +61,29 @@ exports.deleteUser = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
+
+exports.loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ where: { email } });
+
+        if (user && await bcrypt.compare(password, user.password)) {
+            // On ne renvoi pas le mot de passe haché dans la réponse
+            const { password, ...userData } = user.get({ plain: true });
+            res.status(200).json(userData);
+        } else {
+            res.status(401).json({ error: 'Invalid email or password' });
+        }
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
+exports.logoutUser = async (req, res) => {
+    try {
+        // Logique de déconnexion = détruire la session
+        res.status(200).json({ message: 'User logged out successfully' });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};

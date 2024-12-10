@@ -18,4 +18,11 @@ router.put('/:id', userController.updateUser);
 // Route pour supprimer un utilisateur
 router.delete('/:id', userController.deleteUser);
 
+// Route pour la connexion
+router.post('/login', userController.loginUser);
+
+// Route pour la déconnexion
+router.post('/logout', userController.logoutUser);
+
+
 module.exports = router;
