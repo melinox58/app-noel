@@ -30,18 +30,18 @@
         <router-view></router-view><!-- <slot /> -->
       </main>
 
-      <footer>
-        <nav>
-          <ul>
-            <li><a href="/">Mentions légales</a></li>
-            <li><a href="/about">Politique de confidentialité</a></li>
-            <li><a href="/about">Conditions d’utilisation</a></li>
-          </ul>
-        </nav>
-        <p>&copy; 2024 Mon Site</p>
-      </footer>
+        <footer>
+          <nav>
+            <ul>
+              <li><a href="/">Mentions légales</a></li>
+              <li><a href="/about">Politique de confidentialité</a></li>
+              <li><a href="/about">Conditions d’utilisation</a></li>
+            </ul>
+          </nav>
+          <p>&copy; 2024 Martinon Mélanie && Viennot Nicolas</p>
+        </footer>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -62,6 +62,8 @@ export default {
 
 body {
   font-family: 'Pacifico', sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 * {
@@ -71,19 +73,22 @@ body {
   font-family: 'Pacifico', sans-serif;
 }
 
+
 .imgFond {
   background-image: url('@/assets/img/nice-christmas-background-white-background-with-copy-space.jpg');
   background-size: cover;
-  /* background-position: 0; */
   width: 100%;
   height: 100%;
-  position: fixed; /* Changement pour s'assurer que l'image de fond reste fixe */
+  position: fixed; /* L'image de fond reste fixe */
   z-index: -1; /* L'image de fond ne doit pas recouvrir les autres éléments */
 }
 
 .content-container {
   position: relative;
-  z-index: 1; /* Pour garantir que le contenu est au-dessus du fond */
+  z-index: 1;
+  flex: 1; /* Permet au contenu principal de prendre l'espace disponible */
+  display: flex;
+  flex-direction: column;
 }
 
 img {
@@ -92,8 +97,7 @@ img {
 
 header {
   display: flex;
-  color: white;
-  opacity: 80%;
+  /* opacity: 80%; */
   padding: 1rem;
   position: relative;
   z-index: 1;
@@ -103,23 +107,95 @@ nav {
   display: flex;
   flex-direction: row;
   font-size: 0.8rem;
+  height: 10vh;
+  align-content: center;
 }
 
-.navbar-nav .nav-link.active{
+.nav-link{
   color: green;
 }
 
+a{
+  text-decoration: none;
+  color: green;
+}
 
-
-
-
-
-
+main {
+  flex: 1; /* Permet à main de prendre l'espace disponible entre header et footer */
+}
 
 footer {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  margin-top: 2rem;
   position: relative;
   z-index: 1;
+  align-items: center;
+  margin-top: 130%;
+  background-color: white;
+  height: 10vh;
 }
+
+footer p {
+  font-size: 0.4rem;
+}
+
+@media only screen and (min-width: 768px) {
+  img {
+  width: 15%;
+  margin-top: 4%;
+  margin-left: 8%;
+}
+
+.bg-body-tertiary {
+  background-color: transparent;
+}
+
+nav {
+  font-size: 1.8rem;
+  align-content: center;
+  margin-left: 3%;
+  width: 90vw;
+}
+
+.nav-link{
+  font-size: 1.5rem;
+}
+
+.navbar-nav{
+  padding-left: 3%;
+}
+
+a{
+  text-decoration: none;
+  color: green;
+  flex: 1;
+  width: 15vw;
+}
+
+.bg-body-tertiary {
+  background-color:transparent;
+}
+
+footer ul {
+  display: flex;
+  gap: 2%;
+  font-size: 1rem;
+  width: 100vw;
+  justify-content: center;
+  text-align: center;
+}
+
+footer {
+  margin-top: 40%;
+  background-color: transparent;
+
+}
+
+footer p {
+  font-size: 0.8rem;
+}
+}
+  
+
 </style>
