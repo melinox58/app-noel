@@ -17,7 +17,7 @@
                   <router-link class="nav-link" to="/calendar">Calendriers</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link class="nav-link" to="/user">Connexion/Inscription</router-link>
+                  <router-link class="nav-link" to="/register">Connexion/Inscription</router-link>
                 </li>
               </ul>
             </div>
@@ -131,7 +131,14 @@ a{
 }
 
 main {
-  height: 70vh; /* Permet à main de prendre l'espace disponible entre header et footer */
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 69vh;
+  margin: 0 4% 2% 4%;
+  background-color: rgba(255, 255, 255, 0.817);
 }
 
 footer {
@@ -152,7 +159,8 @@ p {
 }
 
 @media only screen and (min-width: 768px) {
-  img {
+
+img {
   width: 18%;
   margin-top: 4%;
   margin-left: 16%;
@@ -169,13 +177,13 @@ nav {
 }
 
 .nav-link{
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   width: 20vw;
   margin-left: 110%;
 }
 
 .navbar-nav{
-  padding-left: 3%;
+  padding-left: 10%;
 }
 
 .collapse{
@@ -199,7 +207,8 @@ a{
 }
 
 main {
-  height: 8vh; /* Permet à main de prendre l'espace disponible entre header et footer */
+  background-color: transparent;
+  margin-left: 25%;
 }
 
 footer li {
@@ -209,7 +218,6 @@ footer li {
 }
 
 footer {
-  margin-top: 33%;
   background-color: transparent;
   display: flex;
   flex-direction: column;
