@@ -5,12 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f07f0e2c-b922-4480-a65a-2543089ea2e7" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/front/src/components/AccueilComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/data-base/create-table.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/back/data-base/db-config.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/BaseLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/BaseLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/router/index.js" afterDir="false" />
+=======
+<<<<<<< Updated upstream
+      <change afterPath="$PROJECT_DIR$/back/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/.env.local" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package.json" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c2f04fe4-0eb3-4794-9d7e-23b34cc8e665.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c2f04fe4-0eb3-4794-9d7e-23b34cc8e665.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> Stashed changes
+>>>>>>> ed5f4d6b908d626dbcdad83143b2331347a3364b
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,13 +33,6 @@
   </component>
   <component name="ComposerSettings">
     <execution />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Vue Composition API Component" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,23 +49,30 @@
     &quot;accountId&quot;: &quot;edfad021-7628-411a-96c1-f3b207d723a7&quot;
   }
 }</component>
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> ed5f4d6b908d626dbcdad83143b2331347a3364b
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> ed5f4d6b908d626dbcdad83143b2331347a3364b
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2psojEWCZzkypEghQrrHZaqbLdC" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -115,6 +129,20 @@
       </list>
     </recent_temporary>
   </component>
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "dev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+>>>>>>> ed5f4d6b908d626dbcdad83143b2331347a3364b
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -132,8 +160,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733564278692</updated>
       <workItem from="1733564281037" duration="204000" />
-      <workItem from="1733578332039" duration="13406000" />
-      <workItem from="1733595038130" duration="53974000" />
+      <workItem from="1733578332039" duration="2975000" />
     </task>
     <servers />
   </component>

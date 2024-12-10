@@ -1,10 +1,10 @@
 <template>
     <BaseLayout msg="Welcome to Your Home App"/>
 </template>
-  
+
   <script>
   import BaseLayout from './components/BaseLayout.vue'
-  
+
   export default {
     name: 'App',
     components: {
@@ -12,7 +12,7 @@
     }
   }
   </script>
-  
+
   <style>
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -23,4 +23,3 @@
     margin-top: 60px;
   }
   </style>
-  
