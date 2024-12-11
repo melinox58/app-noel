@@ -80,7 +80,7 @@ form{
 
 @media only screen and (min-width: 768px){
 
-  h2{
+h2{
   margin-top: 7%;
   font-size: 1.8rem;
   width: 40vw;
