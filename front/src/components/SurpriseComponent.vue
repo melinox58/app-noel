@@ -194,7 +194,6 @@ section{
 
 h3{
   font-size: 1.5rem;
-  margin-top: %;
   margin-bottom: 2%;
 }
 
