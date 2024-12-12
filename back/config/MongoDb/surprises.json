@@ -1,6 +1,93 @@
-{
-    "name": "Lion",
-    "age": 8,
-    "habitat": "Savannah"
-  }
+[
+    {
+        "src": "front/src/assets/img/gifts/23-47-52-194_512.webp",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/ball-11083_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/bitcoin-7809_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/cartoon-562_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/cartoon-571_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/christmas-2632_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/christmas-9030_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/christmas-9777_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/deer-15360_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/diamond-11113_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "",
+        "idCase": ""
+    },
+
+    {
+        "src": "",
+        "idCase": ""
+    },
+
+    {
+        "src": "",
+        "idCase": ""
+    },
+
+    {
+        "src": "",
+        "idCase": ""
+    },
+
+    {
+        "src": "",
+        "idCase": ""
+    },
+
+    {
+        "src": "",
+        "idCase": ""
+    },
+
+    {
+        "src": "",
+        "idCase": ""
+    },
+
+    {
+        "src": "",
+        "idCase": ""
+    }
+]
+
   

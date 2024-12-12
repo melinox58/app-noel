@@ -161,15 +161,19 @@ p {
 @media only screen and (min-width: 768px) {
 
 img {
-  width: 18%;
   margin-top: 4%;
-  margin-left: 16%;
+  width: 12%;
+  margin-left: 11%;
 }
 
 .bg-body-tertiary {
   background-color: transparent!important;
 }
 
+header {
+    z-index: 10; /* Plus élevé que le fond */
+    position: relative; /* Nécessaire pour z-index */
+}
 
 header nav {
   font-size: 1.8rem;
@@ -177,22 +181,25 @@ header nav {
   margin-top: -1%;
 }
 
-.nav-link{
-  font-size: 1.7rem;
-  width: 20vw;
-  margin-left: 110%;
+.nav-link {
+    font-size: 1.5rem;
+    margin-left: 0; /* Pas de marge latérale excessive */
+    width: auto; /* Ajuste automatiquement la largeur */
 }
 
-.navbar-nav{
-  padding-left: 10%;
+.navbar-nav {
+    padding-left: 0;
+    display: flex; /* Assure un alignement horizontal */
+    justify-content: flex-start; /* Aligne les liens à gauche */
 }
 
 .collapse{
-  top: 0; /* Place le menu en dessous de la navigation */
-  right: 0;
-  background-color: transparent;
-  border-top: transparent;
-  box-shadow: none;
+
+    position: static;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    justify-content: center;
 }
 
 a{
