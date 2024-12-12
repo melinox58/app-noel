@@ -39,7 +39,6 @@
 <style scoped>
 
 section{
-  background-color: rgba(255, 255, 255, 0.854);
   width: 80vw;
   height: 70vh;
   margin-right: 10%;
