@@ -35,34 +35,6 @@
 
 </template>
 
-<script>
-import mainImage from '../assets/main.png';
-import calendarImage from '../assets/calendrier.svg';
-import paletteImage from '../assets/palette.png';
-
-export default {
-  data() {
-    return {
-      imgButton: '../assets/img/background/preview.jpg',
-      hand: mainImage,
-      calendar: calendarImage,
-      palette: paletteImage,
-    //   images: [
-    //     { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
-    //     { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-    //     { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-    //     { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
-    //     { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-    //     { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-    //     { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-    //     { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-    //   ],
-    };
-  },
-};
-</script>
-
-
 <style scoped>
 
 section{

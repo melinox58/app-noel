@@ -113,18 +113,6 @@ form{
 
 </style>
 
-<script>
-
-export default {
-  data() {
-    return {
-      imgButton: '@/assets/img/background/preview.jpg',
-    };
-  },
-};
-
-</script>
-
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
