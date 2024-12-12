@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'; //ref est une fonction de la Composition API
 import axios from 'axios';
+import DateComponent from '@/components/DateComponent.vue';
 
 
 const newCalendar = ref({
@@ -35,6 +36,9 @@ onMounted(() => {
   <div>
     <div>
       <h3 v-if="user">Vous êtes connecté en tant que {{ user.firstname }} {{ user.name }}</h3>
+    </div>
+    <div>
+      <DateComponent />
     </div>
     <h2>Crée ton Calendrier de Noel personnalisé</h2>
     <form @submit.prevent="createCalendar">

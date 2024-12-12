@@ -18,17 +18,21 @@ CREATE TABLE Calendars (
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES Users(id) -- Clé étrangère
 );
 
+CREATE TABLE Cases (
+                       id INT AUTO_INCREMENT PRIMARY KEY,
+                       day_number INT NOT NULL,
+                       content JSON,  -- gift
+                       is_opened BOOLEAN DEFAULT FALSE,
+                       calendars_id INT,
+                       CONSTRAINT fk_calendar FOREIGN KEY (calendars_id) REFERENCES Calendars(id) -- Clé étrangère
 
-CREATE TABLE Dates (
-    id INT AUTO_INCREMENT PRIMARY KEY,                    -- Clé primaire
-    calendars_id INT,                                     -- Colonne pour la clé étrangère
-    date DATETIME NOT NULL,                               -- Colonne obligatoire
-    description TEXT,                                     -- Texte
-    CONSTRAINT fk_calendar FOREIGN KEY (calendars_id) REFERENCES Calendars(id) -- Clé étrangère
 );
+
+
+
 
 
 SHOW TABLES LIKE 'Users';
 SHOW TABLES LIKE 'Calendars';
-SHOW TABLES LIKE 'Dates';
+SHOW TABLES LIKE 'Cases';
 

@@ -25,12 +25,15 @@ app.use(cors(corsOptions)); // Utiliser le middleware CORS avec les options conf
 app.get('/', (req, res)=>{
     res.json("Test fonctionne")
 })
-//Route Calendar
+//Route Calendar et Cases
 const calendarRoutes = require('./Routes/calendarRoutes');
+app.use('/api/calendar', calendarRoutes);
+const caseRoutes = require('./routes/caseRoutes');
+app.use('/api', caseRoutes);
 
 //bodyParser pour analyser le coprs de la requete
 app.use(bodyParser.json());
-app.use('/api/calendar', calendarRoutes);
+
 
 //Route users
 const userRoutes = require('./Routes/userRoutes');
