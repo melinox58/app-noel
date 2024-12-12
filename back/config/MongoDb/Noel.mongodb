@@ -1,0 +1,2 @@
+use('Noel');
+db.my_collection.find();
