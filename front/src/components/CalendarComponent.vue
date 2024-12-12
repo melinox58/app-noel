@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from 'vue'; //ref est une fonction de la Composition API
+import { ref, onMounted } from 'vue'; //ref est une fonction de la Composition API
 import axios from 'axios';
 
 const newCalendar = ref({
