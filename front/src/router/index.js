@@ -6,6 +6,8 @@ import SurpriseComponent from '../components/SurpriseComponent.vue';
 import ShareComponent from '../components/ShareComponent.vue';
 import RegisterComponent from '../components/RegisterComponent.vue';
 import LoginComponent from '@/components/LoginComponent.vue';
+import DashAdminComponent from '@/components/DashAdminComponent.vue';
+
 
 
 
@@ -15,7 +17,8 @@ const routes = [
     { path: '/register', component: RegisterComponent },
     { path: '/surprise', component: SurpriseComponent },
     { path: '/share', component: ShareComponent },
-    { path: '/login', component: LoginComponent }
+    { path: '/login', component: LoginComponent },
+    { path: '/admin', component: DashAdminComponent}
 ];
 
 
