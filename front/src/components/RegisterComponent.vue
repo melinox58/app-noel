@@ -1,23 +1,6 @@
 <!-- front/src/components/RegisterComponent.vue -->
 <template>
   <div>
-    <h2>S'enregistrer</h2>
-    <form @submit.prevent="createUser">
-      <input v-model="newUser.name" placeholder="Nom" required />
-      <input v-model="newUser.firstname" placeholder="Prénom" required />
-      <input v-model="newUser.email" placeholder="Email" required />
-      <input v-model="newUser.password" type="mot de passe" placeholder="Password" required />
-      <button type="submit">Valider</button>
-    </form>
-    <ul>
-      <li v-for="user in users" :key="user.id">
-        {{ user.firstname }}{{ user.name }} - {{ user.email }}
-        <button @click="deleteUser(user.id)">Delete</button>
-      </li>
-    </ul>
-  </div>
-</template>
-    <div>
       <h1>Rejoignez Osez Noël !!</h1>
 
     <h2>Créez votre compte ou identifiez-vous pour commencer
@@ -27,6 +10,7 @@
       <h3>S'enregistrer</h3>
       <form @submit.prevent="createUser">
         <input v-model="newUser.name" placeholder="Nom" required />
+        <input v-model="newUser.firstname" placeholder="Prénom" required />
         <input v-model="newUser.email" placeholder="Email" required />
         <input v-model="newUser.password" type="mot de passe" placeholder="Password" required />
         <button class="btn" type="submit">Valider</button>

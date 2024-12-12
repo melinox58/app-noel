@@ -1,5 +1,8 @@
 const express = require('express'); //déclare une variable qui importe express
 const port = process.env.PORT || 5000; //déclare une variable pour le port
+const db = require('./config/db-config');
+const mongoose = require('mongoose');
+const dbMongo = require('./config/mongoDb');
 const dotenv = require('dotenv');
 // Charger les variables d'environnement depuis .env.local si disponible, sinon depuis .env
 dotenv.config({ path: '.env.local' });
@@ -12,6 +15,10 @@ const cors = require('cors'); //autoriser les requetes depuis l'exterieur
 
 //base de données mysql
  const mysql = require('mysql2');
+ db.connect();
+
+ //connexion Mongo
+dbMongo();
 
 const corsOptions = {
     origin: 'http://localhost:8080', // Autoriser les requêtes depuis cette origine
@@ -34,6 +41,11 @@ app.use('/api', caseRoutes);
 //bodyParser pour analyser le coprs de la requete
 app.use(bodyParser.json());
 
+//Route surprise et avis
+const surpriseRoutes = require('./routes/surpriseRoutes');
+app.use('/api/surprises', surpriseRoutes);
+const avisRoutes = require('./routes/avisRoutes');
+app.use('/api/avis', avisRoutes);
 
 //Route users
 const userRoutes = require('./Routes/userRoutes');
