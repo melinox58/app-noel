@@ -16,8 +16,14 @@
                 <li class="nav-item">
                   <router-link class="nav-link" to="/calendar">Calendriers</router-link>
                 </li>
-                <li class="nav-item">
-                  <router-link class="nav-link" to="/register">Connexion/Inscription</router-link>
+                <li class="nav-item" v-if="!user">
+                  <router-link class="nav-link" to="/login">Connexion</router-link>
+                </li>
+                <li class="nav-item" v-if="!user">
+                  <router-link class="nav-link" to="/register">Inscription</router-link>
+                </li>
+                <li class="nav-item" v-if="user">
+                  <button class="nav-link btn btn-link" @click="logoutUser">Déconnexion</button>
                 </li>
               </ul>
             </div>
@@ -45,17 +51,46 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import logo from '@/assets/img/logo2.png';
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
 
-export default {
-  name: "BaseLayout",
-  data() {
-    return {
-      logo,
-    };
-  },
+// export default {
+//   name: "BaseLayout",
+//   data() {
+//     return {
+//       logo,
+//     };
+//   },
+// };
+
+
+
+const router = useRouter();
+const user = ref(null);
+
+const logoutUser = async () => {
+  try {
+    await axios.post('http://localhost:5000/api/users/logout');
+    localStorage.removeItem('user'); // Supprimez les données de l'utilisateur du localStorage
+    alert('Déconnexion réussie!');
+    user.value = null; // Mettez à jour l'état local
+    router.push('/'); // Redirigez vers la page d'accueil
+  } catch (error) {
+    alert('Erreur lors de la déconnexion: ' + error.message);
+  }
 };
+
+onMounted(() => {
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    user.value = JSON.parse(storedUser);
+  }
+});
+
+
 </script>
 
 <style>
@@ -78,17 +113,16 @@ body {
 .imgFond {
   background-image: url('@/assets/img/nice-christmas-background-white-background-with-copy-space.jpg');
   background-size: cover;
-  opacity: 80%;
+  /* background-position: 0; */
   width: 100%;
   height: 100%;
-  position: fixed; /* L'image de fond reste fixe */
+  position: fixed; /* Changement pour s'assurer que l'image de fond reste fixe */
   z-index: -1; /* L'image de fond ne doit pas recouvrir les autres éléments */
 }
 
 .content-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  position: relative;
+  z-index: 1; /* Pour garantir que le contenu est au-dessus du fond */
 }
 
 img {
@@ -97,6 +131,8 @@ img {
 
 header {
   display: flex;
+  color: white;
+  opacity: 80%;
   padding: 1rem;
   position: relative;
   z-index: 1;
@@ -110,7 +146,7 @@ nav {
   align-content: center;
 }
 
-.nav-link{
+.navbar-nav .nav-link.active{
   color: green;
 }
 
@@ -216,12 +252,9 @@ footer li {
   font-size: 1.2rem;
   width: 20vw;
   text-align: center;
-}
-
-footer {
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 footer nav {
