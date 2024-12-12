@@ -45,17 +45,8 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import logo from '@/assets/img/logo2.png';
-
-export default {
-  name: "BaseLayout",
-  data() {
-    return {
-      logo,
-    };
-  },
-};
 </script>
 
 <style>
