@@ -171,9 +171,10 @@ img {
 }
 
 
-nav {
+header nav {
   font-size: 1.8rem;
   margin-left: 3%;
+  margin-top: -1%;
 }
 
 .nav-link{
@@ -221,6 +222,11 @@ footer {
   background-color: transparent;
   display: flex;
   flex-direction: column;
+}
+
+footer nav {
+  display: flex;
+  margin-left: 10%;
 }
 
 footer ul{

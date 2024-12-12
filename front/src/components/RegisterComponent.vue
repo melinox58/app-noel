@@ -27,6 +27,7 @@ h1{
   color: rgb(196, 2, 2);
   text-shadow: 0px 0px 5px rgb(196, 2, 2);
   transform: rotate(-10deg);
+  margin: 0;
 }
 
 h2{
@@ -56,6 +57,7 @@ form{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 15%;
 }
 
 .btn{

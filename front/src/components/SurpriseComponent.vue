@@ -2,18 +2,18 @@
     <h3>Bienvenue {{ user }}</h3>
     <section>
       <form @submit.prevent="createCalendar">
-        <h2>Choisissez votre thème :</h2>
-        <input v-model="newCalendar.title" placeholder="Titre" required />
-        <input type="hidden" v-model="newCalendar.user_id" placeholder="User ID"  />
-        <button class="btn" type="submit">Valider</button>
+        <h2>Choisissez les surprises :</h2>
+
       </form>
 
       <div class="image-table">
         <div class="image-row">
-          <div v-for="image in images" :key="image.id" class="image-container">
-            <img :src="image.src" :alt="image.name" width="100" />
-            <!-- <input v-model="newCalendar.theme" placeholder="Theme" required /> -->
-          </div>
+            <div class="square">
+            <!-- ici, on injecte les jours, faire une boucle sur le tout avec le carré -->
+        </div>
+          <!-- <div v-for="image in images" :key="image.id" class="image-container">
+            <img :src="image.src" :alt="image.name" width="100" /> -->
+          <!-- </div> -->
         </div>
       </div>
       <aside>
@@ -47,16 +47,16 @@ export default {
       hand: mainImage,
       calendar: calendarImage,
       palette: paletteImage,
-      images: [
-        { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
-        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-        { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
-        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-      ],
+    //   images: [
+    //     { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
+    //     { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
+    //     { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
+    //     { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
+    //     { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
+    //     { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
+    //     { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
+    //     { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
+    //   ],
     };
   },
 };
@@ -82,6 +82,12 @@ h3{
 
 h2{
   font-size: 0.8rem;
+}
+
+.square {
+  width: 10vw;
+  height: 10vw;
+  background-color: green;
 }
 
 input{
@@ -258,8 +264,6 @@ section .config img{
 a{
   margin: 0;
 }
-
-
 
 }
 </style>
