@@ -30,8 +30,9 @@
 
 </template>
 
-<style scoped>
 
+
+<style scoped>
 
 h1{
     color: rgb(196, 2, 2);
@@ -85,19 +86,12 @@ p{
 
 </style>
 
-<script>
-export default {
-  name: "ImageCarousel",
-  data() {
-    return {
-      images: [
+<script setup>
+const images = [
         { src: require('@/assets/img/background/3082604.jpg'), alt: 'Image 1' },
         { src: require('@/assets/img/background/6205121.jpg'), alt: 'Image 2' },
         { src: require('@/assets/img/background/7962235.jpg'), alt: 'Tête de cert déguisé en arbre de Noël' },
-      ],
-    };
-  },
-};
+      ]
 </script>
 
 

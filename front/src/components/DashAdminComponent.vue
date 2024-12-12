@@ -1,21 +1,7 @@
 <template>
-    <h3>Bienvenue {{ user }}</h3>
+    <h3>Bienvenue</h3>
     <section>
-      <form @submit.prevent="createCalendar">
-        <h2>Choisissez votre thème :</h2>
-        <input v-model="newCalendar.title" placeholder="Titre" required />
-        <input type="hidden" v-model="newCalendar.user_id" placeholder="User ID"  />
-        <button class="btn" type="submit">Valider</button>
-      </form>
-
-      <div class="image-table">
-        <div class="image-row">
-          <div v-for="image in images" :key="image.id" class="image-container">
-            <img :src="image.src" :alt="image.name" width="100" />
-            <!-- <input v-model="newCalendar.theme" placeholder="Theme" required /> -->
-          </div>
-        </div>
-      </div>
+      
       <aside>
         <nav>
           <ul class="config">
@@ -160,7 +146,6 @@ section{
 
 h3{
   font-size: 1.5rem;
-  margin-top: %;
   margin-bottom: 2%;
 }
 
@@ -237,33 +222,17 @@ a{
 
 
 <script setup>
-import { ref } from 'vue'; //ref est une fonction de la Composition API
-import axios from 'axios';
 
-const newCalendar = ref({
-  title: '',
-  user_id: 1, //Valeur par defaut pour test. inclure ici la logique pour lier l'utilisateur
-  theme: ''
-});
-  const createCalendar = async() => {
-      try {
-        await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
-        newCalendar.value = { title: '', user_id: '', theme: '' };
-        alert('Le calendrier a été crée avec succès!');
-      } catch (error) {
-        alert('Echec: ' + error.message);
-      }
-};
 
-const images = [
-        { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
-        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-        { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
-        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-      ]
+// const images = [
+//         { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
+//         { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
+//         { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
+//         { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
+//         { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
+//         { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
+//         { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
+//         { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
+    //   ]
 
 </script>
