@@ -1,4 +1,3 @@
-<!-- front/src/components/RegisterComponent.vue -->
 <template>
   <div>
       <h1>Rejoignez Osez Noël !!</h1>
@@ -10,6 +9,7 @@
       <h3>S'enregistrer</h3>
       <form @submit.prevent="createUser">
         <input v-model="newUser.name" placeholder="Nom" required />
+        <input v-model="newUser.firstname" placeholder="Prénom" required />
         <input v-model="newUser.firstname" placeholder="Prénom" required />
         <input v-model="newUser.email" placeholder="Email" required />
         <input v-model="newUser.password" type="mot de passe" placeholder="Password" required />
@@ -112,18 +112,6 @@ form{
 }
 
 </style>
-
-<script>
-
-export default {
-  data() {
-    return {
-      imgButton: '@/assets/img/background/preview.jpg',
-    };
-  },
-};
-
-</script>
 
 <script setup>
 import { ref } from 'vue';
