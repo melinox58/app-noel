@@ -7,7 +7,7 @@ const AvisSchema = new mongoose.Schema({
     },
     calendar_id: {
         type: Number,
-        required: true
+        required: false
     },
     comment: {
         type: String,

@@ -1,10 +1,57 @@
+<script setup>
+import { ref, onMounted } from 'vue'; //ref est une fonction de la Composition API
+import axios from 'axios';
+
+const newCalendar = ref({
+  title: '',
+  user_id: 1,
+  theme: ''
+});
+  const createCalendar = async() => {
+      try {
+        await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
+        newCalendar.value = { title: '', user_id: '', theme: '' };
+        alert('Le calendrier a été crée avec succès!');
+      } catch (error) {
+        alert('Echec: ' + error.message);
+      }
+};
+
+  //On recup les info de l'utilisateur stockées dans le localstorage
+//pour pouvoir lui afficher un message de bienvenu si on a un user connecté (v-if )
+const user = ref(null);
+
+onMounted(() => {
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    user.value = JSON.parse(storedUser);
+  }
+});
+
+const images = [
+        { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
+        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
+        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
+        { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
+        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
+        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
+        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
+        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
+      ]
+
+</script>
+
 <template>
-    <h3>Bienvenue {{ user }}</h3>
+    <h3 v-if="user">Bienvenue {{ user.firstname }} {{ user.name }}</h3>
+    <div>
+      <DateComponent />
+    </div>
     <section>
       <form @submit.prevent="createCalendar">
         <h2>Choisissez votre thème :</h2>
         <input v-model="newCalendar.title" placeholder="Titre" required />
-        <input type="hidden" v-model="newCalendar.user_id" placeholder="User ID"  />
+        <input type="hidden" v-model="newCalendar.user_id" placeholder="User ID"/>
+        <!-- <input v-model="newCalendar.theme" placeholder="Theme" required /> -->
         <button class="btn" type="submit">Valider</button>
       </form>
 
@@ -160,7 +207,6 @@ section{
 
 h3{
   font-size: 1.5rem;
-  margin-top: %;
   margin-bottom: 2%;
 }
 
@@ -236,34 +282,3 @@ a{
 
 
 
-<script setup>
-import { ref } from 'vue'; //ref est une fonction de la Composition API
-import axios from 'axios';
-
-const newCalendar = ref({
-  title: '',
-  user_id: 1, //Valeur par defaut pour test. inclure ici la logique pour lier l'utilisateur
-  theme: ''
-});
-  const createCalendar = async() => {
-      try {
-        await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
-        newCalendar.value = { title: '', user_id: '', theme: '' };
-        alert('Le calendrier a été crée avec succès!');
-      } catch (error) {
-        alert('Echec: ' + error.message);
-      }
-};
-
-const images = [
-        { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
-        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-        { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
-        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-      ]
-
-</script>

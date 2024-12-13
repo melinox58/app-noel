@@ -50,42 +50,72 @@
     },
 
     {
-        "src": "",
+        "src": "front/src/assets/img/gifts/dog-12565_256.gif",
         "idCase": ""
     },
 
     {
-        "src": "",
+        "src": "front/src/assets/img/gifts/fireworks-15757_256.gif",
         "idCase": ""
     },
 
     {
-        "src": "",
+        "src": "front/src/assets/img/gifts/flute-14735_256.gif",
         "idCase": ""
     },
 
     {
-        "src": "",
+        "src": "front/src/assets/img/gifts/imp-1069_256.gif",
         "idCase": ""
     },
 
     {
-        "src": "",
+        "src": "front/src/assets/img/gifts/little-girl-3575_256.gif",
         "idCase": ""
     },
 
     {
-        "src": "",
+        "src": "front/src/assets/img/gifts/mail-3619_256.gif",
         "idCase": ""
     },
 
     {
-        "src": "",
+        "src": "front/src/assets/img/gifts/merry-2621_256.gif",
         "idCase": ""
     },
 
     {
-        "src": "",
+        "src": "front/src/assets/img/gifts/nature-5239_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/pokemon-8939_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/rose-6870_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/rubiks-cube-6366_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/snowflake-9291_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/snowman-15918_256.gif",
+        "idCase": ""
+    },
+
+    {
+        "src": "front/src/assets/img/gifts/valentines-day-10539_256.gif",
         "idCase": ""
     }
 ]
