@@ -47,7 +47,7 @@ sequelize.sync().then(() => {
 });
 
 //On defini les associations entre Calendar et cases
-Case.belongsTo(Calendar, { foreignKey: 'calendars_id' });
-Calendar.hasMany(Case, { foreignKey: 'calendars_id' });
+// Case.belongsTo(Calendar, { foreignKey: 'calendars_id' });
+// Calendar.hasMany(Case, { foreignKey: 'calendars_id' });
 
 module.exports = Case;

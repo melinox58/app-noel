@@ -1,11 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import CaseComponent from '@/components/CaseComponent.vue';
 
 const currentDate = ref('');
 const dayNumber = ref(null);
 const cases = ref([]);
 const adventCalendarDay = ref(null);
+const calendarId = ref(1); // Définir calendarId comme une variable réactive
 
 //fonction qui actualise la valeur de currentDate et dayNumber
 const updateDate = () => {
@@ -15,10 +17,12 @@ const updateDate = () => {
   adventCalendarDay.value = getAdventCalendarDay(now);
 };
 
-//on recupere les cases du calendrier depuis le back
+// On récupère les cases du calendrier depuis le back
 const fetchCases = async () => {
   try {
-    const response = await axios.get('/api/calendars/1/cases'); // Remplacez 1 par l'ID du calendrier
+    console.log('Fetching cases for calendar ID:', calendarId.value);
+    const response = await axios.get(`http://localhost:5000/api/calendars/${calendarId.value}/cases`);
+    console.log('Response data:', response.data);
     cases.value = response.data;
   } catch (error) {
     console.error('Erreur lors de la récupération des cases :', error);
@@ -40,7 +44,7 @@ const openCase = async (caseId) => {
     const caseToOpen = cases.value.find(caseItem => caseItem.id === caseId);
     if (caseToOpen && !caseToOpen.is_opened && caseToOpen.day_number <= dayNumber.value) {
       caseToOpen.is_opened = true;
-      await axios.post(`/api/cases/${caseId}/open`);
+      await axios.post(`http://localhost:5000/api/cases/${caseId}/open`);
     }
   } catch (error) {
     console.error('Erreur lors de l\'ouverture de la case :', error);
@@ -50,7 +54,6 @@ const openCase = async (caseId) => {
 onMounted(() => {
   updateDate(); //actualise la valeur de currentDate et dayNumber
   fetchCases();
-  openCase();
 });
 </script>
 
@@ -59,11 +62,7 @@ onMounted(() => {
     <p>Date actuelle (UTC): {{ currentDate }}</p>
     <p>Numéro du jour: {{ dayNumber }}</p>
     <div v-for="caseItem in cases" :key="caseItem.id">
-      <p>Case {{ caseItem.day_number }}: {{ caseItem.content.description }}</p>
-      //bouton desactivé si numero de case> numero du jour ou si la case est deja ouverte
-      <button @click="openCase(caseItem.id)" :disabled="caseItem.day_number > dayNumber || caseItem.is_opened">
-        {{ caseItem.is_opened ? 'Ouverte' : 'Ouvrir' }}
-      </button>
+      <CaseComponent :caseItem="caseItem" :dayNumber="dayNumber" @openCase="openCase" />
     </div>
   </div>
 </template>

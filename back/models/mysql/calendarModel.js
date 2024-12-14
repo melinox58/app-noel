@@ -31,10 +31,28 @@ const Calendar = sequelize.define('Calendar', {
     }
 });
 
-sequelize.sync().then(() => {
-    console.log('Le Calendrier a bien été crée');
-}).catch((error) => {
-    console.error('Une erreur est survenue : ', error);
-});
+// Fonction pour créer un calendrier avec un thème
+const createCalendarWithTheme = async (userId, title, themePath) => {
+    try {
+        const newCalendar = await Calendar.create({
+            user_id: userId,
+            title: title,
+            theme: themePath
+        });
+        console.log('Calendrier créé avec succès:', newCalendar.toJSON());
+        return newCalendar;
+    } catch (error) {
+        console.error('Erreur lors de la création du calendrier:', error);
+        throw error;
+    }
+};
+// sequelize.sync().then(() => {
+//     console.log('Le Calendrier a bien été crée');
+// }).catch((error) => {
+//     console.error('Une erreur est survenue : ', error);
+// });
 
-module.exports = Calendar;
+module.exports = {
+    Calendar,
+    createCalendarWithTheme
+} ;

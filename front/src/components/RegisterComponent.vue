@@ -10,7 +10,6 @@
       <form @submit.prevent="createUser">
         <input v-model="newUser.name" placeholder="Nom" required />
         <input v-model="newUser.firstname" placeholder="Prénom" required />
-        <input v-model="newUser.firstname" placeholder="Prénom" required />
         <input v-model="newUser.email" placeholder="Email" required />
         <input v-model="newUser.password" type="mot de passe" placeholder="Password" required />
         <button class="btn" type="submit">Valider</button>

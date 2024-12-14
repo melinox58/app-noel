@@ -1,8 +1,9 @@
-DROP DATABASE melinox_noel;
-CREATE DATABASE melinox_noel;
+
+
+CREATE IF NOT EXISTS DATABASE melinox_noel;
 USE melinox_noel;
 
-CREATE TABLE Users (
+CREATE  IF NOT EXISTS TABLE Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     firstName VARCHAR(255) NOT NULL,
@@ -10,7 +11,7 @@ CREATE TABLE Users (
     password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE Calendars (
+CREATE  IF NOT EXISTS TABLE Calendars (
     id INT AUTO_INCREMENT PRIMARY KEY,    -- Clé primaire
     user_id INT,                          -- Colonne pour la clé étrangère
     title VARCHAR(255),                   -- Titre
@@ -18,7 +19,7 @@ CREATE TABLE Calendars (
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES Users(id) -- Clé étrangère
 );
 
-CREATE TABLE Cases (
+CREATE  IF NOT EXISTS TABLE Cases (
                        id INT AUTO_INCREMENT PRIMARY KEY,
                        day_number INT NOT NULL,
                        content JSON,  -- gift
