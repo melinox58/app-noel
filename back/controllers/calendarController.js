@@ -23,6 +23,16 @@ exports.createCalendar = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
+// Récupérer tous les calendriers
+exports.getCalendars = async (req, res) => {
+    try {
+        const calendars = await Calendar.findAll(); // Remplace par ta logique si tu utilises autre chose
+        res.json(calendars);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+};
 
 // Récupérer un calendrier par ID
 exports.getCalendar = async (req, res) => {

@@ -59,6 +59,17 @@ exports.updateAvis = async (req, res) => {
     }
 };
 
+// Récupérer les avis par calendrier
+exports.getAvisByCalendar = async (req, res) => {
+    try {
+        const avis = await Avis.find({ calendar_id: req.params.calendar_id });
+        res.json(avis);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+};
+
 // Supprimer un avis par ID
 exports.deleteAvis = async (req, res) => {
     try {

@@ -14,6 +14,9 @@ router.get('/:id', avisController.getAvisById);
 // Route pour mettre à jour un avis par ID
 router.put('/:id', avisController.updateAvis);
 
+// Route pour récupérer par le calendar ID
+router.get('/calendar/:calendar_id', avisController.getAvisByCalendar);
+
 // Route pour supprimer un avis par ID
 router.delete('/:id', avisController.deleteAvis);
 

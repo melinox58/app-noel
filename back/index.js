@@ -61,12 +61,12 @@ const Case = require('./models/mysql/caseModel');
 // Case.belongsTo(Calendar, { foreignKey: 'calendars_id' });
 // Calendar.hasMany(Case, { foreignKey: 'calendars_id' });
 
-// Route surprise et avis (commentées pour le moment)
-// const surpriseRoutes = require('./routes/surpriseRoutes');
-// app.use('/api/surprises', surpriseRoutes);
+//Route surprise et avis (commentées pour le moment)
+const surpriseRoutes = require('./routes/surpriseRoutes');
+app.use('/api/surprises', surpriseRoutes);
 
-// const avisRoutes = require('./routes/avisRoutes');
-// app.use('/api/avis', avisRoutes);
+const avisRoutes = require('./routes/avisRoutes');
+app.use('/api/avis', avisRoutes);
 
 // Route users
 const userRoutes = require('./routes/userRoutes');

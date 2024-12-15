@@ -5,6 +5,9 @@ const calendarController = require('../controllers/calendarController');
 // Créer un calendrier
 router.post('/', calendarController.createCalendar);
 
+// Route pour récupérer tous les calendriers
+router.get('/', calendarController.getCalendars);
+
 // Récupérer un calendrier par ID
 router.get('/:id', calendarController.getCalendar);
 
