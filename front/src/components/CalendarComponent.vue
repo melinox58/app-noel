@@ -22,6 +22,14 @@ const createCalendar = async() => {
 };
 
 const previewCalendar = () => {
+  if (!newCalendar.value.theme) {
+    alert("Veuillez choisir un thème avant de prévisualiser !");
+    return;
+  }
+  if (!newCalendar.value.title.trim()) {
+    alert("Veuillez ajouter un titre avant de prévisualiser !");
+    return;
+  }
   preview.value = true;
 };
 
@@ -41,77 +49,67 @@ onMounted(() => {
   }
 });
 
+// Images disponibles pour les thèmes
 const images = [
   { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
   { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-  { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-  { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
-  { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-  { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-  { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-  { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
+  { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' }
 ];
 
 </script>
 
 <template>
+  <section>
+    <h3 v-if="user">Vous êtes connecté en tant que {{ user.firstname }} {{ user.name }}</h3>
+    <DateComponent />
 
-    <section>
+    <form @submit.prevent="createCalendar">
+      <h2>Choisissez votre thème :</h2>
+      <input v-model="newCalendar.title" placeholder="Titre du calendrier" required />
+      <input type="hidden" v-model="newCalendar.user_id" />
+      <button class="btn" type="button" @click="previewCalendar">Prévisualiser</button>
+      <button class="btn" type="submit">Valider</button>
+    </form>
 
-        <h3 v-if="user">Vous êtes connecté en tant que {{ user.firstname }} {{ user.name }}</h3>
-        <div>
-          <DateComponent />
-        </div>
 
-        <form @submit.prevent="createCalendar">
-        <h2>Choisissez votre thème :</h2>
-        <input v-model="newCalendar.title" placeholder="Titre" required />
-        <input type="hidden" v-model="newCalendar.user_id" placeholder="User ID"  />
-          <button class="btn" type="button" @click="previewCalendar">Prévisualiser</button>
-          <button class="btn" type="submit">Valider</button>
-      </form>
-
-      <div class="image-table">
+    <div class="image-table">
         <div class="image-row">
           <div v-for="image in images" :key="image.id" class="image-container">
-            <img :src="image.src" :alt="image.name" width="100" @click="selectTheme(image)" style="cursor: pointer;"/>
-            <!-- <input v-model="newCalendar.theme" placeholder="Theme" required /> -->
+            <img
+                :src="image.src"
+                :alt="image.name"
+                width="100"
+                @click="selectTheme(image)"
+                style="cursor: pointer;"
+            />
           </div>
         </div>
       </div>
 
-      <div v-if="preview" class="preview-container">
-        <h3>Prévisualisation du Calendrier</h3>
-        <div class="calendar-preview"> :style="{ backgroundImage: `url(${newCalendar.theme})` }"
-          <!-- Ajoutez ici le code pour afficher la prévisualisation du calendrier -->
-          <div v-for="day in 24" :key="day" class="calendar-day">
-            {{ day }}
-          </div>
+
+    <!-- Prévisualisation -->
+    <div v-if="preview" class="preview-container">
+      <h3>Prévisualisation du Calendrier</h3>
+      <div
+          class="calendar-preview"
+          :style="{ backgroundImage: `url(${newCalendar.theme || '@/assets/img/background/13450.jpg'})` }"
+      >
+        //generer les cases
+        <div v-for="day in 24" :key="day" class="calendar-day">
+          {{ day }}
         </div>
-        <button class="btn" type="button" @click="preview = false">Fermer la prévisualisation</button>
       </div>
-
-      <aside>
-        <nav>
-          <ul class="config">
-            <li>
-              <a href="/surprise"><img :src="require('@/assets/calendrier.svg')" alt="Icone calendrier"></a>
-            </li>
-            <li>
-              <a href="/calendar"><img :src="require('@/assets/palette.png')" alt="Icone calendrier"></a>
-            </li>
-            <li>
-              <a href="/share"><img :src="require('@/assets/main.png')" alt="Icone partage"></a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-    </section>
-
+      <h4>{{ newCalendar.title }}</h4>
+      <button class="btn" type="button" @click="preview = false">Fermer la prévisualisation</button>
+    </div>
+  </section>
 </template>
 
 
 <style scoped>
+
+
+
 
 section{
   width: 80vw;
@@ -145,6 +143,10 @@ form{
   height: 20%;
   align-items: center;
   justify-content: center;
+}
+
+.container {
+  position: relative;
 }
 
 .content-container > main:nth-child(2) > div:nth-child(1) {
@@ -219,6 +221,9 @@ ul{
 }
 
 .preview-container {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 300px;
   margin-top: 20px;
   border: 1px solid #ccc;
   padding: 20px;
@@ -233,6 +238,8 @@ ul{
   background-position: center;
   padding: 20px;
   border: 1px solid #ccc;
+  min-height: 300px; /* Hauteur minimum pour la prévisualisation */
+  width: 100%;
 }
 
 .calendar-day {
@@ -241,6 +248,12 @@ ul{
   padding: 20px;
   text-align: center;
   font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
 }
 
 
@@ -283,7 +296,6 @@ section input {
 section .btn{
   font-size: 1.2rem;
   width: 10vw;
-  width: 10%;
   height: 30%;
 }
 
@@ -295,7 +307,7 @@ section .config{
   width: 14%;
   justify-content: center;
   margin-left: -12vw;
-  margin-top: -69.8vh;
+  margin-top: 0;
   gap: 10%;
   position: relative;
   z-index: 8;

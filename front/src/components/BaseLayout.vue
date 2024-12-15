@@ -97,6 +97,8 @@ onMounted(() => {
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 body {
+  height: 100%;
+  margin: 0;
   font-family: 'Pacifico', sans-serif;
   display: flex;
   flex-direction: column;
@@ -110,17 +112,25 @@ body {
 }
 
 
+
 .imgFond {
   background-image: url('@/assets/img/nice-christmas-background-white-background-with-copy-space.jpg');
   background-size: cover;
-  /* background-position: 0; */
+  background-position: center;
+  background-attachment: fixed;
   width: 100%;
-  height: 100%;
-  position: fixed; /* Changement pour s'assurer que l'image de fond reste fixe */
+  height: 100vh; /* Occupe tout l'écran */
+  position: fixed;
   z-index: -1; /* L'image de fond ne doit pas recouvrir les autres éléments */
+
 }
 
 .content-container {
+  flex: 1; /* Occupe tout l'espace restant entre le header et le footer */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh; /* Force à occuper toute la page */
   position: relative;
   z-index: 1; /* Pour garantir que le contenu est au-dessus du fond */
 }
@@ -167,22 +177,28 @@ a{
 }
 
 main {
+  flex: 1; /* Permet à main de prendre tout l'espace disponible */
   padding: 2%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 69vh;
+  height: auto;
+  width: 100%;
   margin: 0 4% 2% 4%;
   background-color: rgba(255, 255, 255, 0.817);
 }
 
 footer {
+
+  z-index: 1; /* Plus élevé que l'image de fond */
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  padding-top: 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
-  padding-top: 2%;
 }
 
 footer nav{

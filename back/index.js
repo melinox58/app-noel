@@ -23,10 +23,10 @@ const cors = require('cors'); // Autoriser les requêtes depuis l'extérieur
 const mysql = require('mysql2');
 db.connect();
 
-// Connexion Mongo (commentée pour le moment)
-// (async () => {
-//     await dbMongo();
-// })();
+//Connexion Mongo (commentée pour le moment)
+(async () => {
+    await dbMongo();
+})();
 
 const corsOptions = {
     origin: 'http://localhost:8080', // Autoriser les requêtes depuis cette origine
