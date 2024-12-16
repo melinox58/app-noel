@@ -46,11 +46,11 @@ const createCalendarWithTheme = async (userId, title, themePath) => {
         throw error;
     }
 };
-// sequelize.sync().then(() => {
-//     console.log('Le Calendrier a bien été crée');
-// }).catch((error) => {
-//     console.error('Une erreur est survenue : ', error);
-// });
+sequelize.sync({ alter: true }).then(() => {
+    console.log('Le Calendrier a bien été crée');
+}).catch((error) => {
+    console.error('Une erreur est survenue : ', error);
+});
 
 module.exports = {
     Calendar,

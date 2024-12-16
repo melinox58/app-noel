@@ -34,6 +34,7 @@ const User = sequelize.define('User', {
         allowNull: false
     }
 
+
 });
 
 // Hook pour hacher le mot de passe avant de créer un nouvel utilisateur
@@ -42,7 +43,7 @@ User.beforeCreate(async (user, options) => {
     user.password = await bcrypt.hash(user.password, salt);
 });
 
-sequelize.sync().then(() => {
+sequelize.sync({ alter: true }).then(() => {
     console.log('User table has been created, if one doesn\'t exist');
 }).catch((error) => {
     console.error('Unable to create table : ', error);
