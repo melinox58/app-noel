@@ -31,7 +31,7 @@ const Calendar = sequelize.define('Calendar', {
     }
 });
 
-sequelize.sync().then(() => {
+sequelize.sync({ alter: true }).then(() => {
     console.log('Le Calendrier a bien été crée');
 }).catch((error) => {
     console.error('Une erreur est survenue : ', error);

@@ -42,8 +42,8 @@ User.beforeCreate(async (user, options) => {
     user.password = await bcrypt.hash(user.password, salt);
 });
 
-sequelize.sync().then(() => {
-    console.log('User table has been created, if one doesn\'t exist');
+sequelize.sync({ alter: true }).then(() => {
+    console.log('La table user a bien été mise a jour');
 }).catch((error) => {
     console.error('Unable to create table : ', error);
 });

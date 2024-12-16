@@ -40,8 +40,8 @@ const Case = sequelize.define('Case', {
 });
 
 // Synchroniser le modèle avec la base de données
-sequelize.sync().then(() => {
-    console.log('La table Cases a bien été créée');
+sequelize.sync({ alter: true }).then(() => {
+    console.log('La table Cases a bien été mise a jour');
 }).catch((error) => {
     console.error('Erreur lors de la création de la table Cases : ', error);
 });
