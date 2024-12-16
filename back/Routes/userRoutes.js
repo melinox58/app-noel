@@ -24,5 +24,7 @@ router.post('/login', userController.loginUser);
 // Route pour la déconnexion
 router.post('/logout', userController.logoutUser);
 
+//Route pour bloquer l'utilisateur (admin)
+router.post('/block/:id', userController.blockUser);
 
 module.exports = router;

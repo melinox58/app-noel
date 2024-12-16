@@ -1,23 +1,14 @@
 <template>
-    <h3>Bienvenue</h3>
-    <section>
-      
-      <aside>
-        <nav>
-          <ul class="config">
-            <li>
-              <a href="/surprise"><img :src="require('@/assets/calendrier.svg')" alt="Icone calendrier"></a>
-            </li>
-            <li>
-              <a href="/calendar"><img :src="require('@/assets/palette.png')" alt="Icone calendrier"></a>
-            </li>
-            <li>
-              <a href="/share"><img :src="require('@/assets/main.png')" alt="Icone partage"></a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-    </section>
+  <div class="admin-dashboard">
+    <h2>Admin Dashboard</h2>
+    <nav>
+      <router-link to="/admin/users">Utilisateurs</router-link>
+      <router-link to="/admin/calendars">calendriers</router-link>
+      <router-link to="/admin/surprises">Surprises</router-link>
+      <router-link to="/admin/share">partage</router-link>
+    </nav>
+    <router-view></router-view>
+  </div>
 
 </template>
 

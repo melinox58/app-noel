@@ -26,7 +26,9 @@ exports.createCalendar = async (req, res) => {
 // Récupérer tous les calendriers
 exports.getCalendars = async (req, res) => {
     try {
+        console.log('Fetching all calendars...');
         const calendars = await Calendar.findAll(); // Remplace par ta logique si tu utilises autre chose
+        console.log('Calendars fetched:', calendars);
         res.json(calendars);
     } catch (err) {
         console.error(err.message);
