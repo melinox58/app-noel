@@ -5,7 +5,9 @@
         avec notre Calendrier de l'Avent numérique !</h1>
 
     <h2>Un cadeau chaque jour, à partager et personnaliser avec vos proches.</h2>
-    <p>Ouvrez chaque jour une nouvelle surprise ! Découvrez un cadeau numérique dans votre calendrier chaque jour de décembre.</p>
+    <a class="btn" href="/register">Créer votre calendrier maintenant</a>
+    <p>Ouvrez chaque jour une nouvelle surprise !<br>
+        Découvrez un cadeau numérique dans votre calendrier chaque jour de décembre.</p>
     <p>Personnalisez votre calendrier de l'Avent avec vos surprises préférées.</p>
     <p>Partagez votre calendrier avec vos amis.</p>
         
@@ -37,8 +39,9 @@
 h1{
     color: rgb(196, 2, 2);
     opacity: 100%;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding-top: 4%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 h2{
@@ -47,41 +50,73 @@ h2{
 }
 
 p{
-    font-size: 0.8rem;
-    width: 40vh;
+    font-size: 0.6rem;
+    width: 50vh;
     display: flex;
     justify-content: center;
+    color: black;
+    margin: 0;
 }
 
 .carousel-item{
     padding: 5%;
 }
 
+.btn{
+  display: flex;
+  margin: 2% 0 0;
+  width: 55vw;
+  background-image: url('@/assets/img/background/preview.jpg');
+  background-size: cover;
+  border-radius: 20px;
+  height: 5%;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  text-decoration: none;
+  font-size: 0.6rem;
+  color:white;
+  text-shadow: 
+    1px 1px 0 black, 
+    -1px 1px 0 black, 
+    1px -1px 0 black, 
+    -1px -1px 0 black; /* Ombres pour chaque direction */
+}
+
 @media only screen and (min-width: 768px){
 
-.carousel-item{
-    width: 30vw;
-    padding: 0;
-}
+    .carousel-item{
+        width: 30vw;
+        padding: 0;
+        margin-bottom: -1%;
+        margin-top: 4%;
+    }
 
-h1{
-    font-size: 2.2rem;
-    padding: 0;
-    margin-bottom: 3%;
-}
+    h1{
+        font-size: 2.2rem;
+        padding: 0;
+        margin-bottom: 1%;
+    }
 
-h2{
-    font-size: 2rem;
-    margin-bottom: 5%;
-}
+    h2{
+        font-size: 1.8rem;
+        margin-bottom: 2%;
+    }
 
-p{
-    font-size: 1.5rem;
-    width: 90vh;
-    display: flex;
-    justify-content: center;
-    color: blue;
-}
+    p{
+        font-size: 1.3rem;
+        width: 130vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn{
+        width: 27vw;
+        height: 9%;
+        margin: 0 0 2% 0;
+        font-size: 1.4rem;
+    }
+
 }
 
 </style>

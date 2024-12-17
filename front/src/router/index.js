@@ -6,9 +6,14 @@ import SurpriseComponent from '../components/SurpriseComponent.vue';
 import ShareComponent from '../components/ShareComponent.vue';
 import RegisterComponent from '../components/RegisterComponent.vue';
 import LoginComponent from '@/components/LoginComponent.vue';
-import DashAdminComponent from '@/components/DashAdminComponent.vue';
+import DashAdminComponent from '@/components/admin/DashAdminComponent.vue';
 import AvisComponent from '@/components/AvisComponent.vue';
-
+import DashUserComponent from '@/components/DashUserComponent.vue';
+//Admin
+import UserManagement from '../components/admin/UserMAnagement.vue';
+import CalendarManagement from '../components/admin/CalendarManagement.vue';
+import SurpriseManagement from '../components/admin/SurpriseManagement.vue';
+import ShareCalendar from '../components/admin/ShareManagement.vue';
 
 
 
@@ -20,7 +25,19 @@ const routes = [
     { path: '/share', component: ShareComponent },
     { path: '/login', component: LoginComponent },
     { path: '/admin', component: DashAdminComponent},
-    { path: '/avis', component: AvisComponent}
+    { path: '/avis', component: AvisComponent},
+    { path: '/dashUser', component: DashUserComponent},
+
+    {
+        path: '/admin',
+        component: DashAdminComponent,
+        children: [
+            { path: 'users', component: UserManagement },
+            { path: 'calendars', component: CalendarManagement },
+            { path: 'surprises', component: SurpriseManagement },
+            { path: 'share', component: ShareCalendar },
+        ],
+    },
 ];
 
 

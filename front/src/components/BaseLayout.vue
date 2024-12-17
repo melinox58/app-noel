@@ -57,17 +57,6 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 
-// export default {
-//   name: "BaseLayout",
-//   data() {
-//     return {
-//       logo,
-//     };
-//   },
-// };
-
-
-
 const router = useRouter();
 const user = ref(null);
 
@@ -93,7 +82,7 @@ onMounted(() => {
 
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 body {
@@ -113,17 +102,20 @@ body {
 .imgFond {
   background-image: url('@/assets/img/nice-christmas-background-white-background-with-copy-space.jpg');
   background-size: cover;
-  opacity: 80%;
+  opacity: 90%;
   width: 100%;
   height: 100%;
   position: fixed; /* L'image de fond reste fixe */
-  z-index: -1; /* L'image de fond ne doit pas recouvrir les autres éléments */
 }
 
 .content-container {
   display: flex;
   flex-direction: column;
   flex: 1;
+}
+
+.footer p{
+  margin-left: 18%;
 }
 
 img {
@@ -147,6 +139,11 @@ nav {
 
 .nav-link{
   color: green;
+}
+
+.navbar-nav {
+  gap: 25%;
+  margin-left: -20%;
 }
 
 .collapse {
@@ -196,9 +193,9 @@ p {
 @media only screen and (min-width: 768px) {
 
 img {
-  margin-top: 4%;
-  width: 12%;
-  margin-left: 11%;
+  margin-top: 5%;
+  width: 13%;
+  margin-left: 2%;
 }
 
 .bg-body-tertiary {
@@ -228,6 +225,14 @@ header nav {
     justify-content: flex-start; /* Aligne les liens à gauche */
 }
 
+.imgFond[data-v-49eec20b] {
+  width: 109%;
+  height: 100%;
+  position: fixed; /* L'image de fond reste fixe */
+  background-position-x: -126px;
+  background-repeat: no-repeat;
+}
+
 .collapse{
 
     position: static;
@@ -235,6 +240,10 @@ header nav {
     box-shadow: none;
     padding: 0;
     justify-content: center;
+}
+
+.carousel-item[data-v-6b2ca94e] {
+    margin-top: 4%;
 }
 
 a{
@@ -251,7 +260,7 @@ a{
 
 main {
   background-color: transparent;
-  margin-left: 25%;
+  margin-left: 12%;
 }
 
 footer li {
@@ -273,11 +282,13 @@ footer nav {
 
 footer ul{
   display: flex;
+  margin-left: -5%;
 }
 
 p {
   font-size: 0.8rem;
   margin-top: -2%;
+  margin-left: 12%;
 }
 
 }

@@ -178,12 +178,6 @@ form{
     -1px -1px 0 black; /* Ombres pour chaque direction */
 }
 
-input{
-  color: blue;
-  width: 70%;
-  height: 31%;
-}
-
 .config{
   display: flex;
   margin-top: 4%;
@@ -224,7 +218,10 @@ ul{
   justify-content: center;    /* Centre l'image horizontalement */
 }
 
-
+.preview-container{
+  width: 100vw;
+  height: auto;
+}
 
 
 

@@ -5,34 +5,34 @@
     <h2>Créez votre compte ou identifiez-vous pour commencer
         à personnaliser votre calendrier
         et à vivre l'expérience magique de Noël !</h2>
-
-      <h3>S'enregistrer</h3>
-      <form @submit.prevent="createUser">
-        <input v-model="newUser.name" placeholder="Nom" required />
-        <input v-model="newUser.firstname" placeholder="Prénom" required />
-        <input v-model="newUser.email" placeholder="Email" required />
-        <input v-model="newUser.password" type="mot de passe" placeholder="Password" required />
-        <button class="btn" type="submit">Valider</button>
-      </form>
-      <ul>
-        <li v-for="user in users" :key="user.id">
-          {{ user.name }} - {{ user.email }}
-          <button @click="deleteUser(user.id)">Delete</button>
-        </li>
-      </ul>
-    </div>
-  </template>
+    
+    <section class="register">
+      <div>
+        <h3>S'enregistrer</h3>
+        <form @submit.prevent="createUser">
+          <input v-model="newUser.name" placeholder="Nom" required />
+          <input v-model="newUser.firstname" placeholder="Prénom" required />
+          <input v-model="newUser.email" placeholder="Email" required />
+          <input v-model="newUser.password" type="mot de passe" placeholder="Password" required />
+          <button class="btn" type="submit">Valider</button>
+        </form>
+      </div>
+    </section>
+        <LoginComponent />
+  </div>
+</template>
 
 <style scoped>
 h1{
   color: rgb(196, 2, 2);
   text-shadow: 0px 0px 5px rgb(196, 2, 2);
   transform: rotate(-10deg);
-  margin: 0;
+  margin-bottom: 17%;
+  font-size: 1.6rem;
 }
 
 h2{
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-bottom: 8%;
   width: 70vw;
 }
@@ -45,6 +45,13 @@ h3{
 
 input{
   color: blue;
+  height: 3vh;
+  font-size: 0.8rem;
+}
+
+.register{
+  display: flex;
+  margin-top: -8%;
 }
 
 form{
@@ -64,13 +71,13 @@ form{
 .btn{
   font-size: 0.8rem;
   display: flex;
-  width: 35vw;
+  width: 30vw;
   margin-top: 5%;
   background-image: url('@/assets/img/background/preview.jpg');
   background-size: cover;
   color:white;
   border-radius: 20px;
-  height: 20%;
+  height: 4vh;
   justify-content: center;
   align-items: center;
   background-position: center;
@@ -82,12 +89,16 @@ form{
 }
 
 @media only screen and (min-width: 768px){
+h1{
+  margin-bottom: 0%;
+  font-size: 2.2rem;
+}
 
 h2{
   margin-top: 7%;
-  font-size: 1.8rem;
-  width: 40vw;
-  margin-bottom: 0;
+  font-size: 1.4rem;
+  width: 50vw;
+  margin-bottom: 5%;
 }
 
 h3{
@@ -97,6 +108,7 @@ h3{
 
 input{
   width: 30vw;
+  font-size: 1rem;
 }
 
 form{
@@ -106,6 +118,8 @@ form{
 .btn{
   font-size: 1.2rem;
   width: 10vw;
+  margin-top: 2%;
+  margin-bottom: 4%;
 }
 
 }
@@ -115,6 +129,10 @@ form{
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import LoginComponent from './LoginComponent.vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter(); // Déclare l'instance du routeur
 
 const newUser = ref({
   name: '',
@@ -130,6 +148,7 @@ const createUser = async () => {
     const response = await axios.post('http://localhost:5000/api/users', newUser.value);
     users.value.push(response.data);
     alert('Utilisateur crée avec succès!');
+    router.push('/dashUser'); // Redirection vers la route dashboard user
   } catch (error) {
     alert('une erreur est survenue: ' + error.message);
   }
@@ -144,15 +163,6 @@ const fetchUsers = async () => {
   }
 };
 
-const deleteUser = async (id) => {
-  try {
-    await axios.delete(`http://localhost:5000/api/users/${id}`);
-    users.value = users.value.filter(user => user.id !== id);
-    alert('Utilisateur supprimé avec succès!');
-  } catch (error) {
-    alert('Error deleting user: ' + error.message);
-  }
-};
 
 // Fetch users when the component is created
 fetchUsers();

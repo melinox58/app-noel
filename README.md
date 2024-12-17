@@ -22,3 +22,7 @@
     #### ou
     - En global (_sur votre machine_) ```npm install -g @vue/cli```
 - Puis lancer le serveur : ```npm run serve```
+## Installation de la partie back :
+- Se placer sur le dossier front ```cd back```
+- #### Installation de Morgan :
+    - ```npm install morgan```
