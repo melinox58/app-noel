@@ -17,7 +17,13 @@
                   <router-link class="nav-link" to="/calendar">Calendriers</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link class="nav-link" to="/register">Connexion/Inscription</router-link>
+                  <router-link class="nav-link" to="/register">Connexion</router-link>
+                </li>
+                <li class="nav-item" v-if="!user">
+                  <router-link class="nav-link" to="/register">Inscription</router-link>
+                </li>
+                <li class="nav-item" v-if="user">
+                  <button class="nav-link btn btn-link" @click="logoutUser">Déconnexion</button>
                 </li>
               </ul>
             </div>
@@ -47,6 +53,44 @@
 
 <script setup>
 import logo from '@/assets/img/logo2.png';
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
+
+// export default {
+//   name: "BaseLayout",
+//   data() {
+//     return {
+//       logo,
+//     };
+//   },
+// };
+
+
+
+const router = useRouter();
+const user = ref(null);
+
+const logoutUser = async () => {
+  try {
+    await axios.post('http://localhost:5000/api/users/logout');
+    localStorage.removeItem('user'); // Supprimez les données de l'utilisateur du localStorage
+    alert('Déconnexion réussie!');
+    user.value = null; // Mettez à jour l'état local
+    router.push('/'); // Redirigez vers la page d'accueil
+  } catch (error) {
+    alert('Erreur lors de la déconnexion: ' + error.message);
+  }
+};
+
+onMounted(() => {
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    user.value = JSON.parse(storedUser);
+  }
+});
+
+
 </script>
 
 <style>

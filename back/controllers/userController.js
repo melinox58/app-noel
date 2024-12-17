@@ -15,7 +15,7 @@ exports.createUser = async (req, res) => {
 exports.getUsers = async (req, res) => {
     try {
         const users = await User.findAll();
-        res.status(200).json(user);
+        res.status(200).json(users);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -83,6 +83,21 @@ exports.logoutUser = async (req, res) => {
     try {
         // Logique de déconnexion = détruire la session
         res.status(200).json({ message: 'User logged out successfully' });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
+//route pour bloquer l'utilisateur (admin)
+exports.blockUser = async (req, res) => {
+    try {
+        const user = await User.findByPk(req.params.id);
+        if (user) {
+            await user.update({ is_blocked: true });
+            res.status(200).json({ message: 'User blocked successfully' });
+        } else {
+            res.status(404).json({ error: 'User not found' });
+        }
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

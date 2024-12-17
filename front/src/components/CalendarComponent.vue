@@ -1,23 +1,43 @@
 <script setup>
 import { ref, onMounted } from 'vue'; //ref est une fonction de la Composition API
 import axios from 'axios';
+import DateComponent from '@/components/DateComponent.vue';
+
 
 const newCalendar = ref({
   title: '',
-  user_id: 1,
+  user_id: '',
   theme: ''
 });
-  const createCalendar = async() => {
-      try {
-        await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
-        newCalendar.value = { title: '', user_id: '', theme: '' };
-        alert('Le calendrier a été crée avec succès!');
-      } catch (error) {
-        alert('Echec: ' + error.message);
-      }
+
+const preview = ref(false);
+const createCalendar = async() => {
+  try {
+    await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
+    newCalendar.value = { title: '', user_id: '', theme: '' };
+    alert('Le calendrier a été crée avec succès!');
+  } catch (error) {
+    alert('Echec: ' + error.message);
+  }
 };
 
-  //On recup les info de l'utilisateur stockées dans le localstorage
+const previewCalendar = () => {
+  if (!newCalendar.value.theme) {
+    alert("Veuillez choisir un thème avant de prévisualiser !");
+    return;
+  }
+  if (!newCalendar.value.title.trim()) {
+    alert("Veuillez ajouter un titre avant de prévisualiser !");
+    return;
+  }
+  preview.value = true;
+};
+
+const selectTheme = (image) => {
+  newCalendar.value.theme = image.src;
+};
+
+//On recup les info de l'utilisateur stockées dans le localstorage
 //pour pouvoir lui afficher un message de bienvenu si on a un user connecté (v-if )
 const user = ref(null);
 
@@ -25,19 +45,16 @@ onMounted(() => {
   const storedUser = localStorage.getItem('user');
   if (storedUser) {
     user.value = JSON.parse(storedUser);
+    newCalendar.value.user_id = user.value.id; // Définir user_id à partir de l'ID de l'utilisateur
   }
 });
 
+// Images disponibles pour les thèmes
 const images = [
-        { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
-        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-        { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
-        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-        { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' },
-        { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
-      ]
+  { id: 1, src: require('@/assets/img/background/13450.jpg'), name: 'Image 1', description: 'Description 1' },
+  { id: 2, src: require('@/assets/img/background/4510871.jpg'), name: 'Image 2', description: 'Description 2' },
+  { id: 3, src: require('@/assets/img/background/6537135.jpg'), name: 'Image 3', description: 'Description 3' }
+];
 
 </script>
 
@@ -49,16 +66,17 @@ const images = [
     <section>
       <form @submit.prevent="createCalendar">
         <h2>Choisissez votre thème :</h2>
-        <input v-model="newCalendar.title" placeholder="Titre" required />
-        <input type="hidden" v-model="newCalendar.user_id" placeholder="User ID"/>
-        <!-- <input v-model="newCalendar.theme" placeholder="Theme" required /> -->
+        <input v-model="newCalendar.title" placeholder="Titre du calendrier" required />
+        <input type="hidden" v-model="newCalendar.user_id" />
+        <button class="btn" type="button" @click="previewCalendar">Prévisualiser</button>
         <button class="btn" type="submit">Valider</button>
       </form>
 
       <div class="image-table">
         <div class="image-row">
           <div v-for="image in images" :key="image.id" class="image-container">
-            <img :src="image.src" :alt="image.name" width="100" />
+            <img :src="image.src" :alt="image.name" width="100" @click="selectTheme(image)"
+            style="cursor: pointer;" />
             <!-- <input v-model="newCalendar.theme" placeholder="Theme" required /> -->
           </div>
         </div>
@@ -78,6 +96,22 @@ const images = [
           </ul>
         </nav>
       </aside>
+
+      <!-- Prévisualisation -->
+      <div v-if="preview" class="preview-container">
+        <h3>Prévisualisation du Calendrier</h3>
+        <div
+            class="calendar-preview"
+            :style="{ backgroundImage: `url(${newCalendar.theme || '@/assets/img/background/13450.jpg'})` }"
+        >
+          //generer les cases
+          <div v-for="day in 24" :key="day" class="calendar-day">
+            {{ day }}
+          </div>
+        </div>
+        <h4>{{ newCalendar.title }}</h4>
+        <button class="btn" type="button" @click="preview = false">Fermer la prévisualisation</button>
+      </div>
     </section>
 
 </template>

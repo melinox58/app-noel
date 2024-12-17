@@ -1,10 +1,13 @@
 const Case = require('../models/mysql/caseModel');
 
+
 // Récupérer toutes les cases d'un calendrier spécifique
 exports.getAllCases = async (req, res) => {
     try {
         const calendarId = req.params.calendarId;
+        console.log('Fetching cases for calendar ID:', calendarId);
         const cases = await Case.findAll({ where: { calendars_id: calendarId } });
+        console.log('Cases found:', cases);
         res.status(200).json(cases);
     } catch (error) {
         console.error('Erreur lors de la récupération des cases :', error);
