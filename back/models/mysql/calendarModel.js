@@ -19,15 +19,35 @@ const Calendar = sequelize.define('Calendar', {
     },
     title: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: 'Le titre est requis'
+            },
+            len: [2, 100] // Le titre doit avoir entre 2 et 100 caractères
+        }
     },
     user_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: 'L\'identifiant utilisateur est requis'
+            },
+            isInt: {
+                msg: 'L\'identifiant utilisateur doit être un nombre entier'
+            }
+        }
     },
     theme: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: 'Le thème est requis'
+            },
+            len: [2, 100] // Le thème doit avoir entre 2 et 100 caractères
+        }
     }
 });
 
