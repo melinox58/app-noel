@@ -185,6 +185,10 @@ ul{
     margin-top: -4.5%;
   }
 
+  h2{
+    font-size: 1rem;
+  }
+
   p{
     margin-bottom: 0;
   }
