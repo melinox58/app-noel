@@ -341,9 +341,6 @@ ul{
   a{
     margin: 0;
   }
-
-
-
 }
 </style>
 

@@ -1,35 +1,34 @@
 <script setup>
-import { ref, onMounted } from 'vue'; //ref est une fonction de la Composition API
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import DateComponent from '@/components/DateComponent.vue';
+import CaseComponent from '@/components/CaseComponent.vue';
 
 const newCalendar = ref({
   title: '',
-  user_id: 1, //Valeur par defaut pour test. inclure ici la logique pour lier l'utilisateur
+  user_id: 1, // Valeur par défaut pour test
   theme: ''
 });
-  const createCalendar = async() => {
-      try {
-        await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
-        newCalendar.value = { title: '', user_id: '', theme: '' };
-        alert('Le calendrier a été crée avec succès!');
-      } catch (error) {
-        alert('Echec: ' + error.message);
-      }
+
+const createCalendar = async () => {
+  try {
+    await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
+    newCalendar.value = { title: '', user_id: 1, theme: '' }; // Réinitialisation
+    alert('Le calendrier a été créé avec succès!');
+  } catch (error) {
+    alert('Échec : ' + error.message);
+  }
 };
 
-// On recup les info de l'utilisateur stockées dans le localstorage
-// pour pouvoir lui afficher un message de bienvenu si on a un user connecté (v-if )
 const user = ref(null);
 
 onMounted(() => {
   const storedUser = localStorage.getItem('user');
   if (storedUser) {
     user.value = JSON.parse(storedUser);
-    newCalendar.value.user_id = user.value.id; // Définir user_id à partir de l'ID de l'utilisateur
+    newCalendar.value.user_id = user.value.id;
   }
 });
-
 </script>
 
 <template>
@@ -37,9 +36,18 @@ onMounted(() => {
     <div>
       <DateComponent />
     </div>
+
     <section>
       <form @submit.prevent="createCalendar">
         <h2>Choisissez les surprises :</h2>
+        <div class="image-table">
+          <CaseComponent
+            v-for="caseItem in [1,2,3,4]"
+            :key="caseItem.id"
+            :case-item="caseItem"
+            :day-number="caseItem.day"
+            @openCase="(id) => console.log('Case ouverte avec ID :', id)"/>
+        </div>
 
       </form>
 

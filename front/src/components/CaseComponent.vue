@@ -19,16 +19,22 @@ const emits = defineEmits(['openCase']);
 const openCase = (caseId) => {
   emits('openCase', caseId);
 };
+
+// Déboguer les données des props
+console.log("Props caseItem :", props.caseItem);
+console.log("Props dayNumber :", props.dayNumber);
 </script>
 
 <template>
-  <div>
-    <p>Case {{ props.caseItem.day_number }}: {{ props.caseItem.content.description }}</p>
-    <button @click="openCase(props.caseItem.id)" :disabled="props.caseItem.day_number > props.dayNumber || props.caseItem.is_opened">
-      {{ props.caseItem.is_opened ? 'Ouverte' : 'Ouvrir' }}
-    </button>
+  <div v-if="caseItem">
+    <h1>{{ caseItem.name }}</h1>
+    <button @click="openCase(caseItem.id)">Ouvrir</button>
+  </div>
+  <div v-else>
+    <p>Chargement des données...</p>
   </div>
 </template>
+
 
 <style scoped>
 

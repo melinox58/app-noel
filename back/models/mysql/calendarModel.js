@@ -28,6 +28,10 @@ const Calendar = sequelize.define('Calendar', {
     theme: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    alt: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 });
 
