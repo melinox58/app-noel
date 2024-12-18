@@ -1,5 +1,3 @@
-
-
 <template>
     <h1>Plongez dans la magie de Noël<br>
         avec notre Calendrier de l'Avent numérique !</h1>

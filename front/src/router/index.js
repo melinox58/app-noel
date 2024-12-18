@@ -10,6 +10,7 @@ import DashAdminComponent from '@/components/admin/DashAdminComponent.vue';
 import AvisComponent from '@/components/AvisComponent.vue';
 import DashUserComponent from '@/components/DashUserComponent.vue';
 import MentionsComponent from '@/components/MentionsComponent.vue';
+import ConfComponent from '@/components/ConfComponent.vue';
 //Admin
 import UserManagement from '../components/admin/UserMAnagement.vue';
 import CalendarManagement from '../components/admin/CalendarManagement.vue';
@@ -29,6 +30,7 @@ const routes = [
     { path: '/avis', component: AvisComponent},
     { path: '/dashUser', component: DashUserComponent},
     { path: '/mentions', component: MentionsComponent},
+    { path: '/confidential', component: ConfComponent},
 
     {
         path: '/admin',

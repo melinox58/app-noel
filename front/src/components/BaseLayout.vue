@@ -40,7 +40,7 @@
           <nav>
             <ul>
               <li><a href="/mentions">Mentions légales</a></li>
-              <li><a href="/about">Politique de confidentialité</a></li>
+              <li><a href="/confidential">Politique de confidentialité</a></li>
               <li><a href="/about">Conditions d’utilisation</a></li>
             </ul>
           </nav>

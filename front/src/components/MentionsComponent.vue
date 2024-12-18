@@ -123,7 +123,7 @@ li{
 
     li{
     font-size: 1.2rem;
-}
+    }
 }
 
 
