@@ -1,5 +1,42 @@
+<script setup>
+import { ref, onMounted } from 'vue'; //ref est une fonction de la Composition API
+import axios from 'axios';
+import DateComponent from '@/components/DateComponent.vue';
+
+const newCalendar = ref({
+  title: '',
+  user_id: 1, //Valeur par defaut pour test. inclure ici la logique pour lier l'utilisateur
+  theme: ''
+});
+  const createCalendar = async() => {
+      try {
+        await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
+        newCalendar.value = { title: '', user_id: '', theme: '' };
+        alert('Le calendrier a été crée avec succès!');
+      } catch (error) {
+        alert('Echec: ' + error.message);
+      }
+};
+
+// On recup les info de l'utilisateur stockées dans le localstorage
+// pour pouvoir lui afficher un message de bienvenu si on a un user connecté (v-if )
+const user = ref(null);
+
+onMounted(() => {
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    user.value = JSON.parse(storedUser);
+    newCalendar.value.user_id = user.value.id; // Définir user_id à partir de l'ID de l'utilisateur
+  }
+});
+
+</script>
+
 <template>
     <h3>Bienvenue {{ user }}</h3>
+    <div>
+      <DateComponent />
+    </div>
     <section>
       <form @submit.prevent="createCalendar">
         <h2>Choisissez les surprises :</h2>
@@ -20,6 +57,9 @@
         <nav>
           <ul class="config">
             <li>
+              <a href="/dashUser"><i class="fa-solid fa-user"></i></a>
+            </li>
+            <li>
               <a href="/surprise"><img :src="require('@/assets/calendrier.svg')" alt="Icone calendrier"></a>
             </li>
             <li>
@@ -38,34 +78,36 @@
 <style scoped>
 
 section{
-  background-color: rgba(255, 255, 255, 0.854);
   width: 80vw;
-  height: 70vh;
+  height: 60vh;
   margin-right: 10%;
-  margin-top: 5%;
 }
 
 h3{
   color: blue;
-  font-size: 1rem;
-  margin-bottom: 2%;
-  margin-top: 5%;
+  font-size: 0.8rem;
+  margin-top: 2%;
 }
 
 h2{
-  font-size: 0.8rem;
+  font-size: 0.5rem;
 }
 
-.square {
-  width: 10vw;
-  height: 10vw;
-  background-color: green;
+div{
+  font-size: 0.4rem;
+  margin-bottom: -8%;
 }
 
 input{
   color: blue;
-  width: 31vw;
-  height: 50%;
+  width: 30vw;
+  height: 30%;
+  font-size: 0.7rem;
+}
+
+.fa-solid{
+  color: blue;
+  font-size: 2rem;
 }
 
 form{
@@ -73,7 +115,7 @@ form{
   flex-direction: row;
   gap: 3%;
   width: 89vw;
-  height: 20%;
+  height: 17%;
   align-items: center;
   justify-content: center;
 }
@@ -85,14 +127,14 @@ form{
 }
 
 .btn{
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   display: flex;
-  width: 20vw;
+  width: 15vw;
   background-image: url('@/assets/img/background/preview.jpg');
   background-size: cover;
   color:white;
   border-radius: 20px;
-  height: 29%;
+  height: 20%;
   justify-content: center;
   align-items: center;
   background-position: center;
@@ -103,19 +145,17 @@ form{
     -1px -1px 0 black; /* Ombres pour chaque direction */
 }
 
-input{
-  color: blue;
-  width: 70%;
-  height: 31%;
-}
-
 .config{
   display: flex;
-  margin-top: 4%;
+  margin-top: -150%;
+  margin-top: -113%;
+  justify-content: center;
+  width: 90vw;
+  list-style-type: none;
 }
 
 .config img{
-  width: 60%;
+  width: 50%;
 }
 
 ul{
@@ -127,8 +167,9 @@ ul{
 }
 
 .image-table {
+  margin-top: 10%;
   width: 100%;                /* La table occupe toute la largeur disponible */
-  height: 60vh;               /* Hauteur fixe pour la table */
+  height: 45vh;               /* Hauteur fixe pour la table */
   overflow: hidden;           /* Empêche tout débordement visible de la table elle-même */
 }
 
@@ -138,126 +179,120 @@ ul{
   width: 100%;                /* Garantit que l'image-row occupe toute la largeur disponible */
   overflow-x: auto;           /* Permet un défilement horizontal si nécessaire */
   overflow-y: auto;           /* Permet un défilement vertical si nécessaire */
-  height: 95%;               /* Occupe toute la hauteur de la table */
-  gap: 4%;
+  height: 100%;               /* Occupe toute la hauteur de la table */
+  gap: 2%;
   justify-content: center;    /* Centre les images horizontalement */
 }
 
 .image-container {
-  flex: 0 0 28%;              /* Chaque image occupe environ 48% de la largeur (2 par ligne) */
+  flex: 0 0 10%;              /* Chaque image occupe environ 48% de la largeur (2 par ligne) */
   max-width: 100%;            /* Evite que les images débordent de leur conteneur */
   justify-content: center;    /* Centre l'image horizontalement */
+  margin: 2%;
 }
-
-
-
-
 
 @media only screen and (min-width: 768px){
 
-section{
-  background-color: rgba(255, 255, 255, 0.854);
-  width: 80vw;
-  height: 70vh;
-  margin-right: 10%;
-  margin-top: 0;
-  margin-bottom: 2%;
-}
+  main{
+    height: 82vh;
+  }
 
-h3{
-  font-size: 1.5rem;
-  margin-bottom: 2%;
-}
+  section{
+    background-color: rgba(255, 255, 255, 0.854);
+    width: 80vw;
+    height: 100vh;
+    margin-right: 10%;
+    margin-bottom: -8%;
+  }
 
-section h2 {
-  font-size:1.4rem;
-}
+  h3{
+    font-size: 1.5rem;
+    margin-bottom: 2%;
+    margin-top: -4.5%;
+  }
+
+  p{
+    margin-bottom: 0;
+  }
+
+  .fa-solid{
+  font-size: 3rem;
+  }
+
+  div{
+    margin-bottom: 0.5%;
+  }
+
+  section h2 {
+    font-size:1.4rem;
+  }
+
+  section input{
+    width: 30vw;
+  }
+
+  section form{
+    gap: 5%;
+    width: 100%;
+    height: 14%;
+  }
+
+  section input {
+    height: 40%;
+    font-size: 1rem;
+  }
+
+  section .btn{
+    font-size: 1.2rem;
+    width: 10vw;
+    width: 10%;
+    height: 30%;
+  }
+
+  section .config{
+    background-color: rgba(255, 255, 255, 0.858);
+    display: flex;
+    flex-direction: column;
+    height: 67.5vh;
+    width: 14%;
+    justify-content: center;
+    margin-left: -12vw;
+    margin-top: -70.5vh;
+    gap: 10%;
+    position: relative;
+    z-index: 8;
+  }
+
+  section .config img{
+    width: 32%;
+    margin: 0;
+  }
+
+  .image-row img {
+    width: 22vw;
+  }
+
+  .image-table[data-v-67104fdf] {
+    width: 95%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    height: 58vh;
+    margin-top: 0;
+  }
+
+  .image-container[data-v-67104fdf] {
+    flex: 0 0 28%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  a{
+    margin: 0;
+  }
 
 
-section input{
-  width: 30vw;
-}
-
-section form{
-  gap: 5%;
-  width: 100%;
-  height: 14%;
-}
-
-section input {
-  height: 40%;
-}
-
-section .btn{
-  font-size: 1.2rem;
-  width: 10vw;
-  width: 10%;
-  height: 30%;
-}
-
-section .config{
-  background-color: rgba(255, 255, 255, 0.858);
-  display: flex;
-  flex-direction: column;
-  height: 687%;
-  width: 14%;
-  justify-content: center;
-  margin-left: -12vw;
-  margin-top: -69.8vh;
-  gap: 10%;
-  position: relative;
-  z-index: 8;
-}
-
-section .config img{
-  width: 32%;
-  margin: 0;
-}
-
-.image-row img {
-  width: 22vw;
-}
-
-.image-table[data-v-67104fdf] {
-  width: 95%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-
-.image-container[data-v-67104fdf] {
-  flex: 0 0 28%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-a{
-  margin: 0;
-}
 
 }
 </style>
-
-
-
-<script setup>
-import { ref } from 'vue'; //ref est une fonction de la Composition API
-import axios from 'axios';
-
-const newCalendar = ref({
-  title: '',
-  user_id: 1, //Valeur par defaut pour test. inclure ici la logique pour lier l'utilisateur
-  theme: ''
-});
-  const createCalendar = async() => {
-      try {
-        await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
-        newCalendar.value = { title: '', user_id: '', theme: '' };
-        alert('Le calendrier a été crée avec succès!');
-      } catch (error) {
-        alert('Echec: ' + error.message);
-      }
-};
-
-</script>

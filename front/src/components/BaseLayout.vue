@@ -185,6 +185,11 @@ footer nav{
   display: flex;
 }
 
+footer ul{
+  padding-top: 2%;
+  font-size: 0.6rem;
+}
+
 p {
   font-size: 0.4rem;
   margin-top: 2%;
