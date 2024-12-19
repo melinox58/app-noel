@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const calendarController = require('../controllers/calendarController');
+const authMiddleware = require('../middelwares/authMiddelware'); // Auth middleware
 
 // Créer un calendrier
 router.post('/', calendarController.createCalendar);
 
-// Route pour récupérer tous les calendriers
+// Récupérer tous les calendriers
 router.get('/', calendarController.getCalendars);
 
-// Récupérer un calendrier par ID
-router.get('/:id', calendarController.getCalendar);
+// Récupérer un calendrier spécifique pour un utilisateur connecté
+router.get('/:id', authMiddleware, calendarController.getCalendarForUser);
 
 // Mettre à jour un calendrier
 router.put('/:id', calendarController.updateCalendar);

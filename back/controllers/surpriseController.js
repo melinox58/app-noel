@@ -1,13 +1,15 @@
+// controllers/surpriseController.js
 const Surprise = require('../models/mongodb/surpriseModel');
 
 // Créer une nouvelle surprise
 exports.createSurprise = async (req, res) => {
     try {
         const newSurprise = new Surprise({
-            case_id: req.body.case_id,
-            source: req.body.source,
-            titre: req.body.titre,
-            description: req.body.description
+            calendar_id: req.body.calendar_id,
+            day: req.body.day,
+            surprise_type: req.body.surprise_type,
+            content: req.body.content,
+            is_opened: req.body.is_opened,
         });
         const surprise = await newSurprise.save();
         res.status(201).json(surprise);
@@ -38,9 +40,6 @@ exports.getSurpriseById = async (req, res) => {
         res.json(surprise);
     } catch (err) {
         console.error(err.message);
-        if (err.kind === 'ObjectId') {
-            return res.status(404).json({ msg: 'Surprise not found' });
-        }
         res.status(500).send('Server Error');
     }
 };
