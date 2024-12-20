@@ -1,3 +1,4 @@
+// Routes/surpriseRoutes.js
 const express = require('express');
 const router = express.Router();
 const surpriseController = require('../controllers/surpriseController');
@@ -6,7 +7,7 @@ const surpriseController = require('../controllers/surpriseController');
 router.post('/', surpriseController.createSurprise);
 
 // Route pour récupérer toutes les surprises
-router.get('/', surpriseController.getSurprises);
+router.get('/', surpriseController.getSurprises);  // Remplacer '/surprise/' par '/'
 
 // Route pour récupérer une surprise par ID
 router.get('/:id', surpriseController.getSurpriseById);
