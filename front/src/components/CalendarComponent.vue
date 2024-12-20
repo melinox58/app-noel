@@ -303,11 +303,11 @@ ul{
     background-color: rgba(255, 255, 255, 0.858);
     display: flex;
     flex-direction: column;
-    height: 67.5vh;
+    height: 69vh;
     width: 14%;
     justify-content: center;
     margin-left: -12vw;
-    margin-top: -68.2vh;
+    margin-top: -68.5vh;
     gap: 10%;
     position: relative;
     z-index: 8;

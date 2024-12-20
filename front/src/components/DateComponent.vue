@@ -59,8 +59,8 @@ onMounted(() => {
 
 <template>
   <div class="date">
-    <p>Date actuelle (UTC): {{ currentDate }}</p>
-    <p>Numéro du jour: {{ dayNumber }}</p>
+    <p>Date actuelle : {{ currentDate }}</p>
+    <!-- <p>Numéro du jour: {{ dayNumber }}</p> -->
     <div v-for="caseItem in cases" :key="caseItem.id">
       <CaseComponent :caseItem="caseItem" :dayNumber="dayNumber" @openCase="openCase" />
     </div>
@@ -71,10 +71,18 @@ onMounted(() => {
 
 p{
   color: black;
-  font-size: 1rem;
+  font-size: 0.5rem;
 }
 
 div .date{
   border: none
 }
+
+@media only screen and (min-width: 768px){
+
+  p{
+    font-size: 1rem;
+  }
+}
+
 </style>

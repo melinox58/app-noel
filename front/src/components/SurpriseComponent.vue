@@ -11,6 +11,8 @@ const newCalendar = ref({
   theme: ''
 });
 
+const days = ref(Array.from({ length: 24 }, (_, i) => i + 1));
+
 const createCalendar = async () => {
   try {
     await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
@@ -32,7 +34,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <h3>Bienvenue {{ user }}</h3>
+    <h3 v-if="user">Bienvenue {{ user.firstname }} {{ user.name }}</h3>
     <div class="date">
       <DateComponent />
     </div>
@@ -43,11 +45,10 @@ onMounted(() => {
           <div class="theme">
             <article class="image-table">
               <CaseComponent
-                  v-for="caseItem in [1,2,3,4]"
-                  :key="caseItem.id"
-                  :case-item="caseItem"
-                  :day-number="caseItem.day"
-                  @openCase="(id) => console.log('Case ouverte avec ID :', id)"/>
+              v-for="(day, index) in days"
+                  :key="index"
+                  :case-item="day"
+                  :day-number="day" />
             </article>
         </div>
       </form>
@@ -98,8 +99,16 @@ div{
   margin-bottom: -8%;
   border: 2px solid black;
 }
-div .date{
-  border: none
+
+.date{
+  border: none;
+}
+
+.theme{
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .fa-solid{
@@ -108,13 +117,12 @@ div .date{
 }
 
 form{
-  display: flex;
-  flex-direction: row;
+
+  flex-direction: column;
   gap: 3%;
-  width: 89vw;
-  height: 17%;
+  width: 91vw;
+  height: 98%;
   align-items: center;
-  justify-content: center;
 }
 
 .btn{
@@ -154,13 +162,13 @@ ul{
 }
 
 .image-table {
-  margin-top: 55%;
-  width: 50vw;
-  height: 8vh;
-  overflow: hidden;
+  width: 90vw;
+  height: 45vh;
+  margin-top: 20%;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 2%;          /* Empêche tout débordement visible de la table elle-même */
+  overflow: scroll;
 }
 
 
@@ -189,6 +197,10 @@ ul{
     margin-bottom: 0;
   }
 
+  .content-container > main:nth-child(2) > section:nth-child(3) > aside:nth-child(2) {
+  padding-top: 40%;
+  }
+
   .fa-solid{
   font-size: 3rem;
   }
@@ -197,8 +209,14 @@ ul{
     margin-bottom: 0.5%;
   }
 
+  section{
+    height: 69vh;
+    margin-bottom: -9%;
+  }
+
   section h2 {
     font-size:1.4rem;
+    padding-top: 2%;
   }
 
   section input{
@@ -209,6 +227,7 @@ ul{
     gap: 5%;
     width: 100%;
     height: 14%;
+    display: flex;
   }
 
   section input {
@@ -227,11 +246,11 @@ ul{
     background-color: rgba(255, 255, 255, 0.858);
     display: flex;
     flex-direction: column;
-    height: 67.5vh;
+    height: 69vh;
     width: 14%;
     justify-content: center;
     margin-left: -12vw;
-    margin-top: -70.5vh;
+    margin-top: -70.6vh;
     gap: 10%;
     position: relative;
     z-index: 8;
@@ -246,13 +265,13 @@ ul{
     width: 22vw;
   }
 
-  .image-table[data-v-67104fdf] {
-    width: 95%;
+  .image-table{
+    width: 79vw;
     overflow: hidden;
     display: flex;
     align-items: center;
-    height: 58vh;
-    margin-top: 0;
+    height: 59vh;
+    margin-top: 1%;
   }
 
   .image-container[data-v-67104fdf] {
@@ -265,8 +284,6 @@ ul{
   a{
     margin: 0;
   }
-
-
 
 }
 </style>
