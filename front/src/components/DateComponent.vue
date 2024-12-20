@@ -58,7 +58,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="date">
     <p>Date actuelle (UTC): {{ currentDate }}</p>
     <p>Numéro du jour: {{ dayNumber }}</p>
     <div v-for="caseItem in cases" :key="caseItem.id">
@@ -69,4 +69,12 @@ onMounted(() => {
 
 <style scoped>
 
+p{
+  color: black;
+  font-size: 1rem;
+}
+
+div .date{
+  border: none
+}
 </style>

@@ -4,6 +4,7 @@ import axios from 'axios';
 import DateComponent from '@/components/DateComponent.vue';
 import CaseComponent from '@/components/CaseComponent.vue';
 
+const user = ref(null);
 const newCalendar = ref({
   title: '',
   user_id: 1, // Valeur par défaut pour test
@@ -20,8 +21,6 @@ const createCalendar = async () => {
   }
 };
 
-const user = ref(null);
-
 onMounted(() => {
   const storedUser = localStorage.getItem('user');
   if (storedUser) {
@@ -29,38 +28,30 @@ onMounted(() => {
     newCalendar.value.user_id = user.value.id;
   }
 });
+
 </script>
 
 <template>
     <h3>Bienvenue {{ user }}</h3>
-    <div>
+    <div class="date">
       <DateComponent />
     </div>
 
     <section>
       <form @submit.prevent="createCalendar">
         <h2>Choisissez les surprises :</h2>
-        <div class="image-table">
-          <CaseComponent
-            v-for="caseItem in [1,2,3,4]"
-            :key="caseItem.id"
-            :case-item="caseItem"
-            :day-number="caseItem.day"
-            @openCase="(id) => console.log('Case ouverte avec ID :', id)"/>
+          <div class="theme">
+            <article class="image-table">
+              <CaseComponent
+                  v-for="caseItem in [1,2,3,4]"
+                  :key="caseItem.id"
+                  :case-item="caseItem"
+                  :day-number="caseItem.day"
+                  @openCase="(id) => console.log('Case ouverte avec ID :', id)"/>
+            </article>
         </div>
-
       </form>
 
-      <div class="image-table">
-        <div class="image-row">
-            <div class="square">
-            <!-- ici, on injecte les jours, faire une boucle sur le tout avec le carré -->
-        </div>
-          <!-- <div v-for="image in images" :key="image.id" class="image-container">
-            <img :src="image.src" :alt="image.name" width="100" /> -->
-          <!-- </div> -->
-        </div>
-      </div>
       <aside>
         <nav>
           <ul class="config">
@@ -79,6 +70,7 @@ onMounted(() => {
           </ul>
         </nav>
       </aside>
+
     </section>
 
 </template>
@@ -102,15 +94,12 @@ h2{
 }
 
 div{
-  font-size: 0.4rem;
+  font-size: 1rem;
   margin-bottom: -8%;
+  border: 2px solid black;
 }
-
-input{
-  color: blue;
-  width: 30vw;
-  height: 30%;
-  font-size: 0.7rem;
+div .date{
+  border: none
 }
 
 .fa-solid{
@@ -126,12 +115,6 @@ form{
   height: 17%;
   align-items: center;
   justify-content: center;
-}
-
-.content-container > main:nth-child(2) > div:nth-child(1) {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .btn{
@@ -170,34 +153,17 @@ ul{
   padding: 0;
 }
 
-.image-row img{
-  width: 26vw;
-}
-
 .image-table {
-  margin-top: 10%;
-  width: 100%;                /* La table occupe toute la largeur disponible */
-  height: 45vh;               /* Hauteur fixe pour la table */
-  overflow: hidden;           /* Empêche tout débordement visible de la table elle-même */
-}
-
-.image-row {
+  margin-top: 55%;
+  width: 50vw;
+  height: 8vh;
+  overflow: hidden;
   display: flex;
-  flex-wrap: wrap;            /* Les images passeront à la ligne suivante si l'espace est insuffisant */
-  width: 100%;                /* Garantit que l'image-row occupe toute la largeur disponible */
-  overflow-x: auto;           /* Permet un défilement horizontal si nécessaire */
-  overflow-y: auto;           /* Permet un défilement vertical si nécessaire */
-  height: 100%;               /* Occupe toute la hauteur de la table */
-  gap: 2%;
-  justify-content: center;    /* Centre les images horizontalement */
+  flex-wrap: wrap;
+  gap: 2%;          /* Empêche tout débordement visible de la table elle-même */
 }
 
-.image-container {
-  flex: 0 0 10%;              /* Chaque image occupe environ 48% de la largeur (2 par ligne) */
-  max-width: 100%;            /* Evite que les images débordent de leur conteneur */
-  justify-content: center;    /* Centre l'image horizontalement */
-  margin: 2%;
-}
+
 
 @media only screen and (min-width: 768px){
 

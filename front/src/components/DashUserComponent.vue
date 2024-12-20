@@ -129,6 +129,16 @@ h2{
   width:30% !important;
 }
 
+.d-block {
+  margin: auto;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5vw;
+}
+
+
 form{
   font-size: 0.7rem;
   display: flex;
@@ -173,6 +183,7 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: 10%;
   }
 
   .right{
