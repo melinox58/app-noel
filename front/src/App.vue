@@ -1,5 +1,5 @@
 <template>
-    <BaseLayout msg="Welcome to Your Home App"/>
+    <BaseLayout/>
 </template>
 
   <script>

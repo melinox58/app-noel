@@ -104,22 +104,6 @@ const images = [
           </ul>
         </nav>
       </aside>
-
-      <!-- Prévisualisation -->
-      <div v-if="preview" class="preview-container">
-        <h3>Prévisualisation du Calendrier</h3>
-        <div
-            class="calendar-preview"
-            :style="{ backgroundImage: `url(${newCalendar.theme || '@/assets/img/background/13450.jpg'})` }"
-        >
-          //generer les cases
-          <div v-for="day in 24" :key="day" class="calendar-day">
-            {{ day }}
-          </div>
-        </div>
-        <h4>{{ newCalendar.title }}</h4>
-        <button class="btn" type="button" @click="preview = false">Fermer la prévisualisation</button>
-      </div>
     </section>
 
 </template>
