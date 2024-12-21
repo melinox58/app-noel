@@ -1,3 +1,4 @@
+DROP TABLE melinox_noel;
 
 CREATE DATABASE IF NOT EXISTS  melinox_noel;
 USE melinox_noel;
@@ -15,7 +16,6 @@ CREATE TABLE IF NOT EXISTS Calendars (
     user_id INT,                          -- Colonne pour la clé étrangère
     title VARCHAR(255),                   -- Titre
     theme VARCHAR(255),                   -- Thème
-    alt VARCHAR(255),                     -- alt
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES Users(id) -- Clé étrangère
 );
 
@@ -40,7 +40,7 @@ SHOW TABLES LIKE 'Cases';
 ALTER TABLE Calendars MODIFY COLUMN user_id INT NULL;
 
 -- Insertion des données pour création de l'app
-INSERT INTO Calendars (user_id, title, theme, alt)
+INSERT INTO Calendars (user_id, title, theme)
 VALUES 
     (NULL, NULL, 'front/src/assets/img/background/13450.jpg', 'Fond avec reflets de lumière dorée'),
     (NULL, NULL, 'front/src/assets/img/background/4510871.jpg', 'Fond avec reflets de lumière irisée'),

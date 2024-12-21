@@ -92,7 +92,7 @@ onMounted(() => {
     canvas.height = window.innerHeight;
 
     const snowflakes = [];
-    const maxSnowflakes = 100;
+    const maxSnowflakes = 300;
 
     const createSnowflake = () => ({
       x: Math.random() * canvas.width,
