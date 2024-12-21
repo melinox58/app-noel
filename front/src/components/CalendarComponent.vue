@@ -338,6 +338,16 @@ ul{
     align-items: center;
   }
 
+  img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+  img:hover {
+    transform: scale(1.1); /* Agrandissement de l'image */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre autour de l'image */
+}
+
   a{
     margin: 0;
   }
