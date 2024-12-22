@@ -18,6 +18,13 @@ const { Calendar } = require('./models/mysql/calendarModel');
 //     console.error('Erreur lors de la synchronisation des modèles :', error);
 // });
 
+// Middleware pour servir les fichiers statiques
+app.use(express.static(path.join(__dirname, 'front/dist')));
+
+// Renvoyer index.html pour toutes les autres requêtes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'front/dist', 'index.html'));
+});
 
 // Charger les variables d'environnement depuis .env.local si disponible, sinon depuis .env
 dotenv.config({ path: '.env.local' });
