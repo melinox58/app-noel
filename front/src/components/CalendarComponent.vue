@@ -23,11 +23,13 @@ const createCalendar = async() => {
 
 const selectTheme = (image) => {
   newCalendar.value.theme = image.src;
+  alert(`Thème sélectionné : ${image.name}`);
 };
 
 //On recup les info de l'utilisateur stockées dans le localstorage
 //pour pouvoir lui afficher un message de bienvenu si on a un user connecté (v-if )
 const user = ref(null);
+
 
 onMounted(() => {
   const storedUser = localStorage.getItem('user');
@@ -104,22 +106,6 @@ const images = [
           </ul>
         </nav>
       </aside>
-
-      <!-- Prévisualisation -->
-      <div v-if="preview" class="preview-container">
-        <h3>Prévisualisation du Calendrier</h3>
-        <div
-            class="calendar-preview"
-            :style="{ backgroundImage: `url(${newCalendar.theme || '@/assets/img/background/13450.jpg'})` }"
-        >
-          //generer les cases
-          <div v-for="day in 24" :key="day" class="calendar-day">
-            {{ day }}
-          </div>
-        </div>
-        <h4>{{ newCalendar.title }}</h4>
-        <button class="btn" type="button" @click="preview = false">Fermer la prévisualisation</button>
-      </div>
     </section>
 
 </template>
@@ -337,6 +323,16 @@ ul{
     justify-content: center;
     align-items: center;
   }
+
+  img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+  img:hover {
+    transform: scale(1.1); /* Agrandissement de l'image */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre autour de l'image */
+}
 
   a{
     margin: 0;

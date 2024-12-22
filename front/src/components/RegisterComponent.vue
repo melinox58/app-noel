@@ -99,6 +99,7 @@ h2{
   font-size: 1.4rem;
   width: 50vw;
   margin-bottom: 5%;
+  margin-left: 11%;
 }
 
 h3{

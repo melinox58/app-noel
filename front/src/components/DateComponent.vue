@@ -1,13 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
-import CaseComponent from '@/components/CaseComponent.vue';
+// import axios from 'axios';
+// import CaseComponent from '@/components/CaseComponent.vue';
 
 const currentDate = ref('');
 const dayNumber = ref(null);
-const cases = ref([]);
+// const cases = ref([]);
 const adventCalendarDay = ref(null);
-const calendarId = ref(1); // Définir calendarId comme une variable réactive
+// const calendarId = ref(1); // Définir calendarId comme une variable réactive
 
 //fonction qui actualise la valeur de currentDate et dayNumber
 const updateDate = () => {
@@ -18,16 +18,16 @@ const updateDate = () => {
 };
 
 // On récupère les cases du calendrier depuis le back
-const fetchCases = async () => {
-  try {
-    console.log('Fetching cases for calendar ID:', calendarId.value);
-    const response = await axios.get(`http://localhost:5000/api/calendars/${calendarId.value}/cases`);
-    console.log('Response data:', response.data);
-    cases.value = response.data;
-  } catch (error) {
-    console.error('Erreur lors de la récupération des cases :', error);
-  }
-};
+// const fetchCases = async () => {
+//   try {
+//     console.log('Fetching cases for calendar ID:', calendarId.value);
+//     const response = await axios.get(`http://localhost:5000/api/calendars/${calendarId.value}/cases`);
+//     console.log('Response data:', response.data);
+//     cases.value = response.data;
+//   } catch (error) {
+//     console.error('Erreur lors de la récupération des cases :', error);
+//   }
+// };
 
 //fonction qui s'assure qu'on est du 1 au 24 decembre et qui retourne le numero du jour
 const getAdventCalendarDay = (date) => {
@@ -39,21 +39,21 @@ const getAdventCalendarDay = (date) => {
   return null;
 };
 
-const openCase = async (caseId) => {
-  try {
-    const caseToOpen = cases.value.find(caseItem => caseItem.id === caseId);
-    if (caseToOpen && !caseToOpen.is_opened && caseToOpen.day_number <= dayNumber.value) {
-      caseToOpen.is_opened = true;
-      await axios.post(`http://localhost:5000/api/cases/${caseId}/open`);
-    }
-  } catch (error) {
-    console.error('Erreur lors de l\'ouverture de la case :', error);
-  }
-};
+// const openCase = async (caseId) => {
+//   try {
+//     const caseToOpen = cases.value.find(caseItem => caseItem.id === caseId);
+//     if (caseToOpen && !caseToOpen.is_opened && caseToOpen.day_number <= dayNumber.value) {
+//       caseToOpen.is_opened = true;
+//       await axios.post(`http://localhost:5000/api/cases/${caseId}/open`);
+//     }
+//   } catch (error) {
+//     console.error('Erreur lors de l\'ouverture de la case :', error);
+//   }
+// };
 
 onMounted(() => {
   updateDate(); //actualise la valeur de currentDate et dayNumber
-  fetchCases();
+  // fetchCases();
 });
 </script>
 
@@ -61,9 +61,9 @@ onMounted(() => {
   <div class="date">
     <p>Date actuelle : {{ currentDate }}</p>
     <!-- <p>Numéro du jour: {{ dayNumber }}</p> -->
-    <div v-for="caseItem in cases" :key="caseItem.id">
+    <!-- <div v-for="caseItem in cases" :key="caseItem.id">
       <CaseComponent :caseItem="caseItem" :dayNumber="dayNumber" @openCase="openCase" />
-    </div>
+    </div> -->
   </div>
 </template>
 
