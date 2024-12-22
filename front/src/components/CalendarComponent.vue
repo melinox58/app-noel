@@ -11,18 +11,23 @@ const newCalendar = ref({
 });
 
 
-const createCalendar = async() => {
+const createCalendar = async () => {
   try {
-    await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
+    await axios.post('http://localhost:5000/api/calendar', newCalendar.value, {
+      headers: {
+        'Authorization': localStorage.getItem('token')
+      }
+    });
     newCalendar.value = { title: '', user_id: '', theme: '' };
-    alert('Le calendrier a été crée avec succès!');
+    alert('Le calendrier a été créé avec succès!');
   } catch (error) {
-    alert('Echec: ' + error.message);
+    alert('Echec: ' + error.response.data.message);
   }
 };
 
 const selectTheme = (image) => {
   newCalendar.value.theme = image.src;
+  alert(`Thème sélectionné : ${image.name}`);
 };
 
 //On recup les info de l'utilisateur stockées dans le localstorage
@@ -106,20 +111,20 @@ const images = [
       </aside>
 
       <!-- Prévisualisation -->
-      <div v-if="preview" class="preview-container">
-        <h3>Prévisualisation du Calendrier</h3>
-        <div
-            class="calendar-preview"
-            :style="{ backgroundImage: `url(${newCalendar.theme || '@/assets/img/background/13450.jpg'})` }"
-        >
-          //generer les cases
-          <div v-for="day in 24" :key="day" class="calendar-day">
-            {{ day }}
-          </div>
-        </div>
-        <h4>{{ newCalendar.title }}</h4>
-        <button class="btn" type="button" @click="preview = false">Fermer la prévisualisation</button>
-      </div>
+<!--      <div v-if="preview" class="preview-container">-->
+<!--        <h3>Prévisualisation du Calendrier</h3>-->
+<!--        <div-->
+<!--            class="calendar-preview"-->
+<!--            :style="{ backgroundImage: `url(${newCalendar.theme || '@/assets/img/background/13450.jpg'})` }"-->
+<!--        >-->
+<!--          //generer les cases-->
+<!--          <div v-for="day in 24" :key="day" class="calendar-day">-->
+<!--            {{ day }}-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <h4>{{ newCalendar.title }}</h4>-->
+<!--        <button class="btn" type="button" @click="preview = false">Fermer la prévisualisation</button>-->
+<!--      </div>-->
     </section>
 
 </template>

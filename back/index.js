@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 
 // Routes spécifiques
 const calendarRoutes = require('./Routes/calendarRoutes');
-app.use('/api/calendars', calendarRoutes); // Gestion des calendriers
+app.use('/api/calendar', calendarRoutes); // Gestion des calendriers
 
 const caseRoutes = require('./Routes/caseRoutes');
 app.use('/api/cases', caseRoutes); // Gestion des cases

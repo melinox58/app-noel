@@ -23,7 +23,7 @@ const searchQuery = ref('');
 
 const fetchCalendars = async () => {
   try {
-    const response = await axios.get('http://localhost:5000/api/calendars');
+    const response = await axios.get('http://localhost:5000/api/calendar');
     calendars.value = response.data;
   } catch (error) {
     console.error('Error fetching calendars:', error);
@@ -33,7 +33,7 @@ const fetchCalendars = async () => {
 const deleteCalendar = async (id) => {
   try {
     await axios.delete(`http://localhost:5000/api/calendar/${id}/`);
-    fetchCalendars();
+    await fetchCalendars();
   } catch (error) {
     console.error('Error deleting calendar:', error);
   }

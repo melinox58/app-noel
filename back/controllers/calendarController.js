@@ -3,10 +3,12 @@ const { Calendar } = require('../models/mysql/calendarModel'); // Import du mod�
 // Créer un calendrier
 exports.createCalendar = async (req, res) => {
     try {
-        const { title } = req.body;
-        const user_id = req.user.id; // Utiliser l'ID de l'utilisateur connecté
+        const calendar = await Calendar.create({
+            user_id: req.body.user_id,
+            title: req.body.title,
+            theme: req.body.theme,
 
-        const calendar = await Calendar.create({ title, user_id });
+        });
 
         res.status(201).json({
             message: 'Calendrier créé avec succès',
@@ -14,7 +16,7 @@ exports.createCalendar = async (req, res) => {
         });
     } catch (error) {
         console.error('Erreur lors de la création du calendrier :', error);
-        res.status(400).json({ message: 'Erreur lors de la création du calendrier' });
+        res.status(400).json({ message: 'Erreur lors de la création du calendrier', error: error.message });
     }
 };
 
