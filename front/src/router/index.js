@@ -27,7 +27,6 @@ const routes = [
     { path: '/surprise', component: SurpriseComponent },
     { path: '/share', component: ShareComponent },
     { path: '/login', component: LoginComponent },
-    { path: '/admin', component: DashAdminComponent},
     { path: '/avis', component: AvisComponent},
     { path: '/dashUser', component: DashUserComponent},
     { path: '/mentions', component: MentionsComponent},
@@ -35,15 +34,17 @@ const routes = [
     { path: '/condition', component: ConditionComponent},
 
     {
-        path: '/admin',
+        meta: { layout: 'admin' }, // Utilise BaseLayoutAdmin pour les pages admin
         component: DashAdminComponent,
+        path: '/admin',
         children: [
-            { path: 'users', component: UserManagement },
-            { path: 'calendars', component: CalendarManagement },
-            { path: 'surprises', component: SurpriseManagement },
-            { path: 'share', component: ShareCalendar },
+          { path: 'users', component: UserManagement },
+          { path: 'calendars', component: CalendarManagement },
+          { path: 'surprises', component: SurpriseManagement },
+          { path: 'share', component: ShareCalendar },
         ],
-    },
+      },
+        
 ];
 
 

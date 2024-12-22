@@ -1,7 +1,8 @@
+// config/db.js
 const mysql = require('mysql2');
-require('dotenv').config({ path: '../.env.local' });
+require('dotenv').config({ path: '.env.local' }); // Assurez-vous que le chemin est correct
 
-
+// Créer une connexion à MySQL
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -9,12 +10,14 @@ const db = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
+// Connexion à la base de données
 db.connect((err) => {
     if (err) {
-        console.error('Error connecting to the config:', err.message);
+        console.error('Erreur de connexion à la base de données:', err.message);
         return;
     }
-    console.log('Connected to the config');
+    console.log('Connexion à MySQL réussie');
 });
 
+// Exporter l'objet db pour l'utiliser dans d'autres fichiers
 module.exports = db;
