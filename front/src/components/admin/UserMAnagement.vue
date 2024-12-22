@@ -1,16 +1,33 @@
 <template>
-  <div>
-    <h2>Administration des utilisateurs</h2>
-    <input v-model="searchQuery" placeholder="Search users..." />
-    <button @click="fetchUsers">Refresh</button>
-    <ul>
-      <li v-for="user in filteredUsers" :key="user.id">
-        <strong>Name:</strong> {{ user.name }} {{ user.firstname }}<br>
-        <strong>Email:</strong> {{ user.email }}<br>
-        <button @click="blockUser(user.id)">Block</button>
-        <button @click="deleteUser(user.id)">Delete</button>
-      </li>
-    </ul>
+  <div class="container mt-5">
+    <h2 class="mb-4">Administration des utilisateurs</h2>
+    <div class="input-group mb-3">
+      <input v-model="searchQuery" type="text" class="form-control" placeholder="Search users..." />
+      <div class="input-group-append">
+        <button @click="fetchUsers" class="btn btn-primary">Refresh</button>
+      </div>
+    </div>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Firstname</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="user in filteredUsers" :key="user.id">
+        <td>{{ user.name }}</td>
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button @click="blockUser(user.id)" class="btn btn-warning btn-sm mr-2">Block</button>
+          <button @click="deleteUser(user.id)" class="btn btn-danger btn-sm">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -60,5 +77,7 @@ onMounted(fetchUsers);
 </script>
 
 <style scoped>
-
+.table {
+  margin-top: 20px;
+}
 </style>

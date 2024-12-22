@@ -1,16 +1,32 @@
 <template>
-  <div>
-    <h2>Administration des calendriers</h2>
-    <input v-model="searchQuery" placeholder="Search calendars..." />
-    <button @click="fetchCalendars">Refresh</button>
-    <ul>
-      <li v-for="calendar in filteredCalendars" :key="calendar.id">
-        <strong>Title:</strong> {{ calendar.title }}<br>
-        <strong>User ID:</strong> {{ calendar.user_id }}<br>
-        <strong>Theme:</strong> {{ calendar.theme }}<br>
-        <button @click="deleteCalendar(calendar.id)">Delete</button>
-      </li>
-    </ul>
+  <div class="container mt-5">
+    <h2 class="mb-4">Administration des calendriers</h2>
+    <div class="input-group mb-3">
+      <input v-model="searchQuery" type="text" class="form-control" placeholder="Search calendars..." />
+      <div class="input-group-append">
+        <button @click="fetchCalendars" class="btn btn-primary">Refresh</button>
+      </div>
+    </div>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>User ID</th>
+        <th>Theme</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="calendar in filteredCalendars" :key="calendar.id">
+        <td>{{ calendar.title }}</td>
+        <td>{{ calendar.user_id }}</td>
+        <td>{{ calendar.theme }}</td>
+        <td>
+          <button @click="deleteCalendar(calendar.id)" class="btn btn-danger btn-sm">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -32,7 +48,7 @@ const fetchCalendars = async () => {
 
 const deleteCalendar = async (id) => {
   try {
-    await axios.delete(`http://localhost:5000/api/calendar/${id}/`);
+    await axios.delete(`http://localhost:5000/api/calendar/${id}`);
     await fetchCalendars();
   } catch (error) {
     console.error('Error deleting calendar:', error);
@@ -49,7 +65,8 @@ const filteredCalendars = computed(() => {
 onMounted(fetchCalendars);
 </script>
 
-
 <style scoped>
-
+.table {
+  margin-top: 20px;
+}
 </style>
