@@ -1,6 +1,6 @@
 <template>
   <div class="admin-dashboard">
-    <h2>Admin Dashboard</h2>
+    <h1>Admin Dashboard</h1>
     <nav>
       <router-link to="/admin/users">Utilisateurs</router-link>
       <router-link to="/admin/calendars">calendriers</router-link>
@@ -14,7 +14,6 @@
 
 
 <style scoped>
-
 section{
   width: 80vw;
   height: 70vh;
