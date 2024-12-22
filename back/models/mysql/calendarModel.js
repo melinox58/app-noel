@@ -30,4 +30,4 @@ const Calendar = sequelize.define('Calendar', {
 });
 
 // Exporter le modèle Calendar
-module.exports = { Calendar, sequelize };
+module.exports = { Calendar};

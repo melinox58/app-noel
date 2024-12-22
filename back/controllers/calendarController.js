@@ -1,32 +1,14 @@
 const { Calendar } = require('../models/mysql/calendarModel'); // Import du modèle Calendar
-const { createCalendarWithTheme } = require('../models/mysql/calendarModel');
-
-
-// Créer un calendrier avec un thème
-exports.createCalendarWithTheme = async (req, res) => {
-    try {
-        const { title, themePath } = req.body;
-        const user_id = req.user.id; // Utiliser l'ID de l'utilisateur connecté
-
-        const calendar = await createCalendarWithTheme(user_id, title, themePath);
-
-        res.status(201).json({
-            message: 'Calendrier avec thème créé avec succès',
-            calendar
-        });
-    } catch (error) {
-        console.error('Erreur lors de la création du calendrier avec thème :', error);
-        res.status(400).json({ message: 'Erreur lors de la création du calendrier avec thème' });
-    }
-};
+// const { createCalendarWithTheme } = require('../models/mysql/calendarModel');
 
 // Créer un calendrier
 exports.createCalendar = async (req, res) => {
     try {
-        const { title } = req.body;
-        const user_id = req.user.id; // Utiliser l'ID de l'utilisateur connecté
-
-        const calendar = await Calendar.create({ title, user_id });
+        const calendar = await Calendar.create({
+            user_id: req.body.user_id,
+            title: req.body.title,
+            theme: req.body.theme,
+        })
 
         res.status(201).json({
             message: 'Calendrier créé avec succès',

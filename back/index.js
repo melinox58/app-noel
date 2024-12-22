@@ -9,14 +9,14 @@ const db = require('./config/db-config'); // Config de la base de données relat
 
 const { sequelize } = require('./models/mysql/calendarModel');
 const { Calendar } = require('./models/mysql/calendarModel');
-const { Case } = require('./models/mysql/caseModel');
+// const { Case } = require('./models/mysql/caseModel');
 
 // Synchronisation de la base de données
-sequelize.sync({ force: true }).then(() => {
-    console.log('Les modèles ont été synchronisés avec succès.');
-}).catch((error) => {
-    console.error('Erreur lors de la synchronisation des modèles :', error);
-});
+// sequelize.sync({ alter: true }).then(() => {
+//     console.log('Les modèles ont été synchronisés avec succès.');
+// }).catch((error) => {
+//     console.error('Erreur lors de la synchronisation des modèles :', error);
+// });
 
 
 // Charger les variables d'environnement depuis .env.local si disponible, sinon depuis .env
@@ -48,10 +48,10 @@ app.get('/', (req, res) => {
 
 // Routes spécifiques
 const calendarRoutes = require('./Routes/calendarRoutes');
-app.use('/api/calendars', calendarRoutes); // Gestion des calendriers
+app.use('/api/calendar', calendarRoutes); // Gestion des calendriers
 
-const caseRoutes = require('./Routes/caseRoutes');
-app.use('/api/cases', caseRoutes); // Gestion des cases
+// const caseRoutes = require('./Routes/caseRoutes');
+// app.use('/api/cases', caseRoutes); // Gestion des cases
 
 const surpriseRoutes = require('./Routes/surpriseRoutes');
 app.use('/api/surprises', surpriseRoutes); // Gestion des surprises

@@ -23,11 +23,13 @@ const createCalendar = async() => {
 
 const selectTheme = (image) => {
   newCalendar.value.theme = image.src;
+  alert(`Thème sélectionné : ${image.name}`);
 };
 
 //On recup les info de l'utilisateur stockées dans le localstorage
 //pour pouvoir lui afficher un message de bienvenu si on a un user connecté (v-if )
 const user = ref(null);
+
 
 onMounted(() => {
   const storedUser = localStorage.getItem('user');
