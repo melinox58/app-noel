@@ -1,0 +1,5 @@
+use('Noel');
+
+db.my_collection.insertOne({ });
+
+db.my_collection.find();

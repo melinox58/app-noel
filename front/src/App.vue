@@ -1,17 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <component :is="layoutComponent">
+    <router-view />
+  </component>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BaseLayout from './components/BaseLayout.vue';
+import BaseLayoutAdmin from './components/admin/BaseLayoutAdmin.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    BaseLayout,
+    BaseLayoutAdmin,
+  },
+  computed: {
+    layoutComponent() {
+      // Si la route admin est active, utilise BaseLayoutAdmin, sinon BaseLayout
+      return this.$route.meta.layout === 'admin' ? 'BaseLayoutAdmin' : 'BaseLayout';
+    },
+  },
+};
 </script>
 
 <style>
