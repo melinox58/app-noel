@@ -10,7 +10,7 @@ const newCalendar = ref({
   theme: ''
 });
 
-
+const preview = ref(false);
 const createCalendar = async () => {
   try {
     await axios.post('http://localhost:5000/api/calendar', newCalendar.value, {
@@ -28,6 +28,11 @@ const createCalendar = async () => {
 const selectTheme = (image) => {
   newCalendar.value.theme = image.src;
   alert(`Thème sélectionné : ${image.name}`);
+  preview.value = true;
+};
+
+const togglePreview = () => {
+  preview.value = !preview.value;
 };
 
 //On recup les info de l'utilisateur stockées dans le localstorage
@@ -69,29 +74,13 @@ const images = [
 </script>
 
 <template>
+  <div class="container">
     <h3 v-if="user">Bienvenue {{ user.firstname }} {{ user.name }}</h3>
     <div>
       <DateComponent />
     </div>
-    <section>
-      <form @submit.prevent="createCalendar">
-        <h2>Choisissez votre thème :</h2>
-        <input v-model="newCalendar.title" placeholder="Titre du calendrier" required />
-        <input type="hidden" v-model="newCalendar.user_id" />
-        <button class="btn" type="submit">Valider</button>
-      </form>
-
-      <div class="image-table">
-        <div class="image-row">
-          <div v-for="image in images" :key="image.id" class="image-container">
-            <img :src="image.src" :alt="image.name" width="100" @click="selectTheme(image)"
-            style="cursor: pointer;" />
-            <!-- <input v-model="newCalendar.theme" placeholder="Theme" required /> -->
-          </div>
-        </div>
-      </div>
-
-      <aside>
+    <section class="main-section">
+      <aside class="sidebar">
         <nav>
           <ul class="config">
             <li>
@@ -101,7 +90,7 @@ const images = [
               <a href="/surprise"><img :src="require('@/assets/calendrier.svg')" alt="Icone calendrier"></a>
             </li>
             <li>
-              <a href="/calendar"><img :src="require('@/assets/palette.png')" alt="Icone calendrier"></a>
+              <a @click.prevent="togglePreview"><img :src="require('@/assets/palette.png')" alt="Icone calendrier"></a>
             </li>
             <li>
               <a href="/share"><img :src="require('@/assets/main.png')" alt="Icone partage"></a>
@@ -109,28 +98,43 @@ const images = [
           </ul>
         </nav>
       </aside>
+      <main class="content">
+        <div v-if="!preview">
+          <form @submit.prevent="createCalendar">
+            <h2>Choisissez votre thème :</h2>
+            <input v-model="newCalendar.title" placeholder="Titre du calendrier" required />
+            <input type="hidden" v-model="newCalendar.user_id" />
+            <button class="btn" type="submit">Valider</button>
+          </form>
 
-      <!-- Prévisualisation -->
-<!--      <div v-if="preview" class="preview-container">-->
-<!--        <h3>Prévisualisation du Calendrier</h3>-->
-<!--        <div-->
-<!--            class="calendar-preview"-->
-<!--            :style="{ backgroundImage: `url(${newCalendar.theme || '@/assets/img/background/13450.jpg'})` }"-->
-<!--        >-->
-<!--          //generer les cases-->
-<!--          <div v-for="day in 24" :key="day" class="calendar-day">-->
-<!--            {{ day }}-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <h4>{{ newCalendar.title }}</h4>-->
-<!--        <button class="btn" type="button" @click="preview = false">Fermer la prévisualisation</button>-->
-<!--      </div>-->
+          <div class="image-table">
+            <div class="image-row">
+              <div v-for="image in images" :key="image.id" class="image-container">
+                <img :src="image.src" :alt="image.name" width="100" @click="selectTheme(image)" style="cursor: pointer;" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-if="preview" class="calendar-preview">
+          <h3>Prévisualisation du Calendrier</h3>
+          <div class="calendar-grid" :style="{ backgroundImage: `url(${newCalendar.theme || '@/assets/img/background/13450.jpg'})` }">
+            <div v-for="day in 24" :key="day" class="calendar-cell">
+              {{ day }}
+            </div>
+          </div>
+          <h4>{{ newCalendar.title }}</h4>
+          <button class="btn" type="button" @click="togglePreview">Modifier le thème</button>
+        </div>
+      </main>
     </section>
-
+  </div>
 </template>
 
 
+
+
 <style scoped>
+
 
 section{
   width: 80vw;
@@ -356,6 +360,44 @@ ul{
   a{
     margin: 0;
   }
+}
+
+.calendar-preview {
+  margin-top: 20px;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 5px;
+  width: 90%;
+  height: 80%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.calendar-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: darkgreen;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 </style>
 

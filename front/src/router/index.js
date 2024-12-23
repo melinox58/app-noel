@@ -34,14 +34,14 @@ const routes = [
     { path: '/condition', component: ConditionComponent},
 
     {
-        meta: { layout: 'admin' }, // Utilise BaseLayoutAdmin pour les pages admin
-        component: DashAdminComponent,
         path: '/admin',
+        component: DashAdminComponent,
+        meta: { layout: 'admin' }, // Utilise BaseLayoutAdmin pour les pages admin
         children: [
-          { path: 'users', component: UserManagement },
-          { path: 'calendars', component: CalendarManagement },
-          { path: 'surprises', component: SurpriseManagement },
-          { path: 'share', component: ShareCalendar },
+          { path: 'users', component: UserManagement, meta: { layout: 'admin' } },
+          { path: 'calendars', component: CalendarManagement, meta: { layout: 'admin' } },
+          { path: 'surprises', component: SurpriseManagement, meta: { layout: 'admin' } },
+          { path: 'share', component: ShareCalendar, meta: { layout: 'admin' } },
         ],
       },
         

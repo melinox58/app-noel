@@ -24,7 +24,7 @@
         <td>{{ surprise.titre }}</td>
         <td>{{ surprise.description }}</td>
         <td>
-          <button @click="deleteSurprise(surprise._id)" class="btn btn-danger btn-sm">Delete</button>
+          <button @click="deleteSurprise(surprise._id)" class="btn btn-sm">Delete</button>
         </td>
       </tr>
       </tbody>
@@ -70,5 +70,30 @@ onMounted(fetchSurprises);
 <style scoped>
 .table {
   margin-top: 20px;
+}
+.btn {
+  font-size: 0.8rem;
+  display: flex;
+  width: 15vw;
+  margin-top: 5%;
+  background-image: url('@/assets/img/background/preview.jpg');
+  background-size: cover;
+  color: white;
+  border-radius: 20px;
+  height: 4vh;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  text-shadow:
+      1px 1px 0 black,
+      -1px 1px 0 black,
+      1px -1px 0 black,
+      -1px -1px 0 black; /* Ombres pour chaque direction */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
 }
 </style>
