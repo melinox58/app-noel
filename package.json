@@ -2,7 +2,7 @@
   "name": "app-noel",
   "version": "1.0.0",
   "scripts": {
-    "heroku-prebuild": "npm install --prefix back && npm install --prefix front && npx vue-cli-service build --prefix front",
+    "heroku-prebuild": "npm install --prefix back && npm install --prefix front --legacy-peer-deps && npx --prefix front vue-cli-service build",
     "heroku-postbuild": "npm run build --prefix front",
     "start": "node back/index.js"
   },
