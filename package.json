@@ -7,7 +7,7 @@
     "start": "node back/index.js"
   },
   "engines": {
-    "node": "20.x",
-    "npm": "11.0.0"
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   }
 }
