@@ -6,6 +6,8 @@ const bodyParser = require('body-parser'); // Middleware pour analyser le body d
 const cors = require('cors'); // Middleware pour la gestion des CORS
 const dbMongo = require('./config/mongoDb'); // Connexion MongoDB
 const db = require('./config/db-config'); // Config de la base de données relationnelle (MySQL, etc.)
+const path = require('path');
+
 
 const { sequelize } = require('./models/mysql/calendarModel');
 const { Calendar } = require('./models/mysql/calendarModel');
@@ -26,8 +28,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'front/dist', 'index.html'));
 });
 
-// Charger les variables d'environnement depuis .env.local si disponible, sinon depuis .env
-dotenv.config({ path: '.env.local' });
+// Charger les variables d'environnement
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+  }
 
 // === Middleware globaux ===
 
