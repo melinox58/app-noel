@@ -104,7 +104,7 @@ const images = [
             <h2>Choisissez votre thème :</h2>
             <input v-model="newCalendar.title" placeholder="Titre du calendrier" required />
             <input type="hidden" v-model="newCalendar.user_id" />
-            <button class="btn" type="submit">Valider</button>
+            <button class="btn preview" type="submit">Valider</button>
           </form>
 
           <div class="image-table">
@@ -209,6 +209,10 @@ form{
     -1px -1px 0 black; /* Ombres pour chaque direction */
 }
 
+button.btn:nth-child(4) {
+  width: 15%;
+}
+
 .config{
   display: flex;
   margin-top: -150%;
@@ -255,15 +259,18 @@ ul{
   margin: 2%;
 }
 
+.calendar-preview h3{
+    margin-top: -24%;
+  }
+
 .calendar-preview {
-  margin-top: 20px;
+  margin-top: -5px;
   width: 100%;
   height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -272,13 +279,15 @@ ul{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  gap: 5px;
-  width: 90%;
-  height: 80%;
+  gap: 21px;
+  width: 93%;
+  height: 64%;
   background-size: cover;
   background-position: center;
   border-radius: 10px;
   overflow: hidden;
+  padding: 5%;
+  margin-top: -2%;
 }
 
 .calendar-cell {
@@ -287,11 +296,12 @@ ul{
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
   color: darkgreen;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
+
 
 @media only screen and (min-width: 768px){
 
@@ -308,7 +318,7 @@ ul{
     width: 80vw;
     height: 70.5vh;
     margin-right: 10%;
-    margin-bottom: -8%;
+    margin-bottom: -6%;
   }
 
   h3{
@@ -352,9 +362,14 @@ ul{
 
   section .btn{
     font-size: 1.2rem;
-    width: 10vw;
     width: 10%;
-    height: 30%;
+    height: 3vh;
+  }
+
+  .calendar-preview section .btn{
+    width: 15%;
+    height: 6%;
+    margin-bottom: 2%;
   }
 
   .sidebar[data-v-67104fdf] {
@@ -413,6 +428,15 @@ ul{
   a{
     margin: 0;
   }
+
+  .calendar-preview[data-v-67104fdf] {
+    margin-top: -412px;
+  }
+
+  .calendar-grid[data-v-67104fdf] {
+    width: 40%;
+    height: 97%;
+}
 }
 
 
