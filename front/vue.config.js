@@ -2,20 +2,33 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    configureWebpack: {
-        resolve: {
-            alias: {
-                '@': path.resolve(__dirname, 'src'), // Définit `@` pour pointer vers le dossier `src`
-            },
-        },
-        plugins: [
-            new webpack.DefinePlugin({
-                'process.env': {
-                    NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-                    VUE_APP_API_URL: JSON.stringify(process.env.VUE_APP_API_URL),
-                    VUE_APP_MODE: JSON.stringify(process.env.VUE_APP_MODE),
-                },
-            }),
-        ],
+  publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
+  outputDir: 'dist', // Dossier de sortie pour le build
+  assetsDir: 'static', // Dossier pour les fichiers statiques (CSS, JS, etc.)
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src'), // Alias pour simplifier les imports
+      },
     },
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+          VUE_APP_API_URL: JSON.stringify(process.env.VUE_APP_API_URL),
+          VUE_APP_MODE: JSON.stringify(process.env.VUE_APP_MODE),
+        },
+      }),
+    ],
+  },
+  devServer: {
+    port: 8080, // Port utilisé pendant le développement
+    proxy: {
+      '/api': {
+        target: process.env.VUE_APP_API_URL || 'http://localhost:3000', // Redirige les appels API vers le backend
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 };
