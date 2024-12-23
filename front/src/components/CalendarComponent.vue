@@ -115,6 +115,7 @@ const images = [
             </div>
           </div>
         </div>
+
         <div v-if="preview" class="calendar-preview">
           <h3>Prévisualisation du Calendrier</h3>
           <div class="calendar-grid" :style="{ backgroundImage: `url(${newCalendar.theme || '@/assets/img/background/13450.jpg'})` }">
@@ -169,6 +170,10 @@ input{
   font-size: 2rem;
 }
 
+.sidebar {
+  margin-top: 120%;
+}
+
 form{
   display: flex;
   flex-direction: row;
@@ -193,7 +198,7 @@ form{
   background-size: cover;
   color:white;
   border-radius: 20px;
-  height: 20%;
+  height: 2vh;
   justify-content: center;
   align-items: center;
   background-position: center;
@@ -228,7 +233,7 @@ ul{
 .image-table {
   margin-top: 10%;
   width: 100%;                /* La table occupe toute la largeur disponible */
-  height: 45vh;               /* Hauteur fixe pour la table */
+  height: 38vh;               /* Hauteur fixe pour la table */
   overflow: hidden;           /* Empêche tout débordement visible de la table elle-même */
 }
 
@@ -250,7 +255,49 @@ ul{
   margin: 2%;
 }
 
+.calendar-preview {
+  margin-top: 20px;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 5px;
+  width: 90%;
+  height: 80%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.calendar-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: darkgreen;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
 @media only screen and (min-width: 768px){
+
+  .container {
+    height: 95vh;
+  }
 
   main{
     height: 82vh;
@@ -259,7 +306,7 @@ ul{
   section{
     background-color: rgba(255, 255, 255, 0.854);
     width: 80vw;
-    height: 100vh;
+    height: 70.5vh;
     margin-right: 10%;
     margin-bottom: -8%;
   }
@@ -267,7 +314,7 @@ ul{
   h3{
     font-size: 1.5rem;
     margin-bottom: 2%;
-    margin-top: -4.5%;
+    margin-top: -2%;
   }
 
   p{
@@ -294,6 +341,8 @@ ul{
     gap: 5%;
     width: 100%;
     height: 14%;
+    margin-top: -46%;
+    margin-bottom: 2%;
   }
 
   section input {
@@ -308,15 +357,19 @@ ul{
     height: 30%;
   }
 
+  .sidebar[data-v-67104fdf] {
+    margin-top: 63%;
+}
+
   section .config{
     background-color: rgba(255, 255, 255, 0.858);
     display: flex;
     flex-direction: column;
-    height: 69vh;
+    height: 70.5vh;
     width: 14%;
     justify-content: center;
     margin-left: -12vw;
-    margin-top: -68.5vh;
+    margin-top: -93.5vh;
     gap: 10%;
     position: relative;
     z-index: 8;
@@ -362,43 +415,7 @@ ul{
   }
 }
 
-.calendar-preview {
-  margin-top: 20px;
-  width: 100%;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  gap: 5px;
-  width: 90%;
-  height: 80%;
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.calendar-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: darkgreen;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
 </style>
 
 
