@@ -1,1 +1,1 @@
-web: cd back && npm install && npm run start & cd front && npm install && npm run build && http-server front/dist
+web: cd back && npm install && npm start && cd front && npm install && npm run build && npm run serve front/dist
