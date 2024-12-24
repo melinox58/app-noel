@@ -24,6 +24,7 @@ COPY back/ ./back/
 
 # Installer les dépendances backend
 RUN mkdir -p back/public
+RUN npm install --prefix back
 
 # Copier les fichiers buildés du frontend vers le backend
 COPY --from=frontend-build /app/front/dist ./back/public
