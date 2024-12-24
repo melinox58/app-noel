@@ -29,4 +29,6 @@ module.exports = {
       },
     },
   },
+  outputDir: 'dist', // Répertoire de build
+  publicPath: '/',   // Base URL
 };
