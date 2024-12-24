@@ -3,8 +3,6 @@ const webpack = require('webpack');
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
-  outputDir: 'dist', // Dossier de sortie pour le build
-  assetsDir: 'static', // Dossier pour les fichiers statiques (CSS, JS, etc.)
   configureWebpack: {
     resolve: {
       alias: {
