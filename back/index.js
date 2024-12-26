@@ -40,7 +40,7 @@ app.use(bodyParser.json());
 
 // Configuration et activation de CORS
 const corsOptions = {
-    origin: 'http://localhost:5000', // Frontend sur le port 5000
+    origin: 'http://localhost:8080', // Frontend sur le port 8080
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Autoriser ces en-têtes
     credentials: true, // Permet l'utilisation des cookies
