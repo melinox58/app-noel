@@ -26,10 +26,10 @@ COPY back/ ./back/
 RUN npm install --prefix back
 
 # Copier les fichiers buildés du frontend vers le backend
-COPY --from=frontend-build /app/back/public ./back/public
+COPY --from=frontend-build /app/front/dist ./back/public
 
 # Exposer le port
 EXPOSE 3000
 
 # Démarrer le backend
-CMD ["node", "back/index.js"]
+CMD ["node", "back/index.js", "back/public/index.html"]
