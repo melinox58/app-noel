@@ -32,4 +32,4 @@ COPY --from=frontend-build /app/front/dist ./back/public
 EXPOSE 3000
 
 # Démarrer le backend
-CMD ["node", "back/index.js", "back/public/index.html"]
+CMD ["node", "back/index.js"]
