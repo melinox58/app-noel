@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser'); // Middleware pour analyser le body des requêtes
 const cors = require('cors'); // Middleware pour la gestion des CORS
@@ -39,7 +39,7 @@ app.use(bodyParser.json());
 
 // Configuration et activation de CORS
 const corsOptions = {
-    origin: ['http://localhost:3000', 'http://localhost:8080', 'http://localhost:5173'],
+    origin: ['http://localhost:8080'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Autoriser ces en-têtes
     credentials: true, // Permet l'utilisation des cookies
