@@ -22,7 +22,7 @@ app.get('*', (req, res) => { res.sendFile(path.join(__dirname, 'public', 'index.
 app.use(bodyParser.json());
 
 const corsOptions = {
-    origin: ['http://localhost:8080', 'https://osez-noel-3f432aeb3b00.herokuapp.com/'],
+    origin: ['http://localhost:8080', 'https://osez-noel-3f432aeb3b00.herokuapp.com/', 'http://localhost:5000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
