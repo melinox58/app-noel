@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser'); // Middleware pour analyser le body des requêtes
 const cors = require('cors'); // Middleware pour la gestion des CORS
@@ -24,9 +24,7 @@ const { Calendar } = require('./models/mysql/calendarModel');
 app.use(express.static(path.join(__dirname, '../back/public')));
 
 // Renvoyer index.html pour toutes les autres requêtes
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../back/public/index.html'));
-  });
+app.get('*', (req, res) => { res.sendFile(path.join(__dirname, 'dist', 'index.html')); });
 
 // Charger les variables d'environnement
 if (process.env.NODE_ENV !== 'production') {
