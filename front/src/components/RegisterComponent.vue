@@ -134,6 +134,7 @@ import LoginComponent from './LoginComponent.vue';
 import { useRouter } from 'vue-router';
 import { onMounted } from 'vue'; // Ajout de onMounted pour exécuter des actions au montage du composant
 
+const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:5000/api'; // URL de l'API par défaut
 const router = useRouter(); // Instance du routeur
 
 // Références réactives
@@ -152,7 +153,7 @@ const createUser = async () => {
   loading.value = true; // Démarrage du chargement
   errorMessage.value = ''; // Réinitialisation des erreurs
   try {
-    const response = await axios.post('http://localhost:5000/users', newUser.value, {
+    const response = await axios.post(`${apiUrl}/users`, newUser.value, {
       headers: { 'Content-Type': 'application/json' }
     });
     users.value.push(response.data);
@@ -172,7 +173,7 @@ const fetchUsers = async () => {
   loading.value = true; // Démarrage du chargement
   errorMessage.value = ''; // Réinitialisation des erreurs
   try {
-    const response = await axios.get('http://localhost:5000/users', {
+    const response = await axios.get(`${apiUrl}/users`, {
       headers: { 'Content-Type': 'application/json' }
     });
     users.value = response.data;
