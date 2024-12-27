@@ -146,7 +146,7 @@ const users = ref([]);
 
 const createUser = async () => {
   try {
-    const response = await axios.post(`${apiUrl}/users`, newUser.value);
+    const response = await axios.post(`http://localhost:5000/users`, newUser.value);
     users.value.push(response.data);
     alert('Utilisateur crée avec succès!');
     router.push('/dashUser'); // Redirection vers la route dashboard user
@@ -157,7 +157,7 @@ const createUser = async () => {
 
 const fetchUsers = async () => {
   try {
-    const response = await axios.get(`${apiUrl}/users`);
+    const response = await axios.get(`http://localhost:5000/users`);
     users.value = response.data;
   } catch (error) {
     alert('Error fetching users: ' + error.message);
