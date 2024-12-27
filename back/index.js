@@ -48,7 +48,6 @@ const corsOptions = {
 };
 app.use(cors(corsOptions)); // Utilisation du middleware CORS
 app.options('/api/*', cors(corsOptions)); // Répondre aux OPTIONS pour toutes les routes API
-axios.defaults.withCredentials = true; // Permet d'envoyer des cookies avec les requêtes
 
 // === Routes ===
 
