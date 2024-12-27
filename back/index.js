@@ -22,10 +22,10 @@ const { Calendar } = require('./models/mysql/calendarModel');
 // });
 
 // Middleware pour servir les fichiers statiques
-app.use(express.static(path.join(__dirname, '../back/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Renvoyer index.html pour toutes les autres requêtes
-app.get('*', (req, res) => { res.sendFile(path.join(__dirname, 'dist', 'index.html')); });
+app.get('*', (req, res) => { res.sendFile(path.join(__dirname, 'public', 'index.html')); });
 
 // Charger les variables d'environnement
 if (process.env.NODE_ENV !== 'production') {
