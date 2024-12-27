@@ -37,9 +37,13 @@ if (process.env.NODE_ENV !== 'production') {
 // Analyser le body des requêtes JSON
 app.use(bodyParser.json());
 
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(',')
+    : ['http://localhost:8080'];
+
 // Configuration et activation de CORS
 const corsOptions = {
-    origin: ['http://localhost:8080'],
+    origin: allowedOrigins,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Autoriser ces en-têtes
     credentials: true, // Permet l'utilisation des cookies

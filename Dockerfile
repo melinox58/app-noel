@@ -28,6 +28,10 @@ RUN npm install --prefix back
 # Copier les fichiers buildés du frontend vers le backend
 COPY --from=frontend-build /app/front/dist ./back/public
 
+# Ajoutez les variables d'environnement
+ENV NODE_ENV=production
+ENV ALLOWED_ORIGINS=https://osez-noel-3f432aeb3b00.herokuapp.com/
+
 # Exposer le port
 EXPOSE 5000
 
