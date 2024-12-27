@@ -58,7 +58,7 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 
-import logo from '@/assets/img/logo2.png';
+import logo from '@/assets/img/logo2.webp';
 
 const router = useRouter();
 const user = ref(null);
@@ -158,7 +158,7 @@ body {
 
 
 .imgFond {
-  background-image: url('@/assets/img/nice-christmas-background-white-background-with-copy-space.jpg');
+  background-image: url('@/assets/img/background-pages.webp');
   background-size: cover;
   opacity: 90%;
   width: 100%;
