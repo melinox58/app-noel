@@ -39,7 +39,7 @@ app.use(bodyParser.json());
 
 // Configuration et activation de CORS
 const corsOptions = {
-    origin: ['http://localhost:3000', 'http://localhost:8080'],
+    origin: ['http://localhost:3000', 'http://localhost:8080', 'http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Autoriser ces en-têtes
     credentials: true, // Permet l'utilisation des cookies
@@ -47,8 +47,9 @@ const corsOptions = {
     optionsSuccessStatus: 200 // Réponse 200 pour les requêtes OPTIONS
 };
 app.use(cors(corsOptions)); // Utilisation du middleware CORS
-app.options('/api/*', cors(corsOptions)); // Répondre aux OPTIONS pour toutes les routes API
+app.options(`${apiUrl}/*`, cors(corsOptions)); // Répondre aux OPTIONS pour toutes les routes API
 axios.defaults.withCredentials = true; // Permet d'envoyer des cookies avec les requêtes
+axios.defaults.baseURL = `${apiUrl}`; // URL du backend
 
 // === Routes ===
 
