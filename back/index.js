@@ -23,11 +23,7 @@ app.use(bodyParser.json());
 
 // Configuration de CORS
 const corsOptions = {
-    origin: [
-        'http://localhost:8080', // Frontend en local
-        'https://osez-noel-3f432aeb3b00.herokuapp.com/', // Déploiement en production
-        'http://localhost:5000' // Backend en local (si nécessaire)
-    ],
+    origin: [origin: 'https://votre-domaine-en-production.com'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes autorisées
     allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
     credentials: true // Autorisation des cookies et des en-têtes sensibles

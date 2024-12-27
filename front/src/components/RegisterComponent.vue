@@ -132,7 +132,7 @@ import { ref } from 'vue';
 import axios from 'axios';
 import LoginComponent from './LoginComponent.vue';
 import { useRouter } from 'vue-router';
-import { ref, onMounted } from 'vue'; // Ajout de onMounted pour exécuter des actions au montage du composant
+import { onMounted } from 'vue'; // Ajout de onMounted pour exécuter des actions au montage du composant
 
 const router = useRouter(); // Instance du routeur
 
