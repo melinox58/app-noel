@@ -47,9 +47,8 @@ const corsOptions = {
     optionsSuccessStatus: 200 // Réponse 200 pour les requêtes OPTIONS
 };
 app.use(cors(corsOptions)); // Utilisation du middleware CORS
-app.options(`${apiUrl}/*`, cors(corsOptions)); // Répondre aux OPTIONS pour toutes les routes API
+app.options('/api/*', cors(corsOptions)); // Répondre aux OPTIONS pour toutes les routes API
 axios.defaults.withCredentials = true; // Permet d'envoyer des cookies avec les requêtes
-axios.defaults.baseURL = `${apiUrl}`; // URL du backend
 
 // === Routes ===
 
