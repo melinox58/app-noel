@@ -40,7 +40,7 @@ app.use(bodyParser.json());
 
 // Configuration et activation de CORS
 const corsOptions = {
-    origin: 'https://osez-noel-3f432aeb3b00.herokuapp.com', // Frontend sur le port 8080
+    origin: process.env.VUE_APP_API_URL || 'http://localhost:5000/api',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Autoriser ces en-têtes
     credentials: true, // Permet l'utilisation des cookies
