@@ -16,16 +16,21 @@ if (process.env.NODE_ENV !== 'production') {
     dotenv.config();
 }
 
-app.use(express.static(path.join(__dirname, './back/public')));
-app.get('*', (req, res) => { res.sendFile(path.join(__dirname, './back/public/index.html')); });
+app.use(express.static(path.join(__dirname, '../back/public')));
+app.get('*', (req, res) => { res.sendFile(path.join(__dirname, '../back/public/index.html')); });
 
 app.use(bodyParser.json());
 
+// Configuration de CORS
 const corsOptions = {
-    origin: ['http://localhost:8080', 'https://osez-noel-3f432aeb3b00.herokuapp.com'], // Ajoutez toutes les origines autorisées
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes HTTP autorisées
+    origin: [
+        'http://localhost:8080', // Frontend en local
+        'https://osez-noel-3f432aeb3b00.herokuapp.com/', // Déploiement en production
+        'http://localhost:5000' // Backend en local (si nécessaire)
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes autorisées
     allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
-    credentials: true // Permet l'envoi de cookies/headers d'autorisation
+    credentials: true // Autorisation des cookies et des en-têtes sensibles
 };
 
 app.use(cors(corsOptions));
