@@ -16,19 +16,20 @@ if (process.env.NODE_ENV !== 'production') {
     dotenv.config();
 }
 
-app.use(express.static(path.join(__dirname, '../back/public')));
-app.get('*', (req, res) => { res.sendFile(path.join(__dirname, '../back/public/index.html')); });
+app.use(express.static(path.join(__dirname, 'back/public')));
+app.get('*', (req, res) => { res.sendFile(path.join(__dirname, 'back/public/index.html')); });
 
 app.use(bodyParser.json());
 
 const corsOptions = {
-    origin: ['http://localhost:8080', 'https://osez-noel-3f432aeb3b00.herokuapp.com/', 'http://localhost:5000'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+    origin: ['http://localhost:8080', 'https://osez-noel-3f432aeb3b00.herokuapp.com'], // Ajoutez toutes les origines autorisées
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes HTTP autorisées
+    allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
+    credentials: true // Permet l'envoi de cookies/headers d'autorisation
 };
+
 app.use(cors(corsOptions));
-app.options('/api/*', cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 app.get('/', (req, res) => {
     res.json({ message: "L'API fonctionne correctement !" });
