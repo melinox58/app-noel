@@ -37,13 +37,9 @@ if (process.env.NODE_ENV !== 'production') {
 // Analyser le body des requêtes JSON
 app.use(bodyParser.json());
 
-const allowedOrigins = process.env.ALLOWED_ORIGINS
-    ? process.env.ALLOWED_ORIGINS.split(',')
-    : ['http://localhost:8080'];
-
 // Configuration et activation de CORS
 const corsOptions = {
-    origin: allowedOrigins,
+    origin: ['http://localhost:8080', 'https://osez-noel-3f432aeb3b00.herokuapp.com/', 'http://localhost:5000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Autoriser ces en-têtes
     credentials: true, // Permet l'utilisation des cookies
@@ -52,7 +48,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions)); // Utilisation du middleware CORS
 app.options('/api/*', cors(corsOptions)); // Répondre aux OPTIONS pour toutes les routes API
-axios.defaults.withCredentials = true; // Permet d'envoyer des cookies avec les requêtes
+axios.defaults.withCredentials = include; // Permet d'envoyer des cookies avec les requêtes
 
 // === Routes ===
 
