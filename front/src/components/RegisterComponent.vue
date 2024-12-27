@@ -134,7 +134,6 @@ import LoginComponent from './LoginComponent.vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter(); // Déclare l'instance du routeur
-const apiUrl = 'http://localhost:5000/api'; // URL de l'API par défaut
 const newUser = ref({
   name: '',
   firstname: '',

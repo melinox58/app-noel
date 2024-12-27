@@ -2,89 +2,60 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000;
 const dotenv = require('dotenv');
-const bodyParser = require('body-parser'); // Middleware pour analyser le body des requêtes
-const cors = require('cors'); // Middleware pour la gestion des CORS
-const dbMongo = require('./config/mongoDb'); // Connexion MongoDB
-const db = require('./config/db-config'); // Config de la base de données relationnelle (MySQL, etc.)
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const dbMongo = require('./config/mongoDb');
+const db = require('./config/db-config');
 const path = require('path');
 const axios = require('axios');
 
-
 const { sequelize } = require('./models/mysql/calendarModel');
 const { Calendar } = require('./models/mysql/calendarModel');
-// const { Case } = require('./models/mysql/caseModel');
 
-// Synchronisation de la base de données
-// sequelize.sync({ alter: true }).then(() => {
-//     console.log('Les modèles ont été synchronisés avec succès.');
-// }).catch((error) => {
-//     console.error('Erreur lors de la synchronisation des modèles :', error);
-// });
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.config();
+}
 
-// Middleware pour servir les fichiers statiques
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Renvoyer index.html pour toutes les autres requêtes
 app.get('*', (req, res) => { res.sendFile(path.join(__dirname, 'public', 'index.html')); });
 
-// Charger les variables d'environnement
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-  }
-
-// === Middleware globaux ===
-
-// Analyser le body des requêtes JSON
 app.use(bodyParser.json());
 
-// Configuration et activation de CORS
 const corsOptions = {
-    origin: ['http://localhost:8080', 'https://osez-noel-3f432aeb3b00.herokuapp.com/', 'http://localhost:5000'],
+    origin: ['http://localhost:8080', 'https://osez-noel-3f432aeb3b00.herokuapp.com/'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Autoriser ces en-têtes
-    credentials: true, // Permet l'utilisation des cookies
-    preflightContinue: true, // Autorise les requêtes préalables
-    optionsSuccessStatus: 200 // Réponse 200 pour les requêtes OPTIONS
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 };
-app.use(cors(corsOptions)); // Utilisation du middleware CORS
-app.options('/api/*', cors(corsOptions)); // Répondre aux OPTIONS pour toutes les routes API
+app.use(cors(corsOptions));
+app.options('/api/*', cors(corsOptions));
 
-// === Routes ===
-
-// Test de fonctionnement de l'API
 app.get('/', (req, res) => {
     res.json({ message: "L'API fonctionne correctement !" });
 });
 
-// Routes spécifiques
 const calendarRoutes = require('./Routes/calendarRoutes');
-app.use('/api/calendar', calendarRoutes); // Gestion des calendriers
-
-// const caseRoutes = require('./Routes/caseRoutes');
-// app.use('/api/cases', caseRoutes); // Gestion des cases
+app.use('/api/calendar', calendarRoutes);
 
 const surpriseRoutes = require('./Routes/surpriseRoutes');
-app.use('/api/surprises', surpriseRoutes); // Gestion des surprises
+app.use('/api/surprises', surpriseRoutes);
 
 const avisRoutes = require('./Routes/avisRoutes');
-app.use('/api/avis', avisRoutes); // Gestion des avis
+app.use('/api/avis', avisRoutes);
 
 const userRoutes = require('./Routes/userRoutes');
-app.use('/api/users', userRoutes); // Gestion des utilisateurs
+app.use('/api/users', userRoutes);
 
-// === Connexions aux bases de données ===
-
-// Connexion à MongoDB
 (async () => {
     try {
         await dbMongo();
         console.log("Connexion à MongoDB réussie.");
     } catch (error) {
         console.error("Erreur lors de la connexion à MongoDB :", error);
+        process.exit(1);  // Arrêt de l'application si la connexion échoue
     }
 })();
 
-// Test de la connexion MySQL dans une route
 app.get('/test-mysql', (req, res) => {
     db.query('SELECT NOW()', (err, result) => {
         if (err) {
@@ -95,8 +66,6 @@ app.get('/test-mysql', (req, res) => {
     });
 });
 
-
-// === Démarrage du serveur ===
 app.listen(PORT, () => {
     console.log(`Serveur en cours d'exécution sur le port ${PORT}`);
 });
