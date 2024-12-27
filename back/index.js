@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 // Configuration de CORS
 const corsOptions = {
-    origin: [origin: 'https://votre-domaine-en-production.com'],
+    origin: ['https://votre-domaine-en-production.com'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes autorisées
     allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
     credentials: true // Autorisation des cookies et des en-têtes sensibles
