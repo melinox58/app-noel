@@ -40,7 +40,7 @@ app.use(bodyParser.json());
 
 // Configuration et activation de CORS
 const corsOptions = {
-    origin: process.env.VUE_APP_API_URL || 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'http://localhost:8080'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Autoriser ces en-têtes
     credentials: true, // Permet l'utilisation des cookies
@@ -49,6 +49,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions)); // Utilisation du middleware CORS
 app.options('/api/*', cors(corsOptions)); // Répondre aux OPTIONS pour toutes les routes API
+axios.defaults.withCredentials = true; // Permet d'envoyer des cookies avec les requêtes
 
 // === Routes ===
 

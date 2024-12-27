@@ -29,7 +29,7 @@ RUN npm install --prefix back
 COPY --from=frontend-build /app/front/dist ./back/public
 
 # Exposer le port
-EXPOSE 3000
+EXPOSE 5000
 
 # Démarrer le backend
 CMD ["node", "back/index.js"]
