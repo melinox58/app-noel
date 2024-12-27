@@ -128,8 +128,9 @@ form{
 </style>
 
 <script setup>
-import { ref, onMounted } from 'vue'; // Ajout de onMounted pour exécuter des actions au montage du composant
+import { ref } from 'vue';
 import axios from 'axios';
+import LoginComponent from './LoginComponent.vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter(); // Instance du routeur
@@ -186,4 +187,3 @@ const fetchUsers = async () => {
 // Exécuter fetchUsers au montage du composant
 onMounted(fetchUsers);
 </script>
-
