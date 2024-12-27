@@ -42,7 +42,7 @@ nav{
   font-size: 0.5rem;
   display: flex;
   width: 20vw;
-  background-image: url('@/assets/img/background/preview.jpg');
+  background-image: url('@/assets/img/background/preview.webp');
   background-size: cover;
   color:white;
   border-radius: 20px;

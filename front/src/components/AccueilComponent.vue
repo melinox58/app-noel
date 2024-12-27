@@ -64,7 +64,7 @@ p{
   display: flex;
   margin: 2% 0 0;
   width: 55vw;
-  background-image: url('@/assets/img/background/preview.jpg');
+  background-image: url('@/assets/img/background/preview.webp');
   background-size: cover;
   border-radius: 20px;
   height: 5%;

@@ -73,7 +73,7 @@ form{
   display: flex;
   width: 30vw;
   margin-top: 5%;
-  background-image: url('@/assets/img/background/preview.jpg');
+  background-image: url('@/assets/img/background/preview.webp');
   background-size: cover;
   color:white;
   border-radius: 20px;
