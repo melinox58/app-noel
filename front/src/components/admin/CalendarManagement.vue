@@ -20,6 +20,7 @@ import axios from 'axios';
 
 const calendars = ref([]);
 const searchQuery = ref('');
+const apiUrl = process.env.VUE_APP_API_URL;
 
 const fetchCalendars = async () => {
   try {

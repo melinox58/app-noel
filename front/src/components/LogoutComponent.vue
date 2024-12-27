@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
+const apiUrl = process.env.VUE_APP_API_URL;
 
 const logoutUser = async () => {
   try {

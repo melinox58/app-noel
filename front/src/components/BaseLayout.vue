@@ -62,7 +62,7 @@ import logo from '@/assets/img/logo2.png';
 
 const router = useRouter();
 const user = ref(null);
-
+const apiUrl = process.env.VUE_APP_API_URL;
 
 // Déconnexion de l'utilisateur
 const logoutUser = async () => {

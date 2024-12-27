@@ -20,6 +20,7 @@ import axios from 'axios';
 
 const users = ref([]);
 const searchQuery = ref('');
+const apiUrl = process.env.VUE_APP_API_URL;
 
 const fetchUsers = async () => {
   try {

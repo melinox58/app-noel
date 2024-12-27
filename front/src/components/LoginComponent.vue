@@ -20,6 +20,7 @@ const user = ref({
   email: '',
   password: ''
 });
+const apiUrl = process.env.VUE_APP_API_URL;
 
 const loginUser = async () => {
   try {

@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue'; //ref est une fonction de la Composition A
 import axios from 'axios';
 import DateComponent from '@/components/DateComponent.vue';
 
-
+const apiUrl = process.env.VUE_APP_API_URL;
 const newCalendar = ref({
   title: '',
   user_id: '',

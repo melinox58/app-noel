@@ -7,7 +7,7 @@ import axios from 'axios'
 // Configuration globale d'Axios
 axios.defaults.baseURL = 'http://localhost:5000'; // URL de votre backend
 axios.defaults.withCredentials = true; // Permet d'envoyer des cookies avec les requêtes
-
+const apiUrl = process.env.VUE_APP_API_URL;
 // Créez l'application et enregistrez-la dans une variable
 const app = createApp(App);
 

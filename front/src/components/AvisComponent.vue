@@ -47,6 +47,7 @@
     comment: '',
     note: '',
   });
+  const apiUrl = process.env.VUE_APP_API_URL;
   
   // Fonction pour récupérer les avis existants
   const fetchAvis = async () => {

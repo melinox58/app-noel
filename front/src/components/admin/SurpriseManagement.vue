@@ -21,6 +21,7 @@ import axios from 'axios';
 
 const surprises = ref([]);
 const searchQuery = ref('');
+const apiUrl = process.env.VUE_APP_API_URL;
 
 const fetchSurprises = async () => {
   try {
