@@ -59,7 +59,7 @@ const images = [
   { id: 16, src: require('@/assets/img/background/freepik__candid-image-photography-natural-textures-highly-r__29958.jpeg'), name: 'Image 4', description: 'Description 4' },
   { id: 17, src: require('@/assets/img/background/freepik__candid-image-photography-natural-textures-highly-r__29959.jpeg'), name: 'Image 2', description: 'Description 2' },
   { id: 18, src: require('@/assets/img/background/holiday-6903031_1280.jpg'), name: 'Image 3', description: 'Description 3' },
-  { id: 19, src: require('@/assets/img/background/preview.jpg'), name: 'Image 1', description: 'Description 1' },
+  { id: 19, src: require('@/assets/img/background/preview.webp'), name: 'Image 1', description: 'Description 1' },
   { id: 20, src: require('@/assets/img/background/v1055-a-07a.jpg'), name: 'Image 2', description: 'Description 2' }
 
 ]
