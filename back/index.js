@@ -7,6 +7,7 @@ const cors = require('cors'); // Middleware pour la gestion des CORS
 const dbMongo = require('./config/mongoDb'); // Connexion MongoDB
 const db = require('./config/db-config'); // Config de la base de données relationnelle (MySQL, etc.)
 const path = require('path');
+const axios = require('axios');
 
 
 const { sequelize } = require('./models/mysql/calendarModel');
