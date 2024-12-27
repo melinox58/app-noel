@@ -3,11 +3,11 @@ import axios from 'axios';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const apiUrl = process.env.VUE_APP_API_URL;
+const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:5000/api'; // URL de l'API par défaut
 
 const logoutUser = async () => {
   try {
-    await axios.post('http://localhost:5000/api/users/logout');
+    await axios.post(`${apiUrl}/users/logout`);
     localStorage.removeItem('user'); // Supprimez les données de l'utilisateur du localStorage
     alert('Déconnexion réussie!');
     router.push('/'); // Redirigez vers la page d'accueil

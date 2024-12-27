@@ -20,11 +20,11 @@ const user = ref({
   email: '',
   password: ''
 });
-const apiUrl = process.env.VUE_APP_API_URL;
+const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:5000/api'; // URL de l'API par défaut
 
 const loginUser = async () => {
   try {
-    const response = await axios.post('http://localhost:5000/api/users/login', user.value);
+    const response = await axios.post(`${apiUrl}/users/login`, user.value);
     const userData = response.data;
     localStorage.setItem('user', JSON.stringify(userData)); // Stockez les données de l'utilisateur dans le localStorage
     alert(`Connexion réussie! Vous êtes connecté en tant que ${userData.firstname} ${userData.name}`);

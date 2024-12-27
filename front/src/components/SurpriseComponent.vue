@@ -4,7 +4,7 @@ import axios from 'axios';
 import DateComponent from '@/components/DateComponent.vue';
 import CaseComponent from '@/components/CaseComponent.vue';
 
-const apiUrl = process.env.VUE_APP_API_URL;
+const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:5000/api'; // URL de l'API par défaut
 const user = ref(null);
 const newCalendar = ref({
   title: '',
@@ -16,7 +16,7 @@ const days = ref(Array.from({ length: 24 }, (_, i) => i + 1));
 
 const createCalendar = async () => {
   try {
-    await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
+    await axios.post(`${apiUrl}/calendar`, newCalendar.value);
     newCalendar.value = { title: '', user_id: 1, theme: '' }; // Réinitialisation
     alert('Le calendrier a été créé avec succès!');
   } catch (error) {

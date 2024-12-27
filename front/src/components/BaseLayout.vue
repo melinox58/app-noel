@@ -62,12 +62,12 @@ import logo from '@/assets/img/logo2.png';
 
 const router = useRouter();
 const user = ref(null);
-const apiUrl = process.env.VUE_APP_API_URL;
+const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:5000/api'; // URL de l'API par défaut
 
 // Déconnexion de l'utilisateur
 const logoutUser = async () => {
   try {
-    await axios.post('http://localhost:5000/api/users/logout');
+    await axios.post(`${apiUrl}/users/logout`);
     localStorage.removeItem('user');
     alert('Déconnexion réussie!');
     user.value = null;

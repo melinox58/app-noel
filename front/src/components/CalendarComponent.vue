@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue'; //ref est une fonction de la Composition A
 import axios from 'axios';
 import DateComponent from '@/components/DateComponent.vue';
 
-const apiUrl = process.env.VUE_APP_API_URL;
+const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:5000/api'; // URL de l'API par défaut
 const newCalendar = ref({
   title: '',
   user_id: '',
@@ -13,7 +13,7 @@ const newCalendar = ref({
 
 const createCalendar = async() => {
   try {
-    await axios.post('http://localhost:5000/api/calendar', newCalendar.value);
+    await axios.post(`${apiUrl}/calendar`, newCalendar.value);
     newCalendar.value = { title: '', user_id: '', theme: '' };
     alert('Le calendrier a été crée avec succès!');
   } catch (error) {

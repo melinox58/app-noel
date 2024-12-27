@@ -47,12 +47,12 @@
     comment: '',
     note: '',
   });
-  const apiUrl = process.env.VUE_APP_API_URL;
+  const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:5000/api'; // URL de l'API par défaut
   
   // Fonction pour récupérer les avis existants
   const fetchAvis = async () => {
     try {
-      const response = await axios.get('/api/avis');
+      const response = await axios.get(`${apiUrl}/avis`);
       listeAvis.value = response.data;
     } catch (error) {
       console.error('Erreur lors du chargement des avis :', error);
@@ -62,7 +62,7 @@
   // Fonction pour récupérer les calendriers de l'utilisateur connecté
   const fetchCalendars = async () => {
     try {
-      const response = await axios.get('/api/calendars');
+      const response = await axios.get(`${apiUrl}/calendars`);
       calendars.value = response.data;
     } catch (error) {
       console.error('Erreur lors du chargement des calendriers :', error);
@@ -72,7 +72,7 @@
   // Fonction pour créer un nouvel avis
   const createAvis = async () => {
     try {
-      const response = await axios.post('/api/avis', nouvelAvis.value);
+      const response = await axios.post((`${apiUrl}/avis`), nouvelAvis.value);
       listeAvis.value.push(response.data); // Ajouter à la liste locale
       nouvelAvis.value = { calendar_id: '', comment: '', note: '' }; // Réinitialiser le formulaire
     } catch (error) {
