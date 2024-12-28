@@ -5,7 +5,7 @@ import router from './router';
 import axios from 'axios';
 
 // Configuration globale d'Axios
-axios.defaults.baseURL = '/api'; // URL de votre backend
+// axios.defaults.baseURL = '/api'; // URL de votre backend
 // Créez l'application et enregistrez-la dans une variable
 const app = createApp(App);
 
