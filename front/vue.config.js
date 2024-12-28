@@ -23,12 +23,11 @@ module.exports = {
     port: 8080, // Port utilisé pendant le développement
     proxy: {
       '/api': {
-        target: process.env.VUE_APP_API_URL || 'http://localhost:3000', // Redirige les appels API vers le backend
+        target: process.env.VUE_APP_API_URL || 'http://localhost:5000', // Redirige les appels API vers le backend
         changeOrigin: true,
         secure: false,
       },
     },
   },
   outputDir: 'dist', // Répertoire de build
-  publicPath: '/',   // Base URL
 };

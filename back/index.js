@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 5000 || 'https://votre-domaine-en-production.com';
+const PORT = process.env.PORT || 5000;
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -23,17 +23,13 @@ app.use(bodyParser.json());
 
 // Configuration de CORS
 const corsOptions = {
-    origin: ['https://votre-domaine-en-production.com'],
+    origin: ['https://osez-noel-3f432aeb3b00.herokuapp.com'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes autorisées
     allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
     credentials: true // Autorisation des cookies et des en-têtes sensibles
 };
 
 app.use(cors(corsOptions));
-// Autoriser les requêtes de https://osez-noel-3f432aeb3b00.herokuapp.com
-app.use(cors({
-    origin: 'https://osez-noel-3f432aeb3b00.herokuapp.com'
-  }));
 
 app.get('/', (req, res) => {
     res.json({ message: "L'API fonctionne correctement !" });
