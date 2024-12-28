@@ -63,3 +63,5 @@
 --     (NULL, NULL, 'front/src/assets/img/background/holiday-6903031_1280.jpg', 'Table en bois décorée de 3 bougies blanches, de branches de sapin et de houx'),
 --     (NULL, NULL, 'front/src/assets/img/background/preview.jpg', 'Fond lumineux rouge scintillant avec en haut et en bas, une myriade de flocons blancs'),
 --     (NULL, NULL, 'front/src/assets/img/background/v1055-a-07a.jpg', 'Dessin de mains tenant chacune une bougie, un petit sapin de Noël et un cadeau');
+
+
