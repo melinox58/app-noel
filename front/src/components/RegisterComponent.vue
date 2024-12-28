@@ -14,6 +14,7 @@
           <input v-model="newUser.firstname" placeholder="Prénom" required />
           <input v-model="newUser.email" placeholder="Email" required />
           <input v-model="newUser.password" type="mot de passe" placeholder="Password" required />
+          <input v-model="newUser.is_blocked" type="hidden"/>
           <button class="btn" type="submit">Valider</button>
         </form>
       </div>
