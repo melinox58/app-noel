@@ -139,7 +139,8 @@ const newUser = ref({
   name: '',
   firstname: '',
   email: '',
-  password: ''
+  password: '',
+  is_blocked: ''
 });
 
 const users = ref([]);
