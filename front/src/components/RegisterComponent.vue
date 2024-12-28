@@ -132,59 +132,39 @@ import { ref } from 'vue';
 import axios from 'axios';
 import LoginComponent from './LoginComponent.vue';
 import { useRouter } from 'vue-router';
-import { onMounted } from 'vue'; // Ajout de onMounted pour exécuter des actions au montage du composant
 
-const router = useRouter(); // Instance du routeur
+const router = useRouter(); // Déclare l'instance du routeur
 
-// Références réactives
 const newUser = ref({
   name: '',
   firstname: '',
   email: '',
   password: ''
 });
-const users = ref([]);
-const loading = ref(false); // Indicateur de chargement
-const errorMessage = ref(''); // Message d'erreur pour affichage ou debug
 
-// Fonction pour créer un utilisateur
+const users = ref([]);
+
 const createUser = async () => {
-  loading.value = true; // Démarrage du chargement
-  errorMessage.value = ''; // Réinitialisation des erreurs
   try {
-    const response = await axios.post(`/users`, newUser.value, {
-      headers: { 'Content-Type': 'application/json' }
-    });
+    const response = await axios.post('/api/users', newUser.value);
     users.value.push(response.data);
-    alert('Utilisateur créé avec succès !');
-    router.push('/dashUser'); // Redirection vers la route du tableau de bord utilisateur
+    alert('Utilisateur crée avec succès!');
+    router.push('/dashUser'); // Redirection vers la route dashboard user
   } catch (error) {
-    console.error('Erreur lors de la création de l’utilisateur:', error);
-    errorMessage.value = error.response?.data?.message || 'Une erreur est survenue.';
-    alert('Une erreur est survenue : ' + errorMessage.value);
-  } finally {
-    loading.value = false; // Fin du chargement
+    alert('une erreur est survenue: ' + error.message);
   }
 };
 
-// Fonction pour récupérer tous les utilisateurs
 const fetchUsers = async () => {
-  loading.value = true; // Démarrage du chargement
-  errorMessage.value = ''; // Réinitialisation des erreurs
   try {
-    const response = await axios.get(`/users`, {
-      headers: { 'Content-Type': 'application/json' }
-    });
+    const response = await axios.get('/api/users');
     users.value = response.data;
   } catch (error) {
-    console.error('Erreur lors de la récupération des utilisateurs:', error);
-    errorMessage.value = error.response?.data?.message || 'Erreur lors de la récupération des utilisateurs.';
-    alert('Erreur lors de la récupération des utilisateurs : ' + errorMessage.value);
-  } finally {
-    loading.value = false; // Fin du chargement
+    alert('Error fetching users: ' + error.message);
   }
 };
 
-// Exécuter fetchUsers au montage du composant
-onMounted(fetchUsers);
+
+// Fetch users when the component is created
+fetchUsers();
 </script>
