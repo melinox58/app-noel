@@ -16,7 +16,7 @@ const days = ref(Array.from({ length: 24 }, (_, i) => i + 1));
 
 const createCalendar = async () => {
   try {
-    await axios.post(`${apiUrl}/calendar`, newCalendar.value);
+    await axios.post(`/calendar`, newCalendar.value);
     newCalendar.value = { title: '', user_id: 1, theme: '' }; // Réinitialisation
     alert('Le calendrier a été créé avec succès!');
   } catch (error) {

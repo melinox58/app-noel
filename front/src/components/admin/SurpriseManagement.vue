@@ -21,11 +21,10 @@ import axios from 'axios';
 
 const surprises = ref([]);
 const searchQuery = ref('');
-const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:5000/api'; // URL de l'API par défaut
 
 const fetchSurprises = async () => {
   try {
-    const response = await axios.get(`${apiUrl}/surprises`);
+    const response = await axios.get(`/surprises`);
     surprises.value = response.data;
   } catch (error) {
     console.error('Error fetching surprises:', error);
@@ -34,7 +33,7 @@ const fetchSurprises = async () => {
 
 const deleteSurprise = async (id) => {
   try {
-    await axios.delete(`${apiUrl}/surprises/${id}`);
+    await axios.delete(`/surprises/${id}`);
     await fetchSurprises();
   } catch (error) {
     console.error('Error deleting surprise:', error);

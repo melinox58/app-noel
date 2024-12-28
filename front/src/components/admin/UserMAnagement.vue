@@ -20,11 +20,10 @@ import axios from 'axios';
 
 const users = ref([]);
 const searchQuery = ref('');
-const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:5000/api'; // URL de l'API par défaut
 
 const fetchUsers = async () => {
   try {
-    const response = await axios.get(`${apiUrl}/users`);
+    const response = await axios.get(`/users`);
     users.value = response.data;
   } catch (error) {
     console.error('Error fetching users:', error);
@@ -33,7 +32,7 @@ const fetchUsers = async () => {
 
 const deleteUser = async (id) => {
   try {
-    await axios.delete(`${apiUrl}/users/${id}`);
+    await axios.delete(`/users/${id}`);
     fetchUsers();
   } catch (error) {
     console.error('Error deleting user:', error);
@@ -42,7 +41,7 @@ const deleteUser = async (id) => {
 
 const blockUser = async (id) => {
   try {
-    await axios.post(`${apiUrl}/users/block/${id}`);
+    await axios.post(`/users/block/${id}`);
     await fetchUsers();
   } catch (error) {
     console.error('Error blocking user:', error);

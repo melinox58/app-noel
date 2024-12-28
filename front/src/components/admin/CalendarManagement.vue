@@ -20,11 +20,10 @@ import axios from 'axios';
 
 const calendars = ref([]);
 const searchQuery = ref('');
-const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:5000/api'; // URL de l'API par défaut
 
 const fetchCalendars = async () => {
   try {
-    const response = await axios.get(`${apiUrl}/calendars`);
+    const response = await axios.get(`/calendars`);
     calendars.value = response.data;
   } catch (error) {
     console.error('Error fetching calendars:', error);
@@ -33,7 +32,7 @@ const fetchCalendars = async () => {
 
 const deleteCalendar = async (id) => {
   try {
-    await axios.delete(`${apiUrl}/calendar/${id}/`);
+    await axios.delete(`/calendar/${id}/`);
     fetchCalendars();
   } catch (error) {
     console.error('Error deleting calendar:', error);
