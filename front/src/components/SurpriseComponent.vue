@@ -4,7 +4,6 @@ import axios from 'axios';
 import DateComponent from '@/components/DateComponent.vue';
 import CaseComponent from '@/components/CaseComponent.vue';
 
-const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:5000/api'; // URL de l'API par défaut
 const user = ref(null);
 const newCalendar = ref({
   title: '',
