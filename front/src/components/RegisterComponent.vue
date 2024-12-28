@@ -149,7 +149,7 @@ const createUser = async () => {
     const response = await axios.post('/users', newUser.value);
     users.value.push(response.data);
     alert('Utilisateur crée avec succès!');
-    router.push('/dashUser'); // Redirection vers la route dashboard user
+    await router.push('/dashUser'); // Redirection vers la route dashboard user
   } catch (error) {
     alert('une erreur est survenue: ' + error.message);
   }
