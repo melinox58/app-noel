@@ -30,4 +30,10 @@ module.exports = {
     },
   },
   outputDir: 'dist', // Répertoire de build
+  css: {
+    extract: true,
+    minimize: false
+  }
 };
+
+
