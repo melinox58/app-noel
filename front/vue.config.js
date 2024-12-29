@@ -31,9 +31,15 @@ module.exports = {
   },
   outputDir: 'dist', // Répertoire de build
   css: {
-    extract: true,
-    minimize: false
-  }
+    extract: true,  // Extraction des fichiers CSS en production
+    sourceMap: process.env.NODE_ENV !== 'production',  // Source maps en dev uniquement
+    loaderOptions: {
+      css: {
+        // Désactive la minification en production
+        minimize: false,
+      },
+    },
+  },
 };
 
 
