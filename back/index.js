@@ -4,42 +4,17 @@ const PORT = process.env.PORT || 5000;
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const dbMongo = require('./config/mongoDb');
+const dbMongo = require('./config/mongoDb');
 const db = require('./config/db-config');
 const path = require('path');
 const axios = require('axios');
 
-require('dotenv').config();
+const { sequelize } = require('./models/mysql/calendarModel');
+const { Calendar } = require('./models/mysql/calendarModel');
 
-const mysqlHost = process.env.DB_HOST;
-const mongoUrl = process.env.MONGODB_URL;
-
-console.log(`MySQL host: ${mysqlHost}`);
-console.log(`MongoDB URL: ${mongoUrl}`);
-
-const mysql = require('mysql');
-
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
-
-connection.connect((err) => {
-  if (err) throw err;
-  console.log('Connected to MySQL!');
-});
-
-const mongoose = require('mongoose');
-
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB!'))
-  .catch((err) => console.error('MongoDB connection error:', err));
-
-
-
-
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.config();
+}
 
 app.use(express.static(path.join(__dirname, '../back/public')));
 app.get('*', (req, res) => { res.sendFile(path.join(__dirname, '../back/public/index.html')); });
@@ -72,7 +47,25 @@ app.use('/api/avis', avisRoutes);
 const userRoutes = require('./Routes/userRoutes');
 app.use('/api/users', userRoutes);
 
+(async () => {
+    try {
+        await dbMongo();
+        console.log("Connexion à MongoDB réussie.");
+    } catch (error) {
+        console.error("Erreur lors de la connexion à MongoDB :", error);
+        process.exit(1);  // Arrêt de l'application si la connexion échoue
+    }
+})();
 
+app.get('/test-mysql', (req, res) => {
+    db.query('SELECT NOW()', (err, result) => {
+        if (err) {
+            console.error('Erreur de requête MySQL:', err.message);
+            return res.status(500).json({ error: 'Erreur de base de données' });
+        }
+        res.json({ message: 'Connexion réussie à MySQL', time: result[0] });
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Serveur en cours d'exécution sur le port ${PORT}`);
