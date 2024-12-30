@@ -309,6 +309,10 @@ ul{
     margin: 0;
   }
 
+  .img-row{
+    margin: auto;
+  }
+
   .image-row img {
     width: 20vw;
     margin: auto;
