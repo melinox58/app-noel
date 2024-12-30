@@ -210,6 +210,7 @@ ul{
     font-size: 1.5rem;
     margin-bottom: 2%;
     margin-top: -4.5%;
+    margin-left: -10%;
   }
 
   .date {
@@ -226,11 +227,13 @@ ul{
 
   div{
     margin-bottom: 0.5%;
+    margin-left: -10%;
   }
 
   section h2 {
     font-size:1.4rem;
     width: 20vw;
+    margin-top: 2%;
   }
 
   .date {
