@@ -139,7 +139,7 @@ onMounted(() => {
 </script>
 
 
-<style scoped>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 body {
@@ -297,7 +297,7 @@ header nav {
     justify-content: flex-start; /* Aligne les liens à gauche */
 }
 
-.imgFond[data-v-49eec20b] {
+.imgFond {
   width: 109%;
   height: 100%;
   position: fixed; /* L'image de fond reste fixe */
