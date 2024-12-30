@@ -291,7 +291,7 @@ ul{
     height: 30%;
   }
 
-  .content-container > main:nth-child(2) > section:nth-child(4) > aside:nth-child(3) {
+  aside{
     margin-top: -1.3%;
   }
 
@@ -315,7 +315,8 @@ ul{
   }
 
   .image-row img {
-    width: 22vw;
+    width: 20vw;
+    margin: auto;
   }
 
   .image-table{
@@ -324,6 +325,7 @@ ul{
     display: flex;
     align-items: center;
     height: 57vh;
+    margin: 0;
   }
 
   .image-container[data-v-67104fdf] {
