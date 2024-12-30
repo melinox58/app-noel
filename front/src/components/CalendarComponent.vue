@@ -291,10 +291,6 @@ ul{
     height: 30%;
   }
 
-  aside{
-    margin-top: -1.3%;
-  }
-
   section .config{
     background-color: rgba(255, 255, 255, 0.858);
     display: flex;
@@ -303,7 +299,7 @@ ul{
     width: 14%;
     justify-content: center;
     margin-left: -12vw;
-    margin-top: -68.5vh;
+    margin-top: -80.2vh;
     gap: 10%;
     position: relative;
     z-index: 8;
