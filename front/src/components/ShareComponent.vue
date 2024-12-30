@@ -99,7 +99,6 @@ form{
   display: flex;
   flex-direction: column;
   gap: 3%;
-  width: 89vw;
   height: 17%;
   align-items: center;
   justify-content: center;
@@ -134,8 +133,7 @@ form{
 
 .config{
   display: flex;
-  margin-top: -98%;
-  margin-top: -113%;
+  margin-top: -97%;
   justify-content: center;
   width: 90vw;
   list-style-type: none;
