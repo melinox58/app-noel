@@ -189,6 +189,10 @@ ul{
     margin-top: -4.5%;
   }
 
+  .date[data-v-a3dbb0b0]{
+    width: 25vw;
+  }
+
   p{
     margin-bottom: 0;
   }
@@ -234,7 +238,7 @@ ul{
     height: 30%;
   }
 
-  section .config{
+  section .config[data-v-7d2ba363]{
     background-color: rgba(255, 255, 255, 0.858);
     display: flex;
     flex-direction: column;
@@ -242,7 +246,7 @@ ul{
     width: 14%;
     justify-content: center;
     margin-left: -12vw;
-    margin-top: -70.6vh;
+    margin-top: -9.7vh;
     gap: 10%;
     position: relative;
     z-index: 8;
