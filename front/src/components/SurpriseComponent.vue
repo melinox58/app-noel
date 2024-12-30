@@ -249,7 +249,7 @@ ul{
     gap: 5%;
     width: 100%;
     height: 100%;
-    margin-top: -11%;
+    margin-top: 0.1%;
   }
 
   section input {
