@@ -51,7 +51,7 @@ h3{
 }
 
 input{
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   color: blue;
   height: 3vh;
 }
@@ -79,7 +79,7 @@ form{
   background-size: cover;
   color:white;
   border-radius: 20px;
-  height: 4vh;
+  height: 3vh;
   justify-content: center;
   align-items: center;
   background-position: center;

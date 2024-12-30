@@ -52,9 +52,9 @@ h3{
 
 input{
   color: blue;
-  height: 2vh;
   font-size: 0.8rem;
   height: 3vh;
+  width: 50vw;
 }
 
 .form-group[data-v-270adaa0] {
