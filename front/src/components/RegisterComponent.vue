@@ -47,8 +47,18 @@ h3{
 input{
   color: blue;
   height: 2vh;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
+  height: 3vh;
 }
+
+.form-group[data-v-270adaa0] {
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  margin:-1%;
+  height: 4.5vh;
+}
+
 
 .register{
   display: flex;
@@ -67,6 +77,10 @@ form{
   flex-direction: column;
   align-items: center;
   margin: 15%;
+}
+
+.carousel-inner {
+  margin: 4% 0 4% 0;
 }
 
 .btn{
