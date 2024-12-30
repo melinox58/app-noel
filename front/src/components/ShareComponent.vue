@@ -63,7 +63,9 @@ onMounted(() => {
 section{
   width: 80vw;
   height: 60vh;
-  margin-right: 10%;
+  margin-right: -5%;
+  display: flex;
+  flex-direction: column;
 }
 
 h3{
@@ -95,12 +97,14 @@ input{
 
 form{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 3%;
   width: 89vw;
   height: 17%;
   align-items: center;
   justify-content: center;
+  margin-top: 27%;
+  margin-left: -7%;
 }
 
 .content-container > main:nth-child(2) > div:nth-child(1) {
@@ -130,7 +134,7 @@ form{
 
 .config{
   display: flex;
-  margin-top: -150%;
+  margin-top: -98%;
   margin-top: -113%;
   justify-content: center;
   width: 90vw;
