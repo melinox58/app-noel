@@ -197,6 +197,8 @@ ul{
 @media only screen and (min-width: 768px){
 
   section{
+    display: flex;
+    flex-direction: column;
     background-color: rgba(255, 255, 255, 0.854);
     width: 80vw;
     height: 68vh;
@@ -236,6 +238,8 @@ ul{
   }
 
   section form{
+    display: flex;
+    flex-direction: column;
     gap: 5%;
     width: 100%;
     height: 14%;
@@ -262,7 +266,7 @@ ul{
     width: 14%;
     justify-content: center;
     margin-left: -12vw;
-    margin-top: -9.5vh;
+    margin-top: -12.5vh;
     gap: 10%;
     position: relative;
     z-index: 8;
