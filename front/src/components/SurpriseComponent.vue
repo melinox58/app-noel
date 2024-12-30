@@ -240,10 +240,6 @@ ul{
     height: 14%;
   }
 
-  /* .theme{
-    width: 100%;
-  } */
-
   section input {
     width: 30vw;
     height: 40%;
@@ -257,11 +253,7 @@ ul{
     height: 30%;
   }
 
-  section form[data-v-11327214] {
-    height: 100%;
-}
-
-  section .config[data-v-11327214]{
+  section .config{
     background-color: rgba(255, 255, 255, 0.858);
     display: flex;
     flex-direction: column;
@@ -294,7 +286,7 @@ ul{
     margin: 0;
   }
 
-  .image-container[data-v-67104fdf] {
+  .image-container{
     flex: 0 0 28%;
     display: flex;
     justify-content: center;
