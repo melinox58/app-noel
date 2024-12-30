@@ -115,7 +115,6 @@ const images = [
 section{
   width: 80vw;
   height: 60vh;
-  margin-right: 10%;
 }
 
 h3{
@@ -159,6 +158,10 @@ form{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.content-container > main:nth-child(2) > section:nth-child(4) > aside:nth-child(3) {
+  margin-top: 9%;
 }
 
 .btn{
