@@ -243,12 +243,13 @@ ul{
   width: 25vw;
   }
 
-  section form{
+  form{
     display: flex;
     flex-direction: column;
     gap: 5%;
     width: 100%;
     height: 100%;
+    margin-top: -11%;
   }
 
   section input {
