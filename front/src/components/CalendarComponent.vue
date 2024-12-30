@@ -318,13 +318,12 @@ ul{
     width: 22vw;
   }
 
-  .image-table[data-v-67104fdf] {
+  .image-table{
     width: 95%;
     overflow: hidden;
     display: flex;
     align-items: center;
-    height: 58vh;
-    margin-top: 0;
+    height: 57vh;
   }
 
   .image-container[data-v-67104fdf] {

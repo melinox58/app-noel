@@ -257,15 +257,6 @@ ul{
     width: 22vw;
   }
 
-  .image-table{
-    width: 79vw;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    height: 59vh;
-    margin-top: 1%;
-  }
-
   .image-container[data-v-67104fdf] {
     flex: 0 0 28%;
     display: flex;
