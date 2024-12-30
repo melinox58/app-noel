@@ -269,10 +269,6 @@ ul{
   width: 25vw;
   }
 
-  section input{
-    width: 30vw;
-  }
-
   section form{
     gap: 5%;
     width: 100%;
@@ -280,6 +276,7 @@ ul{
   }
 
   section input {
+    width: 30vw;
     height: 40%;
     font-size: 1rem;
   }

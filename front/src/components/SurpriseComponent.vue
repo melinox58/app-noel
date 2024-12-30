@@ -42,16 +42,16 @@ onMounted(() => {
     <section>
       <form @submit.prevent="createCalendar">
         <h2>Choisissez les surprises :</h2>
-          <div class="theme">
-            <article class="image-table">
-              <CaseComponent
-              v-for="(day, index) in days"
-                  :key="index"
-                  :case-item="day"
-                  :day-number="day" />
-            </article>
-        </div>
-      </form>
+        <div class="image-table">
+          <div class="image-row">
+            <CaseComponent
+                v-for="(day, index) in days"
+                    :key="index"
+                    :case-item="day"
+                    :day-number="day" />
+            </div>
+          </div>
+        </form>
 
       <aside>
         <nav>
@@ -234,21 +234,18 @@ ul{
   width: 25vw;
   }
 
-  section input{
-    width: 30vw;
-  }
-
   section form{
     gap: 5%;
     width: 100%;
     height: 14%;
   }
 
-  .theme{
+  /* .theme{
     width: 100%;
-  }
+  } */
 
   section input {
+    width: 30vw;
     height: 40%;
     font-size: 1rem;
   }
