@@ -234,7 +234,7 @@ ul{
   section{
     background-color: rgba(255, 255, 255, 0.854);
     width: 80vw;
-    height: 100vh;
+    height: 68vh;
     margin-right: 10%;
     margin-bottom: -8%;
   }
@@ -243,6 +243,10 @@ ul{
     font-size: 1.5rem;
     margin-bottom: 2%;
     margin-top: -4.5%;
+  }
+
+  .date {
+  width: 25vw;
   }
 
   p{
@@ -259,6 +263,14 @@ ul{
 
   section h2 {
     font-size:1.4rem;
+  }
+
+  .date {
+  width: 25vw;
+  }
+
+  aside{
+    margin-top: -1.2%;
   }
 
   section input{
