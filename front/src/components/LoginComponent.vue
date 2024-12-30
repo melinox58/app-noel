@@ -51,7 +51,7 @@ h3{
 }
 
 input{
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   color: blue;
   height: 3vh;
 }
@@ -71,7 +71,7 @@ form{
 }
 
 .btn{
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   display: flex;
   width: 30vw;
   margin-top: 5%;
