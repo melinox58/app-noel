@@ -103,7 +103,7 @@ form{
   align-items: center;
   justify-content: center;
   margin-top: 27%;
-  margin-left: -7%;
+  margin-left: 0;
 }
 
 .content-container > main:nth-child(2) > div:nth-child(1) {
