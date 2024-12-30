@@ -350,6 +350,7 @@ footer {
 
 footer nav {
   display: flex;
+  margin-left: 4%;
 }
 
 footer ul{
