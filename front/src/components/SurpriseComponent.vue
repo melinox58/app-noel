@@ -77,11 +77,9 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
 section{
   width: 80vw;
   height: 60vh;
-  margin-right: 10%;
 }
 
 h3{
@@ -95,20 +93,15 @@ h2{
 }
 
 div{
-  font-size: 1rem;
+  font-size: 0.4rem;
   margin-bottom: -8%;
-  border: 2px solid black;
 }
 
-.date{
-  border: none;
-}
-
-.theme{
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+input{
+  color: blue;
+  width: 30vw;
+  height: 30%;
+  font-size: 0.7rem;
 }
 
 .fa-solid{
@@ -117,12 +110,23 @@ div{
 }
 
 form{
-
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
   gap: 3%;
-  width: 91vw;
-  height: 98%;
+  width: 89vw;
+  height: 17%;
   align-items: center;
+  justify-content: center;
+}
+
+.content-container > main:nth-child(2) > div:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-container > main:nth-child(2) > section:nth-child(4) > aside:nth-child(3) {
+  margin-top: 9%;
 }
 
 .btn{
@@ -161,24 +165,41 @@ ul{
   padding: 0;
 }
 
-.image-table {
-  width: 90vw;
-  height: 45vh;
-  margin-top: 20%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  overflow: scroll;
+.image-row img{
+  width: 26vw;
 }
 
+.image-table {
+  margin-top: 10%;
+  width: 100%;                /* La table occupe toute la largeur disponible */
+  height: 45vh;               /* Hauteur fixe pour la table */
+  overflow: hidden;           /* Empêche tout débordement visible de la table elle-même */
+}
 
+.image-row {
+  display: flex;
+  flex-wrap: wrap;            /* Les images passeront à la ligne suivante si l'espace est insuffisant */
+  width: 100%;                /* Garantit que l'image-row occupe toute la largeur disponible */
+  overflow-x: auto;           /* Permet un défilement horizontal si nécessaire */
+  overflow-y: auto;           /* Permet un défilement vertical si nécessaire */
+  height: 100%;               /* Occupe toute la hauteur de la table */
+  gap: 2%;
+  justify-content: center;    /* Centre les images horizontalement */
+}
+
+.image-container {
+  flex: 0 0 10%;              /* Chaque image occupe environ 48% de la largeur (2 par ligne) */
+  max-width: 100%;            /* Evite que les images débordent de leur conteneur */
+  justify-content: center;    /* Centre l'image horizontalement */
+  margin: 2%;
+}
 
 @media only screen and (min-width: 768px){
 
   section{
     background-color: rgba(255, 255, 255, 0.854);
     width: 80vw;
-    height: 100vh;
+    height: 68vh;
     margin-right: 10%;
     margin-bottom: -8%;
   }
@@ -189,8 +210,8 @@ ul{
     margin-top: -4.5%;
   }
 
-  .date[data-v-a3dbb0b0]{
-    width: 25vw;
+  .date {
+  width: 25vw;
   }
 
   p{
@@ -205,14 +226,12 @@ ul{
     margin-bottom: 0.5%;
   }
 
-  section{
-    height: 69vh;
-    margin-bottom: -9%;
-  }
-
   section h2 {
     font-size:1.4rem;
-    padding-top: 2%;
+  }
+
+  .date {
+  width: 25vw;
   }
 
   section input{
@@ -223,7 +242,10 @@ ul{
     gap: 5%;
     width: 100%;
     height: 14%;
-    display: flex;
+  }
+
+  .theme{
+    width: 100%;
   }
 
   section input {
@@ -238,15 +260,19 @@ ul{
     height: 30%;
   }
 
-  section .config[data-v-7d2ba363]{
+  section form[data-v-11327214] {
+    height: 100%;
+}
+
+  section .config[data-v-11327214]{
     background-color: rgba(255, 255, 255, 0.858);
     display: flex;
     flex-direction: column;
-    height: 69vh;
+    height: 68vh;
     width: 14%;
     justify-content: center;
     margin-left: -12vw;
-    margin-top: -9.7vh;
+    margin-top: -70vh;
     gap: 10%;
     position: relative;
     z-index: 8;
@@ -258,7 +284,17 @@ ul{
   }
 
   .image-row img {
-    width: 22vw;
+    width: 20vw;
+    margin: auto;
+  }
+
+  .image-table{
+    width: 95%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    height: 57vh;
+    margin: 0;
   }
 
   .image-container[data-v-67104fdf] {
@@ -268,9 +304,18 @@ ul{
     align-items: center;
   }
 
+  img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+  img:hover {
+    transform: scale(1.1); /* Agrandissement de l'image */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre autour de l'image */
+}
+
   a{
     margin: 0;
   }
-
 }
 </style>
