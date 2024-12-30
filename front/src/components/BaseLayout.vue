@@ -240,6 +240,7 @@ footer {
 
 footer nav{
   display: flex;
+  margin-left: -8%;
 }
 
 footer ul{
@@ -249,7 +250,7 @@ footer ul{
 
 p {
   font-size: 0.4rem;
-  margin-top: 2%;
+  margin-top: -4%;
 }
 
 #snowCanvas {
