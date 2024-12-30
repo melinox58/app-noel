@@ -227,7 +227,6 @@ ul{
 
   div{
     margin-bottom: 0.5%;
-    margin-left: -10%;
   }
 
   section h2 {
@@ -245,7 +244,7 @@ ul{
     flex-direction: column;
     gap: 5%;
     width: 100%;
-    height: 14%;
+    height: 100%;
   }
 
   section input {
