@@ -1,11 +1,20 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import DateComponent from '@/components/DateComponent.vue';
 
+const user = ref(null);
 
+onMounted(() => {
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    user.value = JSON.parse(storedUser);
+  }
+});
 </script>
 
 <template>
-    <h3 v-if="user">Bienvenue</h3>
-    <div>
+    <h3 v-if="user">Bienvenue {{ user.firstname }} {{ user.name }}</h3>
+    <div class="date">
       <DateComponent />
     </div>
 
@@ -168,9 +177,11 @@ ul{
 @media only screen and (min-width: 768px){
 
   section{
+    display: flex;
+    flex-direction: column;
     background-color: rgba(255, 255, 255, 0.854);
     width: 80vw;
-    height: 100vh;
+    height: 68vh;
     margin-right: 10%;
     margin-bottom: -8%;
   }
@@ -179,10 +190,22 @@ ul{
     font-size: 1.5rem;
     margin-bottom: 2%;
     margin-top: -4.5%;
+    margin-left: -10%;
   }
 
-  h2{
-    font-size: 1rem;
+  .date {
+  width: 25vw;
+  }
+
+  div{
+    margin-bottom: 0.5%;
+    margin-left: -10%;
+  }
+
+  section h2 {
+    font-size:1.4rem;
+    width: 20vw;
+    margin-top: 2%;
   }
 
   p{
@@ -205,10 +228,13 @@ ul{
     width: 30vw;
   }
 
-  section form{
+  form{
+    display: flex;
+    flex-direction: column;
     gap: 5%;
     width: 100%;
-    height: 14%;
+    height: 100%;
+    margin-top: 0.1%;
   }
 
   section input {
@@ -227,11 +253,11 @@ ul{
     background-color: rgba(255, 255, 255, 0.858);
     display: flex;
     flex-direction: column;
-    height: 67.5vh;
+    height: 68vh;
     width: 14%;
     justify-content: center;
     margin-left: -12vw;
-    margin-top: -68.2vh;
+    margin-top: -58.1vh;
     gap: 10%;
     position: relative;
     z-index: 8;
