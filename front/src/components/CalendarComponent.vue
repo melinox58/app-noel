@@ -309,7 +309,7 @@ ul{
     margin: 0;
   }
 
-  .img-row{
+  .image-row[data-v-7ff12405]{
     margin: auto;
   }
 
