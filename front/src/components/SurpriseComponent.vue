@@ -227,6 +227,7 @@ ul{
 
   div{
     margin-bottom: 0.5%;
+    margin-left: -10%;
   }
 
   section h2 {
