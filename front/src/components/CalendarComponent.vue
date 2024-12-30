@@ -291,11 +291,15 @@ ul{
     height: 30%;
   }
 
+  .content-container > main:nth-child(2) > section:nth-child(4) > aside:nth-child(3) {
+    margin-top: -1.3%;
+  }
+
   section .config{
     background-color: rgba(255, 255, 255, 0.858);
     display: flex;
     flex-direction: column;
-    height: 69vh;
+    height: 68vh;
     width: 14%;
     justify-content: center;
     margin-left: -12vw;
