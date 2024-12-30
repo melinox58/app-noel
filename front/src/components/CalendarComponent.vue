@@ -228,10 +228,6 @@ ul{
 
 @media only screen and (min-width: 768px){
 
-  main{
-    height: 82vh;
-  }
-
   section{
     background-color: rgba(255, 255, 255, 0.854);
     width: 80vw;
