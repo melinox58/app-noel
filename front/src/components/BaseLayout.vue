@@ -225,7 +225,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 82vh;
+  height: 69vh;
   margin: 0 4% 2% 4%;
   background-color: rgba(255, 255, 255, 0.817);
 }
