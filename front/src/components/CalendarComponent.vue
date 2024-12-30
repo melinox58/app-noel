@@ -112,13 +112,12 @@ const images = [
 
 <style scoped>
 
-section{
+section[data-v-67104fdf] {
   width: 80vw;
   height: 60vh;
-  margin-right: 10%;
 }
 
-h3{
+h3[data-v-67104fdf]{
   color: blue;
   font-size: 0.8rem;
   margin-top: 2%;
@@ -128,9 +127,9 @@ h2{
   font-size: 0.5rem;
 }
 
-div{
+div[data-v-67104fdf] {
   font-size: 0.4rem;
-  margin-bottom: -8%;
+  margin-bottom: -6%;
 }
 
 input{
@@ -159,6 +158,11 @@ form{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.content-container > main:nth-child(2) > section:nth-child(4) > aside:nth-child(3) {
+  margin-top: 21%;
+  display: flex;
 }
 
 .btn{
@@ -201,25 +205,25 @@ ul{
   width: 26vw;
 }
 
-.image-table {
+.image-table[data-v-67104fdf]{
   margin-top: 10%;
   width: 100%;                /* La table occupe toute la largeur disponible */
   height: 45vh;               /* Hauteur fixe pour la table */
   overflow: hidden;           /* Empêche tout débordement visible de la table elle-même */
+  scroll-behavior: smooth;    /* Active le défilement fluide */
 }
 
 .image-row {
   display: flex;
   flex-wrap: wrap;            /* Les images passeront à la ligne suivante si l'espace est insuffisant */
   width: 100%;                /* Garantit que l'image-row occupe toute la largeur disponible */
-  overflow-x: auto;           /* Permet un défilement horizontal si nécessaire */
   overflow-y: auto;           /* Permet un défilement vertical si nécessaire */
   height: 100%;               /* Occupe toute la hauteur de la table */
   gap: 2%;
   justify-content: center;    /* Centre les images horizontalement */
 }
 
-.image-container {
+.image-container[data-v-67104fdf]{
   flex: 0 0 10%;              /* Chaque image occupe environ 48% de la largeur (2 par ligne) */
   max-width: 100%;            /* Evite que les images débordent de leur conteneur */
   justify-content: center;    /* Centre l'image horizontalement */
@@ -228,23 +232,24 @@ ul{
 
 @media only screen and (min-width: 768px){
 
-  main{
-    height: 82vh;
-  }
-
-  section{
+  section[data-v-67104fdf]{
     background-color: rgba(255, 255, 255, 0.854);
     width: 80vw;
-    height: 100vh;
+    height: 72vh;
     margin-right: 10%;
     margin-bottom: -8%;
   }
 
-  h3{
+  h3[data-v-67104fdf]{
     font-size: 1.5rem;
     margin-bottom: 2%;
     margin-top: -4.5%;
   }
+
+  .date {
+  margin-left: -6%;
+}
+
 
   p{
     margin-bottom: 0;
@@ -254,8 +259,9 @@ ul{
   font-size: 3rem;
   }
 
-  div{
+  div[data-v-67104fdf]{
     margin-bottom: 0.5%;
+    width: 75vw;
   }
 
   section h2 {
@@ -304,7 +310,9 @@ ul{
   }
 
   .image-row img {
-    width: 22vw;
+    width: 20vw;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
   }
 
   .image-table[data-v-67104fdf] {
@@ -322,11 +330,6 @@ ul{
     justify-content: center;
     align-items: center;
   }
-
-  img {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-}
 
   img:hover {
     transform: scale(1.1); /* Agrandissement de l'image */
