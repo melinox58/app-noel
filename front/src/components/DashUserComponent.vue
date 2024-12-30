@@ -234,6 +234,10 @@ input {
     font-size: 1.2rem;
     height: 60%;
   }
+
+  .w-50 {
+  width:40% !important;
+}
 }
 
 </style>

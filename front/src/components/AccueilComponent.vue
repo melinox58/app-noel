@@ -56,8 +56,17 @@ p{
     margin: 0;
 }
 
-.carousel-item{
-    padding: 5%;
+.w-50 {
+  width:40% !important;
+}
+
+.d-block {
+  display:block;
+  margin: auto;
+}
+
+div.carousel-item:nth-child(1) {
+  margin-top: 8%;
 }
 
 .btn{
@@ -356,7 +365,7 @@ p{
         width: 30vw;
         padding: 0;
         margin-bottom: -1%;
-        margin-top: 4%;
+        margin-top: 8%;
     }
 
     h1{
