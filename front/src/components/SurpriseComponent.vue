@@ -268,7 +268,7 @@ ul{
     width: 14%;
     justify-content: center;
     margin-left: -12vw;
-    margin-top: -9.5vh;
+    margin-top: -64.2vh;
     gap: 10%;
     position: relative;
     z-index: 8;
