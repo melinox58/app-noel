@@ -269,10 +269,6 @@ ul{
   width: 25vw;
   }
 
-  aside{
-    margin-top: -1.2%;
-  }
-
   section input{
     width: 30vw;
   }

@@ -193,10 +193,6 @@ ul{
     margin-bottom: 0;
   }
 
-  .content-container > main:nth-child(2) > section:nth-child(3) > aside:nth-child(2) {
-  padding-top: 40%;
-  }
-
   .fa-solid{
   font-size: 3rem;
   }
