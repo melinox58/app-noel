@@ -261,6 +261,7 @@ ul{
   div{
     margin-bottom: 0.5%;
     margin-left: -10%;
+    margin: auto;
   }
 
   section h2 {
@@ -307,10 +308,6 @@ ul{
   section .config img{
     width: 32%;
     margin: 0;
-  }
-
-  .image-row[data-v-7ff12405]{
-    margin: auto;
   }
 
   .image-row img {
