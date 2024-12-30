@@ -46,7 +46,7 @@ h3{
 
 input{
   color: blue;
-  height: 3vh;
+  height: 2vh;
   font-size: 0.8rem;
 }
 
@@ -110,6 +110,7 @@ h3{
 
 input{
   width: 30vw;
+  height: 4vh;
   font-size: 1rem;
 }
 
