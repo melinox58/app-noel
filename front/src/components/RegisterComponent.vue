@@ -24,18 +24,24 @@
 </template>
 
 <style scoped>
+.content-container > main:nth-child(2) > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 h1{
   color: rgb(196, 2, 2);
   text-shadow: 0px 0px 5px rgb(196, 2, 2);
-  transform: rotate(-10deg);
-  margin-bottom: 17%;
+  transform: rotate(-5deg);
+  margin-bottom: 10%;
   font-size: 1.6rem;
 }
 
 h2{
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   margin-bottom: 8%;
-  width: 70vw;
+  width: 80vw;
 }
 
 h3{
@@ -47,7 +53,7 @@ h3{
 input{
   color: blue;
   height: 2vh;
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   height: 3vh;
 }
 
@@ -92,7 +98,7 @@ form{
   background-size: cover;
   color:white;
   border-radius: 20px;
-  height: 4vh;
+  height: 3vh;
   justify-content: center;
   align-items: center;
   background-position: center;

@@ -65,7 +65,7 @@ p{
   margin: auto;
 }
 
-div.carousel-item:nth-child(1) {
+div.carousel-item{
   margin-top: 8%;
 }
 
