@@ -228,6 +228,7 @@ ul{
 
   section h2 {
     font-size:1.4rem;
+    width: 20vw;
   }
 
   .date {
