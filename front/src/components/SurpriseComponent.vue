@@ -90,6 +90,8 @@ h3{
 
 h2{
   font-size: 0.5rem;
+  margin-top: 17%;
+  margin-left: -10%;
 }
 
 div{
@@ -111,12 +113,13 @@ input{
 
 form{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 3%;
   width: 89vw;
   height: 17%;
   align-items: center;
   justify-content: center;
+  margin-top: 11%;
 }
 
 .content-container > main:nth-child(2) > div:nth-child(1) {
@@ -151,7 +154,7 @@ form{
 .config{
   display: flex;
   margin-top: -150%;
-  margin-top: -113%;
+  margin-top: -22%;
   justify-content: center;
   width: 90vw;
   list-style-type: none;
